@@ -36,6 +36,10 @@ function addTodo() {
   }
 }
 
+const Completed = computed(() => {
+  return todoArr.value.filter(todo => todo.done)
+})
+
 watch(todoArr, () => {
   // console.log(todoArr.value)
 }, { deep: true })
@@ -46,7 +50,7 @@ watch(todoArr, () => {
     <h1 text-center text-2xl font-bold my-xl>
       Chill Todo List
     </h1>
-    <label flex my-4>
+    <label flex my-6>
       <input
         v-model="newTodo"
         type="text"
@@ -63,14 +67,32 @@ watch(todoArr, () => {
         Add
       </button>
     </label>
+
     <ul>
       <li v-for="todo in todoArr" :key="todo.id">
         <TodoItem
+          v-if="!todo.done"
           :item="todo"
           @toggle="toggle"
           @delete="deleteTodo"
         />
       </li>
     </ul>
+
+    <details v-if="Completed.length" open>
+      <summary mt-4 mb-2>
+        Completed {{ Completed.length }}
+      </summary>
+
+      <ul>
+        <li v-for="todo in Completed" :key="todo.id">
+          <TodoItem
+            :item="todo"
+            @toggle="toggle"
+            @delete="deleteTodo"
+          />
+        </li>
+      </ul>
+    </details>
   </main>
 </template>
