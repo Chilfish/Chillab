@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 import TodoItem from './TodoItem.vue'
 import type { todoItem } from '~/types'
 
@@ -11,38 +11,21 @@ const todoArr = ref<todoItem[]>([
   { id: '3', content: 'Buy a boat', done: false },
 ])
 
-const toggle = computed(() => {
-  return (id: string) => {
-    const index = todoArr.value.findIndex(todo => todo.id === id)
-    todoArr.value[index].done = !todoArr.value[index].done
-  }
-})
-
-const deleteTodo = computed(() => {
-  return (id: string) => {
-    const index = todoArr.value.findIndex(todo => todo.id === id)
-    todoArr.value.splice(index, 1)
-  }
-})
-
 function addTodo() {
-  if (newTodo.value) {
-    todoArr.value.push({
-      id: Date.now().toString(),
-      content: newTodo.value,
-      done: false,
-    })
-    newTodo.value = ''
-  }
+  if (!newTodo.value)
+    return
+
+  todoArr.value.push({
+    id: Date.now().toString(),
+    content: newTodo.value,
+    done: false,
+  })
+  newTodo.value = ''
 }
 
 const Completed = computed(() => {
   return todoArr.value.filter(todo => todo.done)
 })
-
-watch(todoArr, () => {
-  // console.log(todoArr.value)
-}, { deep: true })
 </script>
 
 <template>
@@ -69,14 +52,15 @@ watch(todoArr, () => {
     </label>
 
     <ul>
-      <li v-for="todo in todoArr" :key="todo.id">
-        <TodoItem
-          v-if="!todo.done"
-          :item="todo"
-          @toggle="toggle"
-          @delete="deleteTodo"
-        />
-      </li>
+      <template v-for="(todo, index) in todoArr" :key="todo.id">
+        <li v-if="!todo.done">
+          <TodoItem
+            :item="todo"
+            @toggle="todoArr[index].done = !todoArr[index].done"
+            @delete="todoArr.splice(index, 1)"
+          />
+        </li>
+      </template>
     </ul>
 
     <details v-if="Completed.length" open>
@@ -85,13 +69,15 @@ watch(todoArr, () => {
       </summary>
 
       <ul>
-        <li v-for="todo in Completed" :key="todo.id">
-          <TodoItem
-            :item="todo"
-            @toggle="toggle"
-            @delete="deleteTodo"
-          />
-        </li>
+        <template v-for="(todo, index) in Completed" :key="todo.id">
+          <li>
+            <TodoItem
+              :item="todo"
+              @toggle="todoArr[index].done = !todoArr[index].done"
+              @delete="todoArr.splice(index, 1)"
+            />
+          </li>
+        </template>
       </ul>
     </details>
   </main>
