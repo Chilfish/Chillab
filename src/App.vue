@@ -4,8 +4,5 @@ import TodoList from 'cp/TodoList/TodoList.vue'
 </script>
 
 <template>
-  <TodoList />
+  <TodoList px-5 w-screen sm:w-2xl />
 </template>
-
-<style scoped>
-</style>

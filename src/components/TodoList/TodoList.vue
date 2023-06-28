@@ -43,7 +43,7 @@ watch(todoArr, () => {
 
 <template>
   <main flex flex-col>
-    <h1 text-2xl font-bold my-xl>
+    <h1 text-center text-2xl font-bold my-xl>
       Chill Todo List
     </h1>
     <label flex my-4>

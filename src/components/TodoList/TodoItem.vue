@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue'
 import type { todoItem } from '~/types'
 
-defineProps<{
+const prop = defineProps<{
   item: todoItem
 }>()
 
@@ -9,33 +10,42 @@ defineEmits([
   'toggle',
   'delete',
 ])
+
+const isExpanded = ref(false)
+
+const contentStyle = computed(_ => ({
+  'decoration-line-through': prop.item.done,
+  'truncate': !isExpanded.value,
+}))
 </script>
 
 <template>
   <div
-    w-xs h-14 m-3 p-4 rounded-3
+    h-14 m-3 p-4 rounded-3
     bg-dark-50 hover:bg-dark-100
     flex items-center
+    :class="{ 'h-auto': isExpanded }"
   >
-    <label mx-2 for="toggle">
+    <label for="toggle">
       <input
         name="toggle"
         type="checkbox"
         @click="$emit('toggle', item.id)"
       >
     </label>
-    <span :class="{ done: item.done }">{{ item.content }}</span>
     <span
+      w-full h-full px-2 overflow-x-auto
+      cursor-pointer text-start
+      :class="contentStyle"
+      @click="isExpanded = !isExpanded"
+    >
+      {{ item.content }}
+    </span>
+    <span
+      w-6 h-6
       i-carbon-trash-can color-red opacity-40
       cursor-pointer hover:opacity-100
-      mx-2 ml-auto
       @click="$emit('delete', item.id)"
     />
   </div>
 </template>
-
-<style scoped>
-.done {
-  text-decoration: line-through;
-}
-</style>
