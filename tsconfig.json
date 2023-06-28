@@ -21,9 +21,8 @@
       "vite/client"
     ],
     "paths": {
-      "~/*": [
-        "src/*"
-      ]
+      "~/*": ["src/*"],
+      "cp/*": ["src/components/*"]
     }
   },
   "exclude": [

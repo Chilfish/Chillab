@@ -1,14 +1,10 @@
 <!-- eslint-disable no-console -->
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const count = ref(0)
+import TodoList from 'cp/TodoList/TodoList.vue'
 </script>
 
 <template>
-  <button @click="count++">
-    count is: {{ count }}
-  </button>
+  <TodoList />
 </template>
 
 <style scoped>
