@@ -14,7 +14,8 @@ defineEmits([
 <template>
   <div
     w-xs h-14 m-3 p-4 rounded-3
-    bg-dark-50 flex items-center
+    bg-dark-50 hover:bg-dark-100
+    flex items-center
   >
     <label mx-2 for="toggle">
       <input

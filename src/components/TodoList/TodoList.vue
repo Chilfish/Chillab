@@ -51,6 +51,8 @@ watch(todoArr, () => {
         v-model="newTodo"
         type="text"
         w-full h-14 mr-3 p-4 rounded-3
+        bg-dark-50
+
         placeholder="Add a new todo"
         @keyup.enter="addTodo"
       >
