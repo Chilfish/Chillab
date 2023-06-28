@@ -21,15 +21,15 @@ const contentStyle = computed(_ => ({
 
 <template>
   <div
-    h-14 m-3 p-4 rounded-3
+    h-14 m-2 p-4 rounded-3
     bg-dark-50 hover:bg-dark-100
     flex items-center
     :class="{ 'h-auto': isExpanded }"
   >
-    <label for="toggle">
+    <label>
       <input
-        name="toggle"
         type="checkbox"
+        :checked="item.done"
         @click="$emit('toggle', item.id)"
       >
     </label>

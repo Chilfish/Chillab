@@ -23,8 +23,9 @@ function addTodo() {
   newTodo.value = ''
 }
 
-const Completed = computed(() => {
-  return todoArr.value.filter(todo => todo.done)
+// might be a bit problematic
+const completedNum = computed(() => {
+  return todoArr.value.filter(todo => todo.done).length
 })
 </script>
 
@@ -63,14 +64,16 @@ const Completed = computed(() => {
       </template>
     </ul>
 
-    <details v-if="Completed.length" open>
-      <summary mt-4 mb-2>
-        Completed {{ Completed.length }}
+    <details v-if="completedNum" open>
+      <summary
+        mt-4 mb-2 cursor-pointer
+      >
+        Completed {{ completedNum }}
       </summary>
 
       <ul>
-        <template v-for="(todo, index) in Completed" :key="todo.id">
-          <li>
+        <template v-for="(todo, index) in todoArr" :key="todo.id">
+          <li v-if="todo.done">
             <TodoItem
               :item="todo"
               @toggle="todoArr[index].done = !todoArr[index].done"
