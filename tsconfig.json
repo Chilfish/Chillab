@@ -22,7 +22,8 @@
     ],
     "paths": {
       "~/*": ["src/*"],
-      "cp/*": ["src/components/*"]
+      "@cp/*": ["src/components/*"],
+      "@pg/*": ["src/pages/*"]
     }
   },
   "exclude": [
