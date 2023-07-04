@@ -10,15 +10,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/todo',
     name: 'todo',
-    component: () => import('@cp/TodoList/TodoList.vue'),
-    beforeEnter: (to, from) => {
-      document.title = 'Chill Todo List'
-    },
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    name: 'not-found',
-    redirect: '/',
+    component: () => import('@pg/todo.vue'),
   },
 ]
 

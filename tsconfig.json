@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
+    "sourceMap": true,
     "baseUrl": ".",
     "module": "ESNext",
-    "target": "es2016",
+    "target": "esnext",
     "lib": [
       "DOM",
       "ESNext"

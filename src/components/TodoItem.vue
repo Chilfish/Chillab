@@ -21,9 +21,7 @@ const contentStyle = computed(_ => ({
 
 <template>
   <div
-    h-14 m-2 p-4 rounded-3
-    bg-dark-50 hover:bg-dark-100
-    flex items-center
+    m-2 h-14 flex items-center rounded-3 bg-dark-50 p-4 hover:bg-dark-100
     :class="{ 'h-auto': isExpanded }"
   >
     <label>
@@ -34,17 +32,14 @@ const contentStyle = computed(_ => ({
       >
     </label>
     <span
-      w-full h-full px-2 overflow-x-auto
-      cursor-pointer text-start
+      h-full w-full cursor-pointer overflow-x-auto px-2 text-start
       :class="contentStyle"
       @click="isExpanded = !isExpanded"
     >
       {{ item.content }}
     </span>
     <span
-      w-6 h-6
-      i-carbon-trash-can color-red opacity-40
-      cursor-pointer hover:opacity-100
+      i-carbon-trash-can h-6 w-6 cursor-pointer color-red opacity-40 hover:opacity-100
       @click="$emit('delete', item.id)"
     />
   </div>

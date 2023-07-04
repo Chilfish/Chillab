@@ -1,5 +1,5 @@
 <template>
-  <main px-5 w-screen sm:w-2xl>
+  <main w-screen px-5 sm:w-2xl>
     <router-view />
   </main>
 </template>
