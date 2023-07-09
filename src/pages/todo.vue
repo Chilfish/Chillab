@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import TodoItem from '@cp/TodoItem.vue'
+import { createReusableTemplate } from '@vueuse/core'
 import type { todoItem } from '~/types'
 
 const newTodo = ref('')
@@ -40,9 +40,26 @@ const completedTodos = computed(() => {
 const uncompletedTodos = computed(() => {
   return todoArr.value.filter(todo => !todo.done)
 })
+
+const {
+  define: DTodoList,
+  reuse: TodoList,
+} = createReusableTemplate<{ list: todoItem[] }>()
 </script>
 
 <template>
+  <DTodoList v-slot="{ list }">
+    <ul w-full sm:w-xl>
+      <li v-for="todo in list" :key="todo.id">
+        <TodoItem
+          :item="todo"
+          @toggle="toggleDone(todo)"
+          @delete="deleteTodoItem(todo)"
+        />
+      </li>
+    </ul>
+  </DTodoList>
+
   <main flex flex-col items-center justify-center p-sm>
     <h1 my-xl text-center text-2xl font-bold>
       Chill Todo List
@@ -63,15 +80,7 @@ const uncompletedTodos = computed(() => {
       </button>
     </label>
 
-    <ul w-full sm:w-xl>
-      <li v-for="todo in uncompletedTodos" :key="todo.id">
-        <TodoItem
-          :item="todo"
-          @toggle="toggleDone(todo)"
-          @delete="deleteTodoItem(todo)"
-        />
-      </li>
-    </ul>
+    <TodoList :list="uncompletedTodos" />
 
     <details
       v-if="completedTodos.length"
@@ -84,15 +93,7 @@ const uncompletedTodos = computed(() => {
         Completed {{ completedTodos.length }}
       </summary>
 
-      <ul>
-        <li v-for="todo in completedTodos" :key="todo.id">
-          <TodoItem
-            :item="todo"
-            @toggle="toggleDone(todo)"
-            @delete="deleteTodoItem(todo)"
-          />
-        </li>
-      </ul>
+      <TodoList :list="completedTodos" />
     </details>
   </main>
 </template>
