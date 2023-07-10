@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { createReusableTemplate } from '@vueuse/core'
+import { useSortable } from '@vueuse/integrations/useSortable'
 import type { todoItem } from '~/types'
 
 const newTodo = ref('')
@@ -25,10 +26,6 @@ function addTodo() {
   newTodo.value = ''
 }
 
-function toggleDone(todo: todoItem) {
-  todo.done = !todo.done
-}
-
 function deleteTodoItem(todo: todoItem) {
   todoArr.value.splice(todoArr.value.indexOf(todo), 1)
 }
@@ -45,15 +42,26 @@ const {
   define: DTodoList,
   reuse: TodoList,
 } = createReusableTemplate<{ list: todoItem[] }>()
+
+useSortable('#completed', completedTodos, {
+  animation: 150,
+})
+
+useSortable('#uncompleted', uncompletedTodos, {
+  animation: 150,
+})
 </script>
 
 <template>
   <DTodoList v-slot="{ list }">
-    <ul w-full sm:w-xl>
+    <ul
+      :id="list === completedTodos ? 'completed' : 'uncompleted'"
+      w-full sm:w-xl
+    >
       <li v-for="todo in list" :key="todo.id">
         <TodoItem
           :item="todo"
-          @toggle="toggleDone(todo)"
+          @toggle="todo.done = !todo.done"
           @delete="deleteTodoItem(todo)"
         />
       </li>
@@ -83,7 +91,7 @@ const {
     <TodoList :list="uncompletedTodos" />
 
     <details
-      v-if="completedTodos.length"
+      v-show="completedTodos.length"
       open
       w-full sm:w-xl
     >
