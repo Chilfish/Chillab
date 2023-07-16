@@ -4,13 +4,15 @@ import type { RouteRecordRaw } from 'vue-router'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
     component: () => import('@pg/index.vue'),
   },
   {
     path: '/todo',
-    name: 'todo',
     component: () => import('@pg/todo.vue'),
+  },
+  {
+    path: '/github',
+    component: () => import('@pg/github.vue'),
   },
 ]
 

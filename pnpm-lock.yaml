@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@ngify/http':
+    specifier: ^1.5.2
+    version: 1.5.2(miniprogram-api-typings@3.10.0)(rxjs@7.8.1)
   '@vueuse/core':
     specifier: ^10.2.1
     version: 10.2.1(vue@3.3.4)
@@ -41,6 +44,9 @@ devDependencies:
     specifier: ^0.53.5
     version: 0.53.5
   '@unocss/reset':
+    specifier: ^0.53.5
+    version: 0.53.5
+  '@unocss/transformer-directives':
     specifier: ^0.53.5
     version: 0.53.5
   '@vitejs/plugin-vue':
@@ -1114,6 +1120,21 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
+
+  /@ngify/http@1.5.2(miniprogram-api-typings@3.10.0)(rxjs@7.8.1):
+    resolution: {integrity: sha512-XhzwyS4tDdALj/oDR8cp7q3KUt3slXJAP1xgpIS3eA1A9xFNlyPchGqD9UG6HrChLminqgWGpZMbdtUushYxmw==}
+    peerDependencies:
+      miniprogram-api-typings: 3.10.0
+      rxjs: ^7.0.0
+    dependencies:
+      '@ngify/types': 1.5.2
+      miniprogram-api-typings: 3.10.0
+      rxjs: 7.8.1
+    dev: false
+
+  /@ngify/types@1.5.2:
+    resolution: {integrity: sha512-bQGCUYsGXigw21RaJhFyx4pue/0sRDknV76g1v4ah99TD04JQ2H6KAGPHByFvYiNWItjQ2UEaXBa8GXts5wfaA==}
+    dev: false
 
   /@nicolo-ribaudo/semver-v6@6.3.3:
     resolution: {integrity: sha512-3Yc1fUTs69MG/uZbJlLSI3JISMn2UV2rg+1D/vROUqZyh3l6iYHCs7GMp+M40ZD7yOdDbYjJcU1oTJhrc+dGKg==}
@@ -3718,6 +3739,10 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
+  /miniprogram-api-typings@3.10.0:
+    resolution: {integrity: sha512-pvGZmj9uamahlqfPj1bwn5Cd/bjImc5ehyAha/QfA9limG6HO9Plj/yROfSChK6J6+VUoVB9cnNthx4XuI0T2Q==}
+    dev: false
+
   /mrmime@1.0.1:
     resolution: {integrity: sha512-hzzEagAgDyoU1Q6yg5uI+AorQgdvMCur3FcKf7NhMKWsaYg+RnbTyHRa/9IlLF9rf455MOCtcqqrQQ83pPP7Uw==}
     engines: {node: '>=10'}
@@ -4274,7 +4299,6 @@ packages:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
     dependencies:
       tslib: 2.6.0
-    dev: true
 
   /safe-regex-test@1.0.0:
     resolution: {integrity: sha512-JBUUzyOgEwXQY1NuPtvcj/qcBDbDmEvWufhlnXZIm75DEHp+afM1r1ujJpJsV/gSM4t59tpDyPi1sd6ZaPFfsA==}
@@ -4540,7 +4564,6 @@ packages:
 
   /tslib@2.6.0:
     resolution: {integrity: sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==}
-    dev: true
 
   /tsutils@3.21.0(typescript@5.1.6):
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}

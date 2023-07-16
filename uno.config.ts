@@ -4,6 +4,7 @@ import {
   presetIcons,
   presetUno,
 } from 'unocss'
+import transformerDirectives from '@unocss/transformer-directives'
 
 export default defineConfig({
   shortcuts: [
@@ -17,5 +18,8 @@ export default defineConfig({
       scale: 1.2,
       warn: true,
     }),
+  ],
+  transformers: [
+    transformerDirectives(),
   ],
 })
