@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { createReusableTemplate } from '@vueuse/core'
+import { ref } from 'vue'
+import { createReusableTemplate, useArrayFilter } from '@vueuse/core'
 import { useSortable } from '@vueuse/integrations/useSortable'
 import type { todoItem } from '~/types'
 
 const newTodo = ref('')
-const todoArr = ref([
+const todoArr = ref<todoItem[]>([
   { id: '1', content: 'Buy a car', done: false },
   { id: '2', content: 'Buy a house', done: false },
   { id: '3', content: 'Buy a boat', done: false },
@@ -30,13 +30,8 @@ function deleteTodoItem(todo: todoItem) {
   todoArr.value.splice(todoArr.value.indexOf(todo), 1)
 }
 
-const completedTodos = computed(() => {
-  return todoArr.value.filter(todo => todo.done)
-})
-
-const uncompletedTodos = computed(() => {
-  return todoArr.value.filter(todo => !todo.done)
-})
+const completedTodos = useArrayFilter(todoArr, todo => todo.done)
+const uncompletedTodos = useArrayFilter(todoArr, todo => !todo.done)
 
 const {
   define: DTodoList,
