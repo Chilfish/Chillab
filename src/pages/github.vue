@@ -31,6 +31,8 @@ onMounted(() => {
 </script>
 
 <template>
+  <h1>Search Github Repositories</h1>
+
   <input
     ref="searchInput"
     placeholder="Search Github Repositories"

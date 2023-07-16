@@ -25,11 +25,14 @@ html.dark{
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
 #app {
   margin: 0 auto;
+}
+
+h1 {
+  @apply my-xl text-center text-2xl font-bold
 }
