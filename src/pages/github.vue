@@ -3,25 +3,20 @@ import GithubCard from '@cp/GithubCard.vue'
 import { onMounted, ref } from 'vue'
 import { debounceTime, distinctUntilChanged, fromEvent } from 'rxjs'
 import { filter, map, tap } from 'rxjs/operators'
-import { HttpClient } from '@ngify/http'
+import { GithubService } from '~/services/githubService'
 import type { GithubRepo, reqState } from '~/types'
 
 const repos = ref([] as GithubRepo[])
 const searchInput = ref<HTMLInputElement | null>(null)
 const repoStatus = ref<reqState>('idle')
 
-const http = new HttpClient()
+const githubService = new GithubService()
 
-function search(input: string) {
-  repoStatus.value = 'loading'
-  http.get<{ items: GithubRepo[] }>(`https://api.github.com/search/repositories?q=${input}`)
-    .pipe(
-      map(res => res.items),
-    ).subscribe((data) => {
-      repos.value = data
-      repoStatus.value = data.length === 0 ? 'notFound' : 'success'
-    })
-}
+githubService.repos$.subscribe((data) => {
+  repos.value = data
+  if (repoStatus.value === 'loading')
+    repoStatus.value = data.length === 0 ? 'notFound' : 'success'
+})
 
 onMounted(() => {
   fromEvent(searchInput.value!, 'input')
@@ -34,7 +29,10 @@ onMounted(() => {
       filter(val => val.length !== 0),
       debounceTime(500),
       distinctUntilChanged(),
-    ).subscribe(input => search(input))
+    ).subscribe((input) => {
+      repoStatus.value = 'loading'
+      githubService.getRepos(input)
+    })
 })
 </script>
 
@@ -69,3 +67,4 @@ onMounted(() => {
     </p>
   </section>
 </template>
+~/services/githubService
