@@ -8,11 +8,11 @@ const links = ['/todo', '/github']
   <div
     v-for="link in links"
     :key="link"
-    m-sm
+    class="m-sm"
   >
     <RouterLink
       :to="link"
-      hover:text-blueGray-500
+      class="hover:text-blueGray-500"
     >
       {{ link }}
     </RouterLink>

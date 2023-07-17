@@ -20,32 +20,31 @@ const avatarUrl = computed(() =>
     :href="item.html_url"
     target="_blank"
     rel="noopener noreferrer"
-    my-sm flex items-center rounded-3 bg-dark-50 p-2 hover:bg-dark-100
+    class="my-sm flex items-center rounded-3 bg-dark-50 p-2 hover:bg-dark-100"
   >
     <img
       :src="avatarUrl"
       alt="avatar"
-      mr-4 h-full w-20 rounded-xl
+      class="mr-4 h-full w-20 rounded-xl"
     >
-    <div flex flex-col>
+    <div class="flex flex-col">
       <p
-        mb-2 overflow-x-auto text-start text-lg font-semibold tracking-wide
+        class="mb-2 overflow-x-auto text-start text-lg font-semibold tracking-wide"
       >
         {{ item.full_name }} </p>
       <p
-        overflow-x-auto text-start text-sm
+        class="overflow-x-auto text-start text-sm"
       >{{ item.description }} </p>
 
       <div
-        mt-2 flex text-sm
-        class="info"
+        class="info mt-2 flex text-sm"
       >
         <div>
-          <span i-carbon-star class="icon" />
+          <span class="icon i-carbon-star" />
           <span>{{ item.stargazers_count }}</span>
         </div>
         <div>
-          <span i-carbon-fork class="icon" />
+          <span class="icon i-carbon-fork" />
           <span> {{ item.forks_count }}</span>
         </div>
         <div>

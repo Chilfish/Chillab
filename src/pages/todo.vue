@@ -26,10 +26,6 @@ function addTodo() {
   newTodo.value = ''
 }
 
-function deleteTodoItem(todo: todoItem) {
-  todoArr.value.splice(todoArr.value.indexOf(todo), 1)
-}
-
 const completedTodos = useArrayFilter(todoArr, todo => todo.done)
 const uncompletedTodos = useArrayFilter(todoArr, todo => !todo.done)
 
@@ -49,32 +45,29 @@ useSortable('#uncompleted', uncompletedTodos, {
 
 <template>
   <DTodoList v-slot="{ list }">
-    <ul
-      :id="list === completedTodos ? 'completed' : 'uncompleted'"
-      w-full sm:w-xl
-    >
+    <ul :id="list === completedTodos ? 'completed' : 'uncompleted'">
       <li v-for="todo in list" :key="todo.id">
         <TodoItem
           :item="todo"
           @toggle="todo.done = !todo.done"
-          @delete="deleteTodoItem(todo)"
+          @delete="todoArr.splice(todoArr.indexOf(todo), 1)"
         />
       </li>
     </ul>
   </DTodoList>
 
-  <main flex flex-col items-center justify-center p-sm>
+  <main class="flex flex-col w-full">
     <h1> Chill Todo List </h1>
-    <label my-6 w-full flex sm:w-xl>
+    <label class="my-6 w-full flex">
       <input
         v-model="newTodo"
         type="text"
-        mr-3 h-14 w-full rounded-3 bg-dark-50 p-4
         placeholder="Add a new todo"
+        class="mr-3 h-14 w-full rounded-3 bg-dark-50 p-4"
         @keyup.enter="addTodo"
       >
       <button
-        h-14 w-18 rounded-3 btn
+        class="h-14 w-18 rounded-3 btn"
         @click="addTodo"
       >
         Add
@@ -86,11 +79,8 @@ useSortable('#uncompleted', uncompletedTodos, {
     <details
       v-show="completedTodos.length"
       open
-      w-full sm:w-xl
     >
-      <summary
-        mb-2 mt-4 cursor-pointer
-      >
+      <summary class="mb-2 mt-4 cursor-pointer">
         Completed {{ completedTodos.length }}
       </summary>
 
