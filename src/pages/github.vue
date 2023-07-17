@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import GithubCard from '@cp/GithubCard.vue'
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { debounceTime, distinctUntilChanged, fromEvent } from 'rxjs'
 import { filter, map, switchMap, tap } from 'rxjs/operators'
 import { GithubService } from '~/services/githubService'
@@ -12,6 +12,20 @@ const repoStatus = ref<reqState>('idle')
 
 const githubService = new GithubService()
 
+const statusText = computed(() => {
+  switch (repoStatus.value) {
+    case 'loading':
+      return 'Loading...'
+    case 'notFound':
+      return 'Not Found'
+    case 'error':
+      return 'Error'
+    default:
+      return ''
+  }
+})
+
+// wait for the searchInput to be mounted
 onMounted(() => {
   fromEvent(searchInput.value!, 'input')
     .pipe(
@@ -33,7 +47,7 @@ onMounted(() => {
         repos.value = data
       },
       error: (error) => {
-        console.error(error)
+        console.error(error.message)
         repoStatus.value = 'error'
       },
     })
@@ -46,9 +60,9 @@ onMounted(() => {
   <label class="w-full">
     <input
       ref="searchInput"
-      placeholder="Search Github Repositories"
+      placeholder="repo name"
       type="search"
-      class="my-2xl w-full rounded-3 bg-dark-50 p-2"
+      class="my-2xl w-full rounded-3 bg-dark-50 p-2 pl-4"
     >
   </label>
   <section class="my-2xl w-full">
@@ -57,17 +71,10 @@ onMounted(() => {
     </template>
 
     <p
-      v-else-if="repoStatus === 'notFound'"
-      class="text-center text-2xl text-gray-500"
+      v-else
+      class="select-none text-center text-2xl font-bold text-gray-500"
     >
-      Not Found
-    </p>
-
-    <p
-      v-else-if="repoStatus === 'loading'"
-      class="text-center text-2xl text-gray-500"
-    >
-      Loading...
+      {{ statusText }}
     </p>
   </section>
 </template>
