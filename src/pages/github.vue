@@ -2,7 +2,7 @@
 import GithubCard from '@cp/GithubCard.vue'
 import { onMounted, ref } from 'vue'
 import { debounceTime, distinctUntilChanged, fromEvent } from 'rxjs'
-import { filter, map, tap } from 'rxjs/operators'
+import { filter, map, switchMap, tap } from 'rxjs/operators'
 import { GithubService } from '~/services/githubService'
 import type { GithubRepo, reqState } from '~/types'
 
@@ -11,12 +11,6 @@ const searchInput = ref<HTMLInputElement | null>(null)
 const repoStatus = ref<reqState>('idle')
 
 const githubService = new GithubService()
-
-githubService.repos$.subscribe((data) => {
-  repos.value = data
-  if (repoStatus.value === 'loading')
-    repoStatus.value = data.length === 0 ? 'notFound' : 'success'
-})
 
 onMounted(() => {
   fromEvent(searchInput.value!, 'input')
@@ -29,9 +23,19 @@ onMounted(() => {
       filter(val => val.length !== 0),
       debounceTime(500),
       distinctUntilChanged(),
-    ).subscribe((input) => {
-      repoStatus.value = 'loading'
-      githubService.getRepos(input)
+      switchMap((val: string) => {
+        repoStatus.value = 'loading'
+        return githubService.getRepos(val)
+      }),
+    ).subscribe({
+      next: (data) => {
+        repoStatus.value = data.length === 0 ? 'notFound' : 'success'
+        repos.value = data
+      },
+      error: (error) => {
+        console.error(error)
+        repoStatus.value = 'error'
+      },
     })
 })
 </script>
@@ -67,4 +71,3 @@ onMounted(() => {
     </p>
   </section>
 </template>
-~/services/githubService
