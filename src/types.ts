@@ -19,3 +19,5 @@ export interface GithubRepo {
     avatar_url: string
   }
 }
+
+export type reqState = 'idle' | 'loading' | 'success' | 'error' | 'notFound'
