@@ -55,7 +55,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1>Search Github Repositories</h1>
+  <h2>Search Github Repositories</h2>
 
   <label class="w-full">
     <input

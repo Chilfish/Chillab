@@ -5,14 +5,20 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     component: () => import('@pg/index.vue'),
-  },
-  {
-    path: '/todo',
-    component: () => import('@pg/todo.vue'),
-  },
-  {
-    path: '/github',
-    component: () => import('@pg/github.vue'),
+    children: [
+      {
+        path: '/test/:name',
+        component: () => import('@pg/test.vue'),
+      },
+      {
+        path: '/todo',
+        component: () => import('@pg/todo.vue'),
+      },
+      {
+        path: '/github',
+        component: () => import('@pg/github.vue'),
+      },
+    ],
   },
 ]
 

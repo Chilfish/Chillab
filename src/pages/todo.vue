@@ -57,7 +57,7 @@ useSortable('#uncompleted', uncompletedTodos, {
   </DTodoList>
 
   <main class="flex flex-col w-full">
-    <h1> Chill Todo List </h1>
+    <h2> Chill Todo List </h2>
     <label class="my-6 w-full flex">
       <input
         v-model="newTodo"

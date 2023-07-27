@@ -15,7 +15,7 @@ export default defineConfig({
     },
   },
   plugins: [
-    VueDevTools(),
+    // VueDevTools(),
     vue(),
     UnoCSS(),
     Components(), // auto import components
