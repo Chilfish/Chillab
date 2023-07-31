@@ -34,7 +34,7 @@ useSortable('#uncompleted', useTodo.uncompletedTodos, {
     </ul>
   </DTodoList>
 
-  <main class="w-full flex flex-col">
+  <main class="w-80% flex flex-col">
     <h2> Chill Todo List </h2>
     <label class="my-6 w-full flex">
       <input

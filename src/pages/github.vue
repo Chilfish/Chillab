@@ -43,26 +43,28 @@ onMounted(() => {
 </script>
 
 <template>
-  <h2>Search Github Repositories</h2>
+  <main class="w-80% flex flex-col sm:w-xl">
+    <h2>Search Github Repositories</h2>
 
-  <label class="w-full">
-    <input
-      ref="searchInput"
-      placeholder="repo name"
-      type="search"
-      class="my-2xl w-full rounded-3 bg-dark-50 p-2 pl-4"
-    >
-  </label>
-  <section class="my-2xl w-full">
-    <template v-if="useGithub.repoStatus === 'success'">
-      <GithubCard v-for="repo in useGithub.repos" :key="repo.id" :item="repo" />
-    </template>
+    <label class="w-full">
+      <input
+        ref="searchInput"
+        placeholder="repo name"
+        type="search"
+        class="my-2xl w-full rounded-3 bg-dark-50 p-2 pl-4"
+      >
+    </label>
+    <section class="my-2xl w-full">
+      <template v-if="useGithub.repoStatus === 'success'">
+        <GithubCard v-for="repo in useGithub.repos" :key="repo.id" :item="repo" />
+      </template>
 
-    <p
-      v-else
-      class="select-none text-center text-2xl font-bold text-gray-500"
-    >
-      {{ useGithub.statusText }}
-    </p>
-  </section>
+      <p
+        v-else
+        class="select-none text-center text-2xl font-bold text-gray-500"
+      >
+        {{ useGithub.statusText }}
+      </p>
+    </section>
+  </main>
 </template>

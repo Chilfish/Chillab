@@ -10,7 +10,6 @@ declare module 'vue' {
     GithubCard: typeof import('./src/components/GithubCard.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Test: typeof import('./src/components/test.vue')['default']
     TodoItem: typeof import('./src/components/TodoItem.vue')['default']
   }
 }

@@ -10,14 +10,31 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html ::-webkit-resizer,
+html ::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 3px;
+}
+
+html ::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
 }
 
 html {
   background-color: #ffffff;
   color: rgba(0, 0, 0, 0.87);
+  scrollbar-width: thin;
 }
 
-html.dark{
+html.dark {
   background-color: #242424;
   color: rgba(255, 255, 255, 0.87);
 }
@@ -30,16 +47,20 @@ body {
 }
 
 #app {
-  margin: 0 auto;
+  @apply w-screen flex flex-col items-center position-relative
 }
 
-h1,h2,h3,h4 {
+h1,
+h2,
+h3,
+h4 {
   @apply my-xl text-center text-2xl font-bold
 }
 
 h1 {
   @apply text-3xl
 }
+
 h2 {
   @apply text-2xl
 }
