@@ -44,12 +44,10 @@ nav {
   width: 100%;
   height: 3rem;
   padding: 0 1rem;
-
   position: sticky;
   top: 0;
   backdrop-filter: blur(24px);
   z-index: 999;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -67,11 +65,12 @@ nav {
     height: 100%;
     border-radius: 12px;
   }
-
 }
 
-main img {
-  height: 300px;
-  border-radius: 8px;
+main {
+  img {
+    height: 300px;
+    border-radius: 8px;
+  }
 }
 </style>

@@ -5,7 +5,7 @@ import router from '~/router'
 
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
-import './style.css'
+import './style.scss'
 
 const app = createApp(App)
 

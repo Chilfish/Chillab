@@ -3,7 +3,6 @@ import { defineConfig } from 'vite'
 import UnoCSS from 'unocss/vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
-import VueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({

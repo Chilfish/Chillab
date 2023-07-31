@@ -2,14 +2,12 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
-
   font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 
 }
 
@@ -17,26 +15,26 @@
   box-sizing: border-box;
 }
 
-html ::-webkit-resizer,
-html ::-webkit-scrollbar-thumb {
-  background: #aaa;
-  border-radius: 3px;
-}
-
-html ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-
 html {
-  background-color: #ffffff;
+  background-color: #fff;
   color: rgba(0, 0, 0, 0.87);
   scrollbar-width: thin;
-}
 
-html.dark {
-  background-color: #242424;
-  color: rgba(255, 255, 255, 0.87);
+  &::-webkit-resizer,
+  & ::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  &.dark {
+    background-color: #242424;
+    color: rgba(255, 255, 255, 0.87);
+  }
 }
 
 body {

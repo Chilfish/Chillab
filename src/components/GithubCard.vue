@@ -69,11 +69,9 @@ const avatarUrl = computed(() =>
 .issues{
   --un-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="16" height="16" viewBox="0 0 16 16"%3E%3Cg fill="currentColor"%3E%3Cpath d="M7.5 1a6.5 6.5 0 1 0 0 13a6.5 6.5 0 0 0 0-13Zm0 12a5.5 5.5 0 1 1 0-11a5.5 5.5 0 0 1 0 11Z"%2F%3E%3Ccircle cx="7.5" cy="7.5" r="1"%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
 
-  -webkit-mask: var(--un-icon) no-repeat;
   mask: var(--un-icon) no-repeat;
-  -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
-  background-color: currentColor;
+  background-color: currentcolor;
   color: inherit;
   width: 1.2em;
   height: 1.2em;
