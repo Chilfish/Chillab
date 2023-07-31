@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useDark, useToggle } from '@vueuse/core'
 import { computed } from 'vue'
+import users from '~/mock/users'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
@@ -31,9 +32,9 @@ const darkStyle = computed(() => isDark.value
   </header>
   <main>
     <ul>
-      <li v-for="i in 10" :key="i">
-        <p>Post {{ i }}</p>
-        <img src="https://pbs.twimg.com/media/F2XC05LaEAEYlDf.jpg" alt="image">
+      <li v-for="user in users" :key="user.id">
+        <p>{{ user.nick_name }}</p>
+        <img :src="user.avatar" alt="image">
       </li>
     </ul>
   </main>

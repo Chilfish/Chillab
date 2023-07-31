@@ -17,13 +17,16 @@
     "@vueuse/integrations": "^10.3.0",
     "pinia": "^2.1.6",
     "sortablejs": "^1.15.0",
+    "uuid": "^9.0.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.39.8",
+    "@faker-js/faker": "^8.0.2",
     "@iconify-json/carbon": "^1.1.18",
     "@types/node": "^20.4.5",
+    "@types/uuid": "^9.0.2",
     "@unocss/eslint-config": "^0.54.1",
     "@unocss/preset-icons": "^0.54.1",
     "@unocss/reset": "^0.54.1",
