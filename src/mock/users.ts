@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { fakerDE as fake } from '@faker-js/faker'
 import type { User } from '~/types'
 
-function generateUser(): User {
+export function generateUser(): User {
   const nick_name = fake.internet.userName()
 
   return {
@@ -15,7 +15,3 @@ function generateUser(): User {
     updatedAt: fake.date.recent().toISOString(),
   }
 }
-
-const users: User[] = Array.from({ length: 10 }, generateUser)
-
-export default users

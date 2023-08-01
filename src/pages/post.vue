@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { useDark, useToggle } from '@vueuse/core'
 import { computed } from 'vue'
-import users from '~/mock/users'
+import { posts } from '~/mock'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
 
 const darkStyle = computed(() => isDark.value
   ? {
-      navBg: '#2228',
+      navBg: '#151515CC',
       icon: 'i-carbon-sun',
     }
   : {
-      navBg: '#fffc',
+      navBg: '#E7E7E7CC',
       icon: 'i-carbon-moon',
     },
 )
@@ -27,14 +27,11 @@ const darkStyle = computed(() => isDark.value
 
     <span :class="darkStyle.icon" @click="toggleDark()" />
   </nav>
-  <header>
-    <h1>Post</h1>
-  </header>
   <main>
     <ul>
-      <li v-for="user in users" :key="user.id">
-        <p>{{ user.nick_name }}</p>
-        <img :src="user.avatar" alt="image">
+      <li v-for="post in posts" :key="post.id">
+        <span>{{ post.owner.nick_name }}</span>
+        <p>{{ post.content }}</p>
       </li>
     </ul>
   </main>
@@ -69,9 +66,23 @@ nav {
 }
 
 main {
-  img {
-    height: 300px;
-    border-radius: 8px;
+  width: 100%;
+  padding: 0 0.5rem;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
+
+  li {
+    margin: 1rem 0;
+  }
+
+  // img {
+  //   height: 300px;
+  //   border-radius: 8px;
+  // }
 }
 </style>
