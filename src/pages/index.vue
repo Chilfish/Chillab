@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const links = ['/todo', '/github', '/post', '/test/233']
+const links = ['/todo', '/github', '/post', '/titan']
 </script>
 
 <template>

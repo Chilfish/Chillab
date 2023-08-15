@@ -24,6 +24,10 @@ const routes: Array<RouteRecordRaw> = [
     path: '/post',
     component: () => import('@pg/post.vue'),
   },
+  {
+    path: '/titan',
+    component: () => import('@cp/Titan.vue'),
+  },
 ]
 
 const router = createRouter({
