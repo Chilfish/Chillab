@@ -7,7 +7,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@pg/index.vue'),
     children: [
       {
-        path: '/test/:name',
+        path: '/test',
         component: () => import('@pg/test.vue'),
       },
       {
