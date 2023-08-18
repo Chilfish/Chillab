@@ -4,8 +4,8 @@ import { onMounted, ref } from 'vue'
 defineOptions({
   name: 'Toast',
 })
+
 const show = ref(true)
-const message = ref('213123')
 
 onMounted(() => {
   setTimeout(() => {
@@ -16,7 +16,7 @@ onMounted(() => {
 
 <template>
   <div v-if="show" class="toast">
-    {{ message }}
+    {{ 123 }}
   </div>
 </template>
 

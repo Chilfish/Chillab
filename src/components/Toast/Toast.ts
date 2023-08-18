@@ -3,14 +3,18 @@ import { createVNode, render } from 'vue'
 import ToastConstructor from './Toast.vue'
 
 export interface Toast {
-  (message: string, context?: AppContext): void
+  (message: string, context?: AppContext | null): void
 }
 
-export function toast(message: string, context: AppContext) {
+export const toast: Toast = (message, context) => {
   const container = document.createElement('div')
-  const vnode = createVNode(ToastConstructor)
 
-  vnode.appContext = context
+  const props = {
+    message,
+  }
+  const vnode = createVNode(ToastConstructor, props)
+
+  vnode.appContext = context || null
   render(vnode, container)
 
   document.body.appendChild(container.firstElementChild!)
