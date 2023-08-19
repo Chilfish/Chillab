@@ -41,7 +41,7 @@ useSortable('#uncompleted', useTodo.uncompletedTodos, {
         v-model="useTodo.newTodo"
         type="text"
         placeholder="Add a new todo"
-        class="mr-3 h-14 w-full rounded-3 bg-dark-50 p-4"
+        class="mr-3 h-14 w-full rounded-3 bg-[--gray] p-4"
         @keyup.enter="useTodo.addTodo"
       >
       <button

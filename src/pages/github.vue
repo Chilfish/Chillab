@@ -51,7 +51,7 @@ onMounted(() => {
         ref="searchInput"
         placeholder="repo name"
         type="search"
-        class="my-2xl w-full rounded-3 bg-dark-50 p-2 pl-4"
+        class="my-2xl w-full rounded-3 bg-[--gray] p-2 pl-4"
       >
     </label>
     <section class="my-2xl w-full">

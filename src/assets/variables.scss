@@ -1,0 +1,33 @@
+$themes: (
+  light: (
+    text: #000,
+    bg: #fff,
+
+    gray: #e7e5e4,
+    red: #ff6969,
+
+    error: #fef0f0
+  ),
+
+  dark: (
+    text: #ffffffde,
+    bg: #242424,
+
+    gray: #404040,
+    red: #b91c1c,
+
+    error: #2b1d1d
+  )
+);
+
+@mixin themed() {
+  @each $theme, $map in $themes {
+    html.#{$theme} {
+      @each $key, $value in $map {
+        --#{$key}: #{$value};
+      }
+    }
+  }
+}
+
+@include themed;

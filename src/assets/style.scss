@@ -1,0 +1,52 @@
+@use "./variables" as *;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-width: thin;
+  color: var(--text);
+  background: var(--bg);
+
+  &::-webkit-resizer,
+  & ::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#app {
+  @apply w-screen flex flex-col items-center position-relative;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply text-center text-2xl font-bold;
+}
+
+h1 {
+  @apply text-3xl;
+}
+
+h2 {
+  @apply text-2xl;
+}
+
+button {
+  @apply btn;
+}
