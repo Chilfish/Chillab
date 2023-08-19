@@ -2,38 +2,13 @@
 import { useResizeObserver, useTimeoutFn } from '@vueuse/core'
 import { computed, onMounted, ref } from 'vue'
 import { getLastOffset, getOffsetOrSpace } from './instance'
-import { definePropType } from './props'
-
-// import {toastProps} from './Toast'
+import { toastProps } from './props'
 
 defineOptions({
   name: 'Toast',
 })
-// TODO
-const props = defineProps({
-  message: {
-    type: String,
-    default: '',
-  },
-  id: {
-    type: String,
-    default: '',
-  },
-  type: {
-    type: String,
-    default: 'info',
-  },
-  offset: {
-    type: Number,
-    default: 16,
-  },
-  onClose: {
-    type: definePropType<() => void>(Function),
-  },
-  onDestroy: {
-    type: definePropType<() => void>(Function),
-  },
-})
+
+const props = defineProps(toastProps)
 
 const show = ref(true)
 const toastRef = ref<HTMLElement>()

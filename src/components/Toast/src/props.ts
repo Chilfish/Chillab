@@ -34,11 +34,9 @@ export const toastProps = {
 
   onClose: {
     type: definePropType<() => void>(Function),
-    required: false,
   },
 
   onDestroy: {
-    type: definePropType<(e: TransitionEvent) => void>(Function),
-    required: false,
+    type: definePropType<() => void>(Function),
   },
 } as const
