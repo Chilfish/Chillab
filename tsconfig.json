@@ -1,31 +1,38 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
+    "allowJs": true,
     "baseUrl": ".",
-    "module": "ESNext",
-    "target": "esnext",
+    "checkJs": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "preserve",
     "lib": [
       "DOM",
       "ESNext"
     ],
-    "strict": true,
-    "jsx": "preserve",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "noUnusedLocals": true,
+    "paths": {
+      "@cp/*": [
+        "src/components/*"
+      ],
+      "@pg/*": [
+        "src/pages/*"
+      ],
+      "~/*": [
+        "src/*"
+      ]
+    },
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
     "strictNullChecks": true,
-    "allowJs": true,
-    "forceConsistentCasingInFileNames": true,
+    "target": "esnext",
     "types": [
       "vite/client"
-    ],
-    "paths": {
-      "~/*": ["src/*"],
-      "@cp/*": ["src/components/*"],
-      "@pg/*": ["src/pages/*"]
-    }
+    ]
   },
   "exclude": [
     "dist",

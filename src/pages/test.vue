@@ -4,6 +4,10 @@ import Toast from '@cp/Toast'
 
 <template>
   <button @click="Toast('hello')">
-    Show Toast from
+    Show Toast
+  </button>
+
+  <button @click="Toast({ message: 'hello 233' })">
+    Show
   </button>
 </template>

@@ -5,30 +5,48 @@ defineOptions({
   name: 'Toast',
 })
 
+// TODO
+defineProps({
+  message: {
+    type: String,
+    default: '',
+  },
+})
+
 const show = ref(true)
 
+function close() {
+  show.value = false
+}
+
 onMounted(() => {
-  setTimeout(() => {
-    show.value = false
-  }, 3000)
+  setTimeout(() => close(), 3000)
+})
+
+defineExpose({
+  show,
+  close,
 })
 </script>
 
 <template>
-  <div v-if="show" class="toast">
-    {{ 123 }}
+  <div
+    v-if="show"
+    class="toast"
+  >
+    {{ message }}
   </div>
 </template>
 
 <style scoped>
 .toast {
   position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
   width: 10rem;
   height: 3rem;
   text-align: center;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
   background-color: #333;
   color: #fff;
   padding: 10px 20px;
