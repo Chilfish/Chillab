@@ -1,5 +1,5 @@
-import type { AppContext, ExtractPropTypes } from 'vue'
-import type { toastProps } from './Toast'
+import type { AppContext, ComponentInternalInstance, ExtractPropTypes, VNode } from 'vue'
+import type { toastProps } from './props'
 
 export type ToastProps = ExtractPropTypes<typeof toastProps>
 
@@ -24,5 +24,7 @@ export interface ToastFn {
 export interface ToastContext {
   id: string
   props: ToastProps
+  vm: ComponentInternalInstance
+  vnode: VNode
   handler: ToastHandler
 }

@@ -3,11 +3,10 @@ import Toast from '@cp/Toast'
 </script>
 
 <template>
-  <button @click="Toast('hello')">
+  <button
+    class="mr-[10rem]"
+    @click="Toast('toastDefault.offset toastDefault.offset')"
+  >
     Show Toast
-  </button>
-
-  <button @click="Toast({ message: 'hello 233' })">
-    Show
   </button>
 </template>

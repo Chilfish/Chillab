@@ -1,0 +1,17 @@
+.toast {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 10rem;
+  min-height: 3rem;
+  max-width: 40rem;
+  overflow-wrap: anywhere;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  z-index: 9999;
+}

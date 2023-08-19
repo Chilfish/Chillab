@@ -11,7 +11,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Titan: typeof import('./src/components/Titan.vue')['default']
-    Toast: typeof import('./src/components/Toast/Toast.vue')['default']
+    Toast: typeof import('./src/components/Toast/src/Toast.vue')['default']
     TodoItem: typeof import('./src/components/TodoItem.vue')['default']
   }
 }

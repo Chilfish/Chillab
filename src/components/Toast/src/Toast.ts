@@ -1,33 +1,9 @@
 import { createVNode, render } from 'vue'
-import type { AppContext, PropType } from 'vue'
-import ToastConstructor from './Toast.vue'
+import type { AppContext } from 'vue'
 import type { ToastContext, ToastFn, ToastHandler, ToastOptions, ToastParams, ToastParamsNormalized } from './types'
-
-const definePropType = <T>(val: any): PropType<T> => val
-
-const toastDefault = {
-  id: '',
-  message: '',
-  appendTo: document.body,
-  onClose: undefined,
-} as const
-
-export const toastProps = {
-  id: {
-    type: String,
-    default: toastDefault.id,
-  },
-
-  message: {
-    type: String,
-    default: toastDefault.message,
-  },
-
-  onClose: {
-    type: definePropType<() => void>(Function),
-    required: false,
-  },
-} as const
+import ToastConstructor from './Toast.vue'
+import { toastDefault } from './props'
+import { instances, rmInstance } from './instance'
 
 let id_ = 0
 
@@ -64,6 +40,8 @@ export const toast: ToastFn & Partial<ToastFn> & { _context: AppContext | null }
 ) => {
   const norOptions = normalizeOptions(options)
   const instance = createToast(norOptions, context)
+
+  instances.push(instance)
   return instance.handler
 }
 
@@ -77,6 +55,13 @@ function createToast(
   const props = {
     ...options,
     id,
+    onClose: () => {
+      options.onClose?.()
+      rmInstance(id)
+    },
+    onDestroy: () => {
+      render(null, container)
+    },
   }
 
   const vnode = createVNode(ToastConstructor, props)
@@ -89,12 +74,14 @@ function createToast(
   const vm = vnode.component!
   const handler: ToastHandler = {
     close() {
-      vm.exposed?.close()
+      vm.exposed!.close()
     },
   }
 
   const instance: ToastContext = {
     id,
+    vm,
+    vnode,
     props: (vnode.component as any).props,
     handler,
   }
