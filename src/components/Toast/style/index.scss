@@ -16,4 +16,24 @@
   border-radius: 8px;
   transition: all 0.3s ease-in-out;
   z-index: 9999;
+
+  &.error {
+    background-color: var(--error-1);
+    color: var(--error);
+  }
+
+  &.warning {
+    background-color: var(--warning-1);
+    color: var(--warning);
+  }
+
+  &.success {
+    background-color: var(--success-1);
+    color: var(--success);
+  }
+
+  &.info {
+    background-color: var(--info-1);
+    color: var(--info);
+  }
 }

@@ -5,6 +5,7 @@ export const definePropType = <T>(val: any): PropType<T> => val
 export const toastDefault = {
   id: '',
   message: '',
+  type: 'info',
   appendTo: document.body,
   offset: 16,
   onClose: undefined,
@@ -24,6 +25,11 @@ export const toastProps = {
   offset: {
     type: Number,
     default: toastDefault.offset,
+  },
+
+  type: {
+    type: String,
+    default: toastDefault.type,
   },
 
   onClose: {

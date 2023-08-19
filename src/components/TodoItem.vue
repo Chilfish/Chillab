@@ -21,7 +21,7 @@ const contentStyle = computed(_ => ({
 
 <template>
   <div
-    class="m-2 h-14 flex items-center rounded-3 p-4 bg-[--gray]"
+    class="m-2 h-14 flex items-center rounded-3 bg-[--gray] p-4"
     :class="{ 'h-auto': isExpanded }"
   >
     <label>

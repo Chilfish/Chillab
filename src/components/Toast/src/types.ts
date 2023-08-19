@@ -1,7 +1,11 @@
 import type { AppContext, ComponentInternalInstance, ExtractPropTypes, VNode } from 'vue'
 import type { toastProps } from './props'
 
-export type ToastProps = ExtractPropTypes<typeof toastProps>
+export type ToastType = 'info' | 'success' | 'warning' | 'error'
+
+export type ToastProps = ExtractPropTypes<Omit<typeof toastProps, 'type'> & {
+  readonly type?: ToastType
+}>
 
 export type ToastOptions = Partial<Omit<ToastProps, 'id'>> & {
   appendTo?: HTMLElement

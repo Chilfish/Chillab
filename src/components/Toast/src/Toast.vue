@@ -19,6 +19,10 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  type: {
+    type: String,
+    default: 'info',
+  },
   offset: {
     type: Number,
     default: 16,
@@ -76,6 +80,7 @@ defineExpose({
       v-show="show"
       ref="toastRef"
       class="toast"
+      :class="type"
       :style="{ top: `${offset}px` }"
       @mouseleave="startTimer"
       @mouseenter="stopTimer"
