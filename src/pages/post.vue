@@ -79,10 +79,5 @@ main {
   li {
     margin: 1rem 0;
   }
-
-  // img {
-  //   height: 300px;
-  //   border-radius: 8px;
-  // }
 }
 </style>
