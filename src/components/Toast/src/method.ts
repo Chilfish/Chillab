@@ -41,7 +41,6 @@ export const toast: ToastFn & Partial<ToastFn> & { _context: AppContext | null }
   const norOptions = normalizeOptions(options)
   const instance = createToast(norOptions, context)
 
-  instances.push(instance)
   return instance.handler
 }
 

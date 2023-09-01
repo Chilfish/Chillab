@@ -25,7 +25,7 @@ export function rmInstance(id: string) {
 export function getLastOffset(id: string) {
   const { prev } = getInstance(id)
   if (!prev)
-    return toastDefault.offset
+    return 0
   return prev.vm.exposed!.bottom.value // 来自 Toast.vue 的 defineExpose
 }
 

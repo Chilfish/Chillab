@@ -4,29 +4,25 @@ import type { RouteRecordRaw } from 'vue-router'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    component: () => import('@pg/index.vue'),
+    component: () => import('@pg/index/index.vue'),
     children: [
       {
-        path: '/test',
-        component: () => import('@pg/test.vue'),
+        path: 'test',
+        component: () => import('@pg/index/test.vue'),
       },
       {
-        path: '/todo',
-        component: () => import('@pg/todo.vue'),
+        path: 'todo',
+        component: () => import('@pg/index/todo.vue'),
       },
       {
-        path: '/github',
-        component: () => import('@pg/github.vue'),
+        path: 'github',
+        component: () => import('@pg/index/github.vue'),
       },
     ],
   },
   {
-    path: '/post',
-    component: () => import('@pg/post.vue'),
-  },
-  {
     path: '/titan',
-    component: () => import('@cp/Titan.vue'),
+    component: () => import('@pg/Titan.vue'),
   },
 ]
 

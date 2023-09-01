@@ -20,7 +20,7 @@ const avatarUrl = computed(() =>
     :href="item.html_url"
     target="_blank"
     rel="noopener noreferrer"
-    class="my-sm flex items-center rounded-3 bg-dark-50 p-2 hover:bg-dark-100"
+    class="my-sm flex items-center rounded-2 bg-light-5 p-2 dark:bg-dark-5 hover:bg-light-7 hover:dark:bg-dark-3"
   >
     <img
       :src="avatarUrl"
