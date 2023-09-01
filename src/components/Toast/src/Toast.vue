@@ -12,11 +12,20 @@ const props = defineProps(toastProps)
 
 const show = ref(true)
 const toastRef = ref<HTMLElement>()
-
 const height = ref(0)
+// 上一个 Toast 的底部位置
 const lastOffset = computed(() => getLastOffset(props.id))
+
+// 这个 Toast 的 offset 就等于 上一个 bottom + 固定 offset
 const offset = computed(() => getOffsetOrSpace(props.id, props.offset) + lastOffset.value)
+
+// 这个 Toast 的底部位置
 const bottom = computed((): number => height.value + offset.value)
+
+useResizeObserver(toastRef, () => {
+  // 获取 Toast 的高度
+  height.value = toastRef.value!.getBoundingClientRect().height
+})
 
 let stopTimer: (() => void) | undefined
 
@@ -32,10 +41,6 @@ function close() {
 
 onMounted(() => {
   startTimer()
-})
-
-useResizeObserver(toastRef, () => {
-  height.value = toastRef.value!.getBoundingClientRect().height
 })
 
 defineExpose({

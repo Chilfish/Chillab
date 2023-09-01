@@ -1,13 +1,13 @@
 import { shallowReactive } from 'vue'
-import type { ToastContext } from './types'
+import type { ToastInstance } from './types'
 import { toastDefault } from './props'
 
-export const instances: ToastContext[] = shallowReactive([])
+export const instances: ToastInstance[] = shallowReactive([])
 
 export function getInstance(id: string) {
   const idx = instances.findIndex(item => item.id === id)
   const curr = instances[idx]
-  let prev: ToastContext | undefined
+  let prev: ToastInstance | undefined
   if (idx > 0)
     prev = instances[idx - 1]
 
@@ -26,7 +26,7 @@ export function getLastOffset(id: string) {
   const { prev } = getInstance(id)
   if (!prev)
     return toastDefault.offset
-  return prev.vm.exposed!.bottom.value
+  return prev.vm.exposed!.bottom.value // 来自 Toast.vue 的 defineExpose
 }
 
 export function getOffsetOrSpace(id: string, offset: number) {
