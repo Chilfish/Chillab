@@ -51,3 +51,7 @@ input:focus-visible,
 textarea:focus-visible {
   outline: none;
 }
+
+p, div {
+  --uno: whitespace-pre-wrap;
+}
