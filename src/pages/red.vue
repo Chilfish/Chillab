@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { useScrollLock } from '@vueuse/core'
 import type { Post } from '~/types'
 
-const posts: Post[] = Array.from({ length: 5 }, (_, i) => [
+const posts: Post[] = Array.from({ length: 6 }, (_, i) => [
   {
     id: `${i}`,
     title: `Red Post ${i}`,
@@ -11,6 +13,35 @@ const posts: Post[] = Array.from({ length: 5 }, (_, i) => [
     photos: ['/kurarin.webp'],
   },
 ]).flat()
+
+const showModal = ref(false)
+const showedPost = ref<Post | null>(null)
+
+const postsEl = ref<HTMLElement[] | null>(null)
+
+const isLocked = useScrollLock(window)
+
+function showDetail(post: Post) {
+  showModal.value = true
+  isLocked.value = true
+  showedPost.value = post
+
+  const clickedPost = postsEl.value!.find(
+    el => el.dataset.id === post.id,
+  )!
+
+  clickedPost.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center',
+  })
+
+  // const postMeta = {
+  //   x: clickedPost.offsetLeft,
+  //   y: clickedPost.offsetTop,
+  //   width: clickedPost.offsetWidth,
+  //   height: clickedPost.offsetHeight,
+  // }
+}
 </script>
 
 <template>
@@ -26,17 +57,34 @@ const posts: Post[] = Array.from({ length: 5 }, (_, i) => [
       aside
     </aside>
 
-    <div
+    <ul
       class="grid grid-cols-2 w-fit items-center gap-3 p-2 pb-15"
       sm="grid-cols-3"
       md="grid-cols-4"
       lg="pl-74"
     >
-      <red-item
+      <li
         v-for="post in posts"
+        ref="postsEl"
         :key="post.id"
-        :post="post"
+        :data-id="post.id"
+      >
+        <red-item
+          :post="post"
+          @show-detail="showDetail(post)"
+        />
+      </li>
+    </ul>
+
+    <Modal
+      v-model:show="showModal"
+      @update:show="isLocked = false"
+    >
+      <RedDetail
+        v-if="showedPost"
+        :post="showedPost"
+        @update:show="(showModal = false, isLocked = false)"
       />
-    </div>
+    </Modal>
   </main>
 </template>

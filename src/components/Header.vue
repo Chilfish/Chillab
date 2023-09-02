@@ -21,7 +21,7 @@ const toggleDark = useToggle(dark)
     <slot />
 
     <button
-      class="ml-8 h-8 rounded-2 px-3 text-3"
+      class="ml-8 h-8 rounded-2 px-3 text-3 btn"
       @click="toggleDark()"
     >
       {{ dark ? 'Light' : 'Dark' }}

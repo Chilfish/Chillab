@@ -1,9 +1,8 @@
 @use "./variables" as *;
 
-html {
+html,
+div {
   scrollbar-width: thin;
-  color: var(--text);
-  background: var(--bg);
 
   &::-webkit-resizer,
   & ::-webkit-scrollbar-thumb {
@@ -22,10 +21,13 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
+  position: relative;
+  color: var(--text);
+  background: var(--bg);
 }
 
 #app {
-  --uno: w-screen flex flex-col items-center position-relative;
+  --uno: w-screen flex flex-col items-center relative;
 }
 
 h1,
@@ -43,16 +45,13 @@ h2 {
   --uno: text-2xl;
 }
 
-button {
-  --uno: btn;
-}
-
 input:focus-visible,
 textarea:focus-visible {
   outline: none;
 }
 
-p, div {
+p,
+div {
   --uno: whitespace-pre-wrap;
 }
 

@@ -15,12 +15,13 @@ defineProps<{
       hover="scale-102 brightness-80"
       loading="lazy"
       :src="post.photos[0]"
+      @click="$emit('showDetail')"
     >
 
     <p>{{ post.title }}</p>
 
     <div class="flex justify-between text-3">
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2">
         <img
           class="h-8 w-8 rounded-full object-cover"
           src="/favicon.ico"
