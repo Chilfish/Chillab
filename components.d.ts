@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     GithubCard: typeof import('./src/components/GithubCard.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
+    RedItem: typeof import('./src/components/red/RedItem.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Titan: typeof import('./src/components/Titan.vue')['default']

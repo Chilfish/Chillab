@@ -24,21 +24,20 @@ export type reqState = 'idle' | 'loading' | 'success' | 'error' | 'notFound'
 
 export interface User {
   id: string
-  nick_name: string
+  nickname: string
   name: string
   email: string
   avatar: string
   createdAt: string
-  updatedAt: string
 }
 
 export interface Post {
   id: string
   title: string
   content: string
-  createdAt: string
-  updatedAt: string
-  owner: User
+  // createdAt: string
+  owner: string
 
-  // likes
+  likes: number
+  photos: string[]
 }

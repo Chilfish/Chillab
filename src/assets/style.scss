@@ -55,3 +55,7 @@ textarea:focus-visible {
 p, div {
   --uno: whitespace-pre-wrap;
 }
+
+span.icon {
+  --uno: inline-flex items-center max-w-4 max-h-4 select-none cursor-pointer;
+}
