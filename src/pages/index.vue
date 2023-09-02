@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
-const links = ['/titan', '/github', '/todo', '/test', '/red']
+const links = ['/github', '/titan', '/todo', '/test', '/red']
 
 const route = useRoute()
 const path = computed(() => route.path)
@@ -47,7 +47,7 @@ const curOffset = computed(() => {
     />
   </ul>
 
-  <div class="w-full flex justify-center">
+  <div class="h-full w-full flex justify-center">
     <RouterView />
   </div>
 </template>

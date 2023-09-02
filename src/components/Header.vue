@@ -13,7 +13,9 @@ const toggleDark = useToggle(dark)
     class="fixed top-0 z-999 h-12 w-full flex select-none items-center justify-between gap-4 bg-[#69696A30] p-2 text-center backdrop-blur-8 transition-all"
   >
     <h2 class="inline-block leading-13">
-      Chill Vue Labs
+      <router-link to="/">
+        Chill Vue Labs
+      </router-link>
     </h2>
 
     <slot />

@@ -6,7 +6,7 @@ const toasts = ['info', 'success', 'warning', 'error'] as const
 </script>
 
 <template>
-  <div class="my-4 flex gap-5">
+  <div class="my-4 h-10 flex gap-5">
     <button
       v-for="toast in toasts"
       :key="toast"

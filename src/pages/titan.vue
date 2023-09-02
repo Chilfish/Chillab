@@ -30,7 +30,7 @@ watchEffect(() => {
 
 <template>
   <main
-    class="algin-center relative h-screen w-screen flex justify-center overflow-hidden bg-[#534E48] p-xl"
+    class="algin-center relative h-full w-full flex justify-center overflow-hidden bg-[#534E48] p-xl"
   >
     <div ref="eye" class="eye" />
     <div class="bg" />
