@@ -30,7 +30,7 @@ watchEffect(() => {
 
 <template>
   <main
-    class="algin-center relative h-full w-full flex justify-center overflow-hidden bg-[#534E48] p-xl"
+    class="relative h-full w-full center overflow-hidden bg-[#534E48] p-xl"
   >
     <div ref="eye" class="eye" />
     <div class="bg" />
@@ -40,7 +40,7 @@ watchEffect(() => {
 <style lang="scss" scoped>
 main {
   div {
-    @apply absolute top-0 left-0 bg-no-repeat bg-center bg-contain h-full w-full;
+    --uno: absolute top-0 left-0 bg-no-repeat bg-center bg-contain h-full w-full;
   }
 
   .bg {

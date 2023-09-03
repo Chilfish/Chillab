@@ -20,7 +20,9 @@ const avatarUrl = computed(() =>
     :href="item.html_url"
     target="_blank"
     rel="noopener noreferrer"
-    class="my-sm flex items-center rounded-2 bg-light-5 p-2 dark:bg-dark-5 hover:bg-light-7 hover:dark:bg-dark-3"
+    class="my-sm flex items-center rounded-2"
+    bg="light-5 dark:dark-5"
+    hover-bg="light-7 dark:dark-3"
   >
     <img
       :src="avatarUrl"
@@ -29,11 +31,13 @@ const avatarUrl = computed(() =>
     >
     <div class="flex flex-col">
       <p
-        class="mb-2 overflow-x-auto text-start text-lg font-semibold tracking-wide"
+        class="mb-2 overflow-x-auto font-semibold tracking-wide"
+        text="start lg"
       >
         {{ item.full_name }} </p>
       <p
-        class="overflow-x-auto text-start text-sm"
+        class="overflow-x-auto"
+        text="start sm"
       >{{ item.description }} </p>
 
       <div

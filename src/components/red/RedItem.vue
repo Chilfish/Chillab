@@ -30,7 +30,7 @@ defineProps<{
       </div>
 
       <div
-        class="flex items-center justify-center gap-1"
+        class="center gap-1"
         hover="text-red"
       >
         <span class="icon i-tabler-heart" />

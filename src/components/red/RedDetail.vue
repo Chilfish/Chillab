@@ -8,8 +8,10 @@ defineProps<{
 
 <template>
   <div
-    class="relative h-full w-full flex flex-col overflow-y-hidden bg-white transition-all duration-300 dark:bg-black"
+    class="relative h-full w-full overflow-y-hidden transition-all duration-300"
+    flex="~ col"
     md="h-90% max-w-80% flex-row rounded-3"
+    bg="light-5 dark:dark-5"
   >
     <RedNav
       class="flex!"
@@ -19,11 +21,13 @@ defineProps<{
     />
 
     <div
-      class="h-full w-full bg-light dark:bg-dark"
+      class="h-full w-full"
       md="rounded-l-3"
+      bg="light dark:dark"
     >
       <div
-        class="h-full w-full bg-contain bg-center bg-no-repeat"
+        class="h-full w-full"
+        bg="contain center no-repeat"
         :style="`background-image: url('${post.photos[0]}')`"
       />
     </div>
@@ -40,7 +44,7 @@ defineProps<{
       />
 
       <div class="h-full flex flex-col gap-3 overflow-y-auto p-4">
-        <h4 class="text-start text-5">
+        <h4 text="start 5">
           {{ post.title }}
         </h4>
         <p class="break-all">

@@ -50,17 +50,16 @@ function showDetail(post: Post) {
     lg="flex-row"
   >
     <aside
-      class="fixed bottom-0 left-0 z-10 h-12 w-full rounded bg-light-5 p-4"
+      class="fixed bottom-0 left-0 z-10 h-12 w-full rounded p-4"
       lg="h-auto w-70 absolute top-0"
-      dark="bg-dark-5"
+      bg="light-5 dark:dark-5"
     >
       aside
     </aside>
 
     <ul
-      class="grid grid-cols-2 w-fit items-center gap-3 p-2 pb-15"
-      sm="grid-cols-3"
-      md="grid-cols-4"
+      class="grid w-fit items-center gap-3 p-2 pb-15"
+      grid-cols="2 sm:3 md:4"
       lg="pl-74"
     >
       <li

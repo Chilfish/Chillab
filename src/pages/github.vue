@@ -3,14 +3,14 @@ import { onMounted, ref } from 'vue'
 import { useGithubRepoStore } from '~/store/useGithubRepo'
 
 const searchInput = ref<HTMLInputElement | null>(null)
-const useGithub = useGithubRepoStore()
+const githubStore = useGithubRepoStore()
 
 // wait for the searchInput to be mounted
 onMounted(async () => {
   if (searchInput.value)
-    searchInput.value.value = useGithub.inputValue
+    searchInput.value.value = githubStore.inputValue
 
-  await useGithub.fetchRepos(searchInput.value!)
+  await githubStore.fetchRepos(searchInput.value!)
 })
 </script>
 
@@ -23,14 +23,15 @@ onMounted(async () => {
         ref="searchInput"
         placeholder="repo name"
         type="search"
-        class="w-full rounded-2 bg-[--gray] p-2 pl-4"
+        class="w-full rounded-2 p-3"
+        bg="light-7 dark:dark-3"
       >
     </label>
 
     <section class="w-full">
-      <template v-if="useGithub.repoStatus === 'success'">
+      <template v-if="githubStore.repoStatus === 'success'">
         <GithubCard
-          v-for="repo in useGithub.repos"
+          v-for="repo in githubStore.repos"
           :key="repo.id"
           :item="repo"
         />
@@ -38,9 +39,10 @@ onMounted(async () => {
 
       <p
         v-else
-        class="select-none text-center text-2xl font-bold text-gray-500"
+        class="select-none font-bold"
+        text="center 2xl gray-5"
       >
-        {{ useGithub.statusText }}
+        {{ githubStore.statusText }}
       </p>
     </section>
   </main>

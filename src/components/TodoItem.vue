@@ -21,7 +21,8 @@ const contentStyle = computed(_ => ({
 
 <template>
   <div
-    class="m-2 h-14 flex items-center rounded-3 bg-[--gray] p-4"
+    class="m-2 h-14 flex items-center rounded-3 p-4"
+    bg="light-4 dark:dark-3"
     :class="{ 'h-auto': isExpanded }"
   >
     <label>
@@ -39,7 +40,7 @@ const contentStyle = computed(_ => ({
       {{ item.content }}
     </span>
     <span
-      class="i-carbon-trash-can h-6 w-6 cursor-pointer color-[--red] opacity-40 hover:opacity-100"
+      class="i-tabler-trash h-6 w-6 cursor-pointer text-red opacity-40 hover:opacity-100"
       @click="$emit('delete', item.id)"
     />
   </div>

@@ -34,7 +34,7 @@ const curOffset = computed(() => {
           'dark:bg-dark-3 bg-light-5': path === link,
         }"
         class="rounded-3 px-3 py-1 transition-colors duration-300"
-        hover="bg-light-5 dark:bg-dark-3"
+        hover-bg="light-5 dark:dark-3"
       >
         {{ link }}
       </RouterLink>

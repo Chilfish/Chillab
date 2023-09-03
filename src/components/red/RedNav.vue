@@ -8,13 +8,13 @@ defineProps<{
 
 <template>
   <nav
-    class="flex select-none items-center gap-4 bg-light-2 px-2 py-3"
-    dark="bg-dark-2"
+    class="flex select-none items-center gap-4 px-2 py-3"
+    bg="light-2 dark:dark-2"
     md="rounded-t-3"
   >
     <button
-      class="h-8 w-8 rounded-full bg-light p-2"
-      dark="bg-dark"
+      class="h-8 w-8 rounded-full p-2"
+      bg="light dark:dark"
       @click="$emit('update:show')"
     >
       <span class="icon i-tabler-arrow-left" />
@@ -28,8 +28,8 @@ defineProps<{
     <span>{{ post.owner }}</span>
 
     <button
-      class="ml-auto h-8 w-8 rounded-full bg-light p-2"
-      dark="bg-dark"
+      class="ml-auto h-8 w-8 rounded-full p-2"
+      bg="light dark:dark"
     >
       <span class="icon i-tabler-dots-vertical" />
     </button>

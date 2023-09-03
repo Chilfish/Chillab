@@ -21,10 +21,9 @@ const toggleDark = useToggle(dark)
     <slot />
 
     <button
-      class="ml-8 h-8 rounded-2 px-3 text-3 btn"
+      i-tabler="moon dark:sun"
+      hover="opacity-80"
       @click="toggleDark()"
-    >
-      {{ dark ? 'Light' : 'Dark' }}
-    </button>
+    />
   </header>
 </template>
