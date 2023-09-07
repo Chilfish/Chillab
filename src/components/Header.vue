@@ -10,9 +10,15 @@ const toggleDark = useToggle(dark)
 
 <template>
   <header
-    class="fixed top-0 z-999 h-12 w-full flex select-none items-center justify-between gap-4 bg-[#69696A30] p-2 text-center backdrop-blur-8 transition-all"
+    class="fixed top-0 z-999 h-12 w-full flex select-none items-center justify-between gap-4 p-2 text-center backdrop-blur-8 transition-all"
+    bg="[#00000010] dark:[#ffffff10]"
   >
-    <h2 class="inline-block leading-13">
+    <h2
+      class="inline-block text-transparent"
+      bg="gradient-to-r clip-text"
+      from="blue-400 dark:blue-500"
+      to="purple-500 dark:purple-600"
+    >
       <router-link to="/">
         Chill Vue Labs
       </router-link>

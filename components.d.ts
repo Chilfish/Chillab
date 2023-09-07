@@ -16,6 +16,7 @@ declare module 'vue' {
     RedNav: typeof import('./src/components/red/RedNav.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SortArr: typeof import('./src/components/SortArr.vue')['default']
     Titan: typeof import('./src/components/Titan.vue')['default']
     Toast: typeof import('./src/components/Toast/src/Toast.vue')['default']
     TodoItem: typeof import('./src/components/TodoItem.vue')['default']
