@@ -1,6 +1,17 @@
-import type { App, Plugin } from 'vue'
-import type { SFCInstallWithContext, SFCWithInstall } from './types'
+import type { App, AppContext, Plugin } from 'vue'
 import { INSTALLED_KEY } from '~/constants'
+
+/**
+ * @description mark a component as installable
+ */
+export type SFCWithInstall<T> = T & Plugin
+
+/**
+ * @description mark a function as installable and add a context property
+ */
+export type SFCInstallWithContext<T> = SFCWithInstall<T> & {
+  _context: AppContext | null
+}
 
 /**
  * add install method to a component to register it globally

@@ -10,6 +10,7 @@ export const useGithubRepoStore = defineStore('githubRepo', () => {
 
   const repos = ref([] as GithubRepo[])
   const repoStatus = ref<reqState>('idle')
+  const errorText = ref('')
 
   const githubService = new GithubService()
 
@@ -20,13 +21,16 @@ export const useGithubRepoStore = defineStore('githubRepo', () => {
       case 'notFound':
         return 'Not Found'
       case 'error':
-        return 'Error'
+        return `Error! ${errorText.value}`
       default:
         return ''
     }
   })
 
   async function fetchRepos(inputRef: HTMLInputElement) {
+    repos.value = []
+    repoStatus.value = 'idle'
+
     return fromEvent(inputRef, 'input')
       .pipe(
         map(e => (e.target as HTMLInputElement).value.trim()),
@@ -49,8 +53,9 @@ export const useGithubRepoStore = defineStore('githubRepo', () => {
           repos.value = data
         },
         error: (error) => {
-          console.error(error.message)
+          console.error(error)
           repoStatus.value = 'error'
+          errorText.value = error.message
         },
       })
   }

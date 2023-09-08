@@ -8,7 +8,7 @@ import { useTodoStore } from '~/store/useTodo'
 const todoStore = useTodoStore()
 
 const {
-  define: DTodoList,
+  define: TemplateTodoList,
   reuse: TodoList,
 } = createReusableTemplate<{ list: todoItem[] }>()
 
@@ -22,19 +22,28 @@ useSortable('#uncompleted', todoStore.uncompletedTodos, {
 </script>
 
 <template>
-  <DTodoList v-slot="{ list }">
-    <ul :id="list === todoStore.completedTodos ? 'completed' : 'uncompleted'">
-      <li v-for="todo in list" :key="todo.id">
+  <TemplateTodoList v-slot="{ list }">
+    <TransitionGroup
+      :id="list === todoStore.completedTodos ? 'completed' : 'uncompleted'"
+      tag="ul"
+      name="fade"
+      class="relative w-full center flex-col gap-2"
+    >
+      <li
+        v-for="todo in list"
+        :key="todo.id"
+        class="w-full"
+      >
         <TodoItem
           :item="todo"
           @toggle="todoStore.toggleTodoItem(todo.id)"
           @delete="todoStore.deleteTodoItem(todo.id)"
         />
       </li>
-    </ul>
-  </DTodoList>
+    </TransitionGroup>
+  </TemplateTodoList>
 
-  <main class="w-90% flex flex-col sm:w-50%">
+  <main class="w-90% flex flex-col overflow-hidden sm:w-50%">
     <h2> Chill Todo List </h2>
     <label class="my-6 w-full flex">
       <input

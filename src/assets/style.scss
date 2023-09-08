@@ -1,4 +1,5 @@
 @use "./variables" as *;
+@use "./transitions";
 
 html,
 div {
@@ -27,7 +28,7 @@ body {
 }
 
 #app {
-  --uno: w-screen flex flex-col items-center relative;
+  --uno: w-screen flex flex-col items-center overflow-hidden relative;
 }
 
 h1,
@@ -55,6 +56,6 @@ div {
   --uno: whitespace-pre-wrap;
 }
 
-span.icon {
-  --uno: inline-flex items-center max-w-4 max-h-4 select-none cursor-pointer;
+.btns button {
+  --uno: btn;
 }

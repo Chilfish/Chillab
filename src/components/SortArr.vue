@@ -69,25 +69,3 @@ useSortable('#arr-list', items, {
     </TransitionGroup>
   </div>
 </template>
-
-<style scoped>
-.btns button {
-  --uno: btn;
-}
-
-.fade-move,
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.3s ease-in-out;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-  transform: translateX(20px) scale(0.9);
-}
-
-.fade-leave-active {
-  position: absolute;
-}
-</style>

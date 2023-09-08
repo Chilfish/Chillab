@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useImage } from '@vueuse/core'
 import { computed } from 'vue'
+import { fmtNum } from '~/utils'
 import type { GithubRepo } from '~/types'
 
 const repo = defineProps<{
@@ -20,40 +21,48 @@ const avatarUrl = computed(() =>
     :href="item.html_url"
     target="_blank"
     rel="noopener noreferrer"
-    class="my-sm flex items-center rounded-2"
+    class="my-3 flex gap-4 rounded-2 p-2"
     bg="light-5 dark:dark-5"
-    hover-bg="light-7 dark:dark-3"
+    sm:hover-bg="light-7 dark:dark-3"
   >
-    <img
-      :src="avatarUrl"
-      alt="avatar"
-      class="mr-4 h-full w-20 rounded-xl"
+
+    <a
+      :href="item.owner.html_url"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="display-ruby h-20 w-0 transition-width sm:w-20"
     >
-    <div class="flex flex-col">
+      <img
+        :src="avatarUrl"
+        :alt="`${item.owner.login}'s avatar`"
+        class="h-full w-full rounded-3"
+      >
+    </a>
+
+    <div class="flex flex-col gap-2 break-all">
       <p
-        class="mb-2 overflow-x-auto font-semibold tracking-wide"
-        text="start lg"
+        class="font-semibold tracking-wide"
+        text="start 4.2 sm:5"
       >
         {{ item.full_name }} </p>
       <p
-        class="overflow-x-auto"
         text="start sm"
       >{{ item.description }} </p>
 
       <div
-        class="info mt-2 flex text-sm"
+        class="info flex text-sm"
       >
         <div>
-          <span class="icon i-carbon-star" />
-          <span>{{ item.stargazers_count }}</span>
+          <span class="i-tabler-star icon" />
+          <span>{{ fmtNum(item.stargazers_count) }}</span>
         </div>
         <div>
-          <span class="icon i-carbon-fork" />
-          <span> {{ item.forks_count }}</span>
+          <span class="i-tabler-git-fork icon" />
+          <span> {{ fmtNum(item.forks_count) }}</span>
         </div>
         <div>
-          <span class="icon issues" />
-          <span>{{ item.open_issues }}</span>
+          <span class="i-tabler-circle-dot icon" />
+          <span>{{ fmtNum(item.open_issues) }}</span>
         </div>
         <div v-if="item.language">{{ item.language }}</div>
       </div>
@@ -63,21 +72,6 @@ const avatarUrl = computed(() =>
 
 <style scoped>
 .info > div {
-  @apply flex items-center mr-2xl
-}
-
-.icon {
-  @apply h-4 w-4 cursor-pointer inline-block mr-1
-}
-
-.issues{
-  --un-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="16" height="16" viewBox="0 0 16 16"%3E%3Cg fill="currentColor"%3E%3Cpath d="M7.5 1a6.5 6.5 0 1 0 0 13a6.5 6.5 0 0 0 0-13Zm0 12a5.5 5.5 0 1 1 0-11a5.5 5.5 0 0 1 0 11Z"%2F%3E%3Ccircle cx="7.5" cy="7.5" r="1"%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
-
-  mask: var(--un-icon) no-repeat;
-  mask-size: 100% 100%;
-  background-color: currentcolor;
-  color: inherit;
-  width: 1.2em;
-  height: 1.2em;
+  --uno: center mr-3 sm:mr-6;
 }
 </style>

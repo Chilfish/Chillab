@@ -17,6 +17,7 @@ export interface GithubRepo {
   owner: {
     login: string
     avatar_url: string
+    html_url: string
   }
 }
 

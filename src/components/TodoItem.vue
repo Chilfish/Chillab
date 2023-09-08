@@ -21,26 +21,26 @@ const contentStyle = computed(_ => ({
 
 <template>
   <div
-    class="m-2 h-14 flex items-center rounded-3 p-4"
+    class="h-14 flex cursor-pointer rounded-3 p-4"
     bg="light-4 dark:dark-3"
     :class="{ 'h-auto': isExpanded }"
   >
-    <label>
-      <input
-        type="checkbox"
-        :checked="item.done"
-        @click="$emit('toggle', item.id)"
-      >
-    </label>
+    <input
+      type="checkbox"
+      :checked="item.done"
+      @click="$emit('toggle', item.id)"
+    >
+
     <span
-      class="h-full w-full cursor-pointer overflow-x-auto px-2 text-start"
+      class="h-full w-full overflow-x-auto px-2 text-start"
       :class="contentStyle"
-      @click="isExpanded = !isExpanded"
+      @dblclick="isExpanded = !isExpanded"
     >
       {{ item.content }}
     </span>
+
     <span
-      class="i-tabler-trash h-6 w-6 cursor-pointer text-red opacity-40 hover:opacity-100"
+      class="i-tabler-trash h-6 w-6 text-red opacity-40 hover:opacity-100"
       @click="$emit('delete', item.id)"
     />
   </div>
