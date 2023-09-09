@@ -23,7 +23,13 @@ const isLocked = useScrollLock(window)
 const router = useRouter()
 const route = useRoute()
 
-function showDetail(post: Post) {
+function showDetail(id: string) {
+  const post = posts.find(e => e.id === id)
+  if (!post) {
+    router.push({ path: '/red' })
+    return
+  }
+
   showModal.value = true
   isLocked.value = true
   showedPost.value = post
@@ -57,6 +63,8 @@ function closeDetail() {
 watch(() => route.query, (query) => {
   if (!query.id)
     closeDetail()
+  else
+    showDetail(query.id as string)
 })
 </script>
 
@@ -86,7 +94,7 @@ watch(() => route.query, (query) => {
       >
         <red-item
           :post="post"
-          @show-detail="showDetail(post)"
+          @show-detail="showDetail(post.id)"
         />
       </li>
     </ul>
