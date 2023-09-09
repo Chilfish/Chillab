@@ -3,6 +3,7 @@ import { toRefs } from 'vue'
 
 const props = defineProps<{
   show: boolean
+  id: string
 }>()
 
 const { show } = toRefs(props)
@@ -13,6 +14,7 @@ const { show } = toRefs(props)
     <transition name="modal">
       <div
         v-show="show"
+        :id="id"
         class="fixed inset-0 z-999 h-full w-full center bg-black bg-opacity-50 backdrop-blur-4 transition-all duration-300"
         @click.self="() => $emit('update:show', false)"
       >

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import {
-  computed, onActivated, onDeactivated,
-  onMounted, onUnmounted, ref,
+  computed,
+  onActivated, onDeactivated, onMounted,
+  onUnmounted, ref,
 } from 'vue'
 
 const { imgs, autoPlay, duration } = withDefaults(defineProps<{
@@ -12,6 +13,10 @@ const { imgs, autoPlay, duration } = withDefaults(defineProps<{
   autoPlay: true,
   duration: 5000,
 })
+
+defineEmits<{
+  click?: [src: string]
+}>()
 
 const curImg = ref(0)
 const offsetX = computed(() => `translateX(-${curImg.value * 100}%)`)
@@ -52,7 +57,7 @@ onUnmounted(stop)
 
 <template>
   <main
-    class="relative h-130 w-90%"
+    class="relative h-130 w-90% cursor-pointer"
   >
     <button class="left-2" @click="prev">
       <span i-tabler-chevron-left />
@@ -65,6 +70,7 @@ onUnmounted(stop)
         class="h-full w-full flex-shrink-0 transition-transform duration-300 ease-in-out"
         bg="cover center"
         :style="{ backgroundImage: `url(${img})`, transform: offsetX }"
+        @click="$emit('click', img)"
       />
     </div>
 
@@ -79,7 +85,7 @@ onUnmounted(stop)
         v-for="(_, i) in imgs"
         :key="i"
         :bg-opacity="curImg === i ? '100' : '30'"
-        class="h-2 w-2 cursor-pointer rounded-full bg-light-6 transition-colors duration-300 ease-in-out"
+        class="h-2 w-2 rounded-full bg-light-6 transition-colors duration-300 ease-in-out"
         @click="curImg = i"
       />
     </div>

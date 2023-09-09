@@ -7,6 +7,7 @@ import Toast from '@cp/Toast'
 import SortArr from '@cp/SortArr.vue'
 import Swiper from '@cp/Swiper.vue'
 import { useScrollRatio } from '~/composables/useScrollRatio'
+import { imgPreviewUrl } from '~/composables/imgPreview'
 
 const { percentY, percentX } = useScrollRatio()
 
@@ -18,7 +19,12 @@ const imgs = [
 
 const cp = {
   SortArr,
-  Swiper: h(Swiper, { imgs }),
+  Swiper: h(Swiper, {
+    imgs,
+    onClick(src: string) {
+      imgPreviewUrl.value = src
+    },
+  }),
 }
 
 type Cp = keyof typeof cp
@@ -61,12 +67,12 @@ const curCp = computed<Cp>({
 
     <UseDraggable
       v-slot="{ x, y }"
-      class="fixed z-999 center cursor-move select-none rounded-2 p-4 blur-bg"
+      class="fixed z-999 hidden center cursor-move select-none rounded-2 p-4 sm:block blur-bg"
       :initial-value="{ x: 50, y: 50 }"
     >
       <div>
         Scroll Ratio: X: {{ percentX }}, Y: {{ percentY }}<br>
-        Pos: x: {{ x }}, y: {{ y }}
+        Pos: x: {{ x.toFixed(0) }}, y: {{ y.toFixed(0) }}
       </div>
     </UseDraggable>
   </main>

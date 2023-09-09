@@ -92,6 +92,7 @@ watch(() => route.query, (query) => {
     </ul>
 
     <Modal
+      id="redDetail"
       v-model:show="showModal"
       @update:show="closeDetail"
     >
