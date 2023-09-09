@@ -10,8 +10,7 @@ const toggleDark = useToggle(dark)
 
 <template>
   <header
-    class="fixed top-0 z-999 h-12 w-full flex select-none items-center justify-between gap-4 p-2 text-center backdrop-blur-8 transition-all"
-    bg="[#00000010] dark:[#ffffff10]"
+    class="fixed top-0 z-999 h-12 w-full flex select-none items-center justify-between gap-4 p-2 text-center transition-all blur-bg"
   >
     <h2
       class="inline-block text-transparent"

@@ -13,7 +13,7 @@ const { show } = toRefs(props)
     <transition name="modal">
       <div
         v-show="show"
-        class="fixed inset-0 z-999 h-full w-full center bg-black bg-opacity-50 backdrop-blur-sm transition-all duration-300"
+        class="fixed inset-0 z-999 h-full w-full center bg-black bg-opacity-50 backdrop-blur-4 transition-all duration-300"
         @click.self="() => $emit('update:show', false)"
       >
         <slot />

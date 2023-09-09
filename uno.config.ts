@@ -17,6 +17,9 @@ export default defineConfig({
     {
       icon: 'h-4 w-4 cursor-pointer inline-block mr-1',
     },
+    {
+      'blur-bg': 'backdrop-blur-10 bg-[#00000010] dark:bg-[#ffffff10]',
+    },
   ],
   presets: [
     presetUno(),
