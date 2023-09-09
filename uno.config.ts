@@ -16,7 +16,8 @@ export default defineConfig({
       'center-col': 'center flex-col',
     },
     {
-      icon: 'h-4 w-4 cursor-pointer inline-block',
+      'icon': 'h-4 w-4 cursor-pointer inline-block',
+      'icon-btn': 'rounded-full p-2 center',
     },
     {
       'blur-bg': 'backdrop-blur-10 bg-[#00000010] dark:bg-[#ffffff10]',

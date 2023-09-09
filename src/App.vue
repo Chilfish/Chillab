@@ -1,7 +1,4 @@
 <template>
   <RouterView />
-
-  <Teleport to="body">
-    <ImgPreviewer />
-  </Teleport>
+  <ImgPreviewer />
 </template>
