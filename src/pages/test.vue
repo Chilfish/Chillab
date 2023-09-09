@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { UseDraggable } from '@vueuse/components'
-import { h, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { computed, h } from 'vue'
 
 import Toast from '@cp/Toast'
 import SortArr from '@cp/SortArr.vue'
@@ -20,7 +21,15 @@ const cp = {
   Swiper: h(Swiper, { imgs }),
 }
 
-const curCp = ref<keyof typeof cp>('SortArr')
+type Cp = keyof typeof cp
+
+const router = useRouter()
+const hash = computed(() => useRoute().hash.slice(1) as Cp)
+
+const curCp = computed<Cp>({
+  get() { return hash.value || 'SortArr' },
+  set(v) { router.replace({ hash: `#${v}` }) },
+})
 </script>
 
 <template>
@@ -33,10 +42,7 @@ const curCp = ref<keyof typeof cp>('SortArr')
         toast
       </button>
 
-      <select
-        v-model="curCp"
-        class="btn"
-      >
+      <select v-model="curCp" class="btn">
         <option
           v-for="key in Object.keys(cp)"
           :key="key"

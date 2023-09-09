@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import {
+  computed, onActivated, onDeactivated,
+  onMounted, onUnmounted, ref,
+} from 'vue'
 
 const { imgs, autoPlay, duration } = withDefaults(defineProps<{
   imgs: string[]
@@ -20,13 +23,29 @@ function stop() {
 }
 
 function start() {
-  clearInterval(timer)
+  stop()
   timer = setInterval(() => {
     if (autoPlay)
       curImg.value = (curImg.value + 1) % imgs.length
   }, duration)
 }
 
+function next() {
+  curImg.value = (curImg.value + 1) % imgs.length
+  start()
+}
+
+function prev() {
+  curImg.value = (curImg.value - 1 + imgs.length) % imgs.length
+  start()
+}
+
+// these hooks will not be called when in SSR mode, but in <KeepAlive>
+onActivated(start)
+// stop the timer when deactivated in <KeepAlive>
+onDeactivated(stop)
+
+// so we also start it when mounted
 onMounted(start)
 onUnmounted(stop)
 </script>
@@ -35,10 +54,7 @@ onUnmounted(stop)
   <main
     class="relative h-130 w-90%"
   >
-    <button
-      class="left-2"
-      @click="curImg = (curImg - 1 + imgs.length) % imgs.length"
-    >
+    <button class="left-2" @click="prev">
       <span i-tabler-chevron-left />
     </button>
 
@@ -52,15 +68,12 @@ onUnmounted(stop)
       />
     </div>
 
-    <button
-      class="right-2"
-      @click="curImg = (curImg + 1) % imgs.length"
-    >
+    <button class="right-2" @click="next">
       <span i-tabler-chevron-right />
     </button>
 
     <div
-      class="absolute bottom-2 left-50% center gap-3 rounded-2 px-3 py-2 blur-bg"
+      class="absolute bottom-2 left-50% center translate-x--1/2 transform gap-3 rounded-2 px-3 py-2 blur-bg"
     >
       <span
         v-for="(_, i) in imgs"
@@ -75,6 +88,6 @@ onUnmounted(stop)
 
 <style scoped lang="scss">
 button {
-  --uno: blur-bg absolute top-50% z-10 center rounded-full p-2 text-white;
+  --uno: blur-bg absolute top-50% z-10 center translate-y--1/2 rounded-full p-2 text-white;
 }
 </style>
