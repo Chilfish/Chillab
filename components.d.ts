@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Bar: typeof import('./src/components/Bar.vue')['default']
+    BgTranslate: typeof import('./src/components/BgTranslate.vue')['default']
     GithubCard: typeof import('./src/components/GithubCard.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
     Modal: typeof import('./src/components/Modal.vue')['default']
@@ -18,6 +19,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SortArr: typeof import('./src/components/SortArr.vue')['default']
+    Swiper: typeof import('./src/components/Swiper.vue')['default']
     Titan: typeof import('./src/components/Titan.vue')['default']
     Toast: typeof import('./src/components/Toast/src/Toast.vue')['default']
     TodoItem: typeof import('./src/components/TodoItem.vue')['default']

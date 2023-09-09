@@ -1,24 +1,30 @@
 <script setup lang="ts">
 import { UseDraggable } from '@vueuse/components'
-import { ref } from 'vue'
+import { h, ref } from 'vue'
 
 import Toast from '@cp/Toast'
 import SortArr from '@cp/SortArr.vue'
-import Bar from '@cp/Bar.vue'
+import Swiper from '@cp/Swiper.vue'
 import { useScrollRatio } from '~/composables/useScrollRatio'
 
 const { percentY, percentX } = useScrollRatio()
 
+const imgs = [
+  '/ender-girls.jpg',
+  '/kurarin.webp',
+  '/ender-bocchi.webp',
+]
+
 const cp = {
   SortArr,
-  Bar,
+  Swiper: h(Swiper, { imgs }),
 }
 
 const curCp = ref<keyof typeof cp>('SortArr')
 </script>
 
 <template>
-  <main class="flex flex-col gap-4 pb-2">
+  <main class="w-full flex flex-col items-center gap-4 p-4 pt-0">
     <div class="btns center gap-4">
       <button
         class="w-16"

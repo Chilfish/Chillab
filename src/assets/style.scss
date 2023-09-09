@@ -2,7 +2,8 @@
 @use "./transitions";
 
 html,
-div {
+div,
+main {
   scrollbar-width: thin;
 
   &::-webkit-resizer,
