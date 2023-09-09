@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useScrollLock } from '@vueuse/core'
+import { useRoute, useRouter } from 'vue-router'
 import type { Post } from '~/types'
 
 const posts: Post[] = Array.from({ length: 6 }, (_, i) => [
@@ -16,15 +17,17 @@ const posts: Post[] = Array.from({ length: 6 }, (_, i) => [
 
 const showModal = ref(false)
 const showedPost = ref<Post | null>(null)
-
 const postsEl = ref<HTMLElement[] | null>(null)
 
 const isLocked = useScrollLock(window)
+const router = useRouter()
+const route = useRoute()
 
 function showDetail(post: Post) {
   showModal.value = true
   isLocked.value = true
   showedPost.value = post
+  router.push({ query: { id: post.id } })
 
   const clickedPost = postsEl.value!.find(
     el => el.dataset.id === post.id,
@@ -42,6 +45,19 @@ function showDetail(post: Post) {
   //   height: clickedPost.offsetHeight,
   // }
 }
+
+function closeDetail() {
+  showModal.value = false
+  isLocked.value = false
+  if (route.query.id)
+    router.push({ path: '/red' })
+}
+
+// handle back action on mobile
+watch(() => route.query, (query) => {
+  if (!query.id)
+    closeDetail()
+})
 </script>
 
 <template>
@@ -77,12 +93,12 @@ function showDetail(post: Post) {
 
     <Modal
       v-model:show="showModal"
-      @update:show="isLocked = false"
+      @update:show="closeDetail"
     >
       <RedDetail
         v-if="showedPost"
         :post="showedPost"
-        @update:show="(showModal = false, isLocked = false)"
+        @update:show="closeDetail"
       />
     </Modal>
   </main>

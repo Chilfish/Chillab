@@ -54,7 +54,9 @@ const curCp = computed<Cp>({
     </div>
 
     <KeepAlive>
-      <component :is="cp[curCp]" />
+      <Transition name="fade">
+        <component :is="cp[curCp]" :key="curCp" />
+      </Transition>
     </KeepAlive>
 
     <UseDraggable

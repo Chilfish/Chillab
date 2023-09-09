@@ -28,9 +28,6 @@ export const useGithubRepoStore = defineStore('githubRepo', () => {
   })
 
   async function fetchRepos(inputRef: HTMLInputElement) {
-    repos.value = []
-    repoStatus.value = 'idle'
-
     return fromEvent(inputRef, 'input')
       .pipe(
         map(e => (e.target as HTMLInputElement).value.trim()),
@@ -43,6 +40,7 @@ export const useGithubRepoStore = defineStore('githubRepo', () => {
         distinctUntilChanged(),
         switchMap((val: string) => {
           repoStatus.value = 'loading'
+          repos.value = []
           inputValue.value = val
           return githubService.getRepos(val)
         }),
