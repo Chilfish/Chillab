@@ -7,20 +7,17 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Bar: typeof import('./src/components/Bar.vue')['default']
-    BgTranslate: typeof import('./src/components/BgTranslate.vue')['default']
     GithubCard: typeof import('./src/components/GithubCard.vue')['default']
-    Header: typeof import('./src/components/Header.vue')['default']
-    ImgPreviewer: typeof import('./src/components/ImgPreviewer.vue')['default']
-    Modal: typeof import('./src/components/Modal.vue')['default']
+    Header: typeof import('./src/components/common/Header.vue')['default']
+    ImgPreviewer: typeof import('./src/components/common/ImgPreviewer.vue')['default']
+    Modal: typeof import('./src/components/common/Modal.vue')['default']
     RedDetail: typeof import('./src/components/red/RedDetail.vue')['default']
     RedItem: typeof import('./src/components/red/RedItem.vue')['default']
     RedNav: typeof import('./src/components/red/RedNav.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SortArr: typeof import('./src/components/SortArr.vue')['default']
-    Swiper: typeof import('./src/components/Swiper.vue')['default']
-    Titan: typeof import('./src/components/Titan.vue')['default']
+    Swiper: typeof import('./src/components/common/Swiper.vue')['default']
     Toast: typeof import('./src/components/Toast/src/Toast.vue')['default']
     TodoItem: typeof import('./src/components/TodoItem.vue')['default']
   }

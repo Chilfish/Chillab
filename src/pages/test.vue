@@ -5,7 +5,7 @@ import { computed, h } from 'vue'
 
 import Toast from '@cp/Toast'
 import SortArr from '@cp/SortArr.vue'
-import Swiper from '@cp/Swiper.vue'
+import Swiper from '@cp/common/Swiper.vue'
 import { useScrollRatio } from '~/composables/useScrollRatio'
 import { imgPreviewUrl } from '~/composables/imgPreview'
 
