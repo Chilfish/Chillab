@@ -1,18 +1,15 @@
-# Vue 3 + TypeScript + Vite
+### Hi, there
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This is a simple project where plays my random whims about Vue and the Web, and to learn about the Vue ecosystem.
 
-## Recommended IDE Setup
+Preview at https://vue.chilfish.vercel.app
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Chill out and enjoy the ride :sunglasses:. I'm try to use effective and efficient tools to improve the DX & UX. If you have any suggestions, please let me know. :pray: 
 
-## Type Support For `.vue` Imports in TS
+- [x] Typescript + Vue3 + Vite4 + eslint
+- [x] UnoCSS and its icons
+- [x] vueuse for DX
+- [x] auto import the components and methods
+- [x] Pinia for state management
+- [x] pnpm of course
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
