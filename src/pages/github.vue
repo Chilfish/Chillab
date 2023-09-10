@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useGithubRepoStore } from '~/store/useGithubRepo'
-
 const searchInput = ref<HTMLInputElement | null>(null)
 const githubStore = useGithubRepoStore()
 
@@ -52,3 +50,4 @@ onMounted(async () => {
     </TransitionGroup>
   </main>
 </template>
+~/stores/useGithubRepo

@@ -1,12 +1,13 @@
 <script setup lang="ts">
-const { imgs, autoPlay, duration } = withDefaults(defineProps<{
+const {
+  imgs = [],
+  autoPlay = true,
+  duration = 5000,
+} = defineProps<{
   imgs: string[]
   autoPlay?: boolean
   duration?: number
-}>(), {
-  autoPlay: true,
-  duration: 5000,
-})
+}>()
 
 defineEmits<{
   click?: [src: string]

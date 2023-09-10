@@ -1,19 +1,21 @@
 <script setup lang="ts">
 import type { todoItem } from '~/types'
 
-const prop = defineProps<{
+const {
+  item,
+} = defineProps<{
   item: todoItem
 }>()
 
-defineEmits([
-  'toggle',
-  'delete',
-])
+defineEmits<{
+  toggle: [id: number]
+  delete: [id: number]
+}>()
 
 const isExpanded = ref(false)
 
 const contentStyle = computed(_ => ({
-  'decoration-line-through': prop.item.done,
+  'decoration-line-through': item.done,
   'truncate': !isExpanded.value,
 }))
 </script>

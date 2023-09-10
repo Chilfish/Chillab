@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { useSortable } from '@vueuse/integrations/useSortable'
-
 import type { todoItem } from '~/types'
-import { useTodoStore } from '~/store/useTodo'
 
 const todoStore = useTodoStore()
 
@@ -75,3 +73,4 @@ useSortable('#uncompleted', todoStore.uncompletedTodos, {
     </details>
   </main>
 </template>
+~/stores/useTodo

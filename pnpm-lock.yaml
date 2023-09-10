@@ -64,6 +64,9 @@ devDependencies:
   '@vitejs/plugin-vue':
     specifier: ^4.3.4
     version: 4.3.4(vite@4.4.9)(vue@3.3.4)
+  '@vue-macros/reactivity-transform':
+    specifier: ^0.3.22
+    version: 0.3.22(vue@3.3.4)
   lint-staged:
     specifier: ^14.0.1
     version: 14.0.1
@@ -1462,6 +1465,43 @@ packages:
       '@volar/language-core': 1.10.1
     dev: true
 
+  /@vue-macros/common@1.7.2(vue@3.3.4):
+    resolution: {integrity: sha512-0/2A4kWLTCNEx+DDQKLvs7zXpfjgAbGBZ58SIvDN1DjGXhG4WaIUZtgMqzA6bvc5dNN7RaOatZYubkVumwmjWA==}
+    engines: {node: '>=16.14.0'}
+    peerDependencies:
+      vue: ^2.7.0 || ^3.2.25
+    peerDependenciesMeta:
+      vue:
+        optional: true
+    dependencies:
+      '@babel/types': 7.22.11
+      '@rollup/pluginutils': 5.0.4
+      '@vue/compiler-sfc': 3.3.4
+      ast-kit: 0.10.0
+      local-pkg: 0.4.3
+      magic-string-ast: 0.3.0
+      vue: 3.3.4
+    transitivePeerDependencies:
+      - rollup
+    dev: true
+
+  /@vue-macros/reactivity-transform@0.3.22(vue@3.3.4):
+    resolution: {integrity: sha512-NATQkkWBCI8S908gSgU0bbtP+jZJj0PQbwJY4QTqvXDtDljc7vVZouP2/dVrHDgeTkpKbBFj8NOC3NIso9V+zA==}
+    engines: {node: '>=16.14.0'}
+    peerDependencies:
+      vue: ^2.7.0 || ^3.2.25
+    dependencies:
+      '@babel/parser': 7.22.14
+      '@vue-macros/common': 1.7.2(vue@3.3.4)
+      '@vue/compiler-core': 3.3.4
+      '@vue/shared': 3.3.4
+      magic-string: 0.30.3
+      unplugin: 1.4.0
+      vue: 3.3.4
+    transitivePeerDependencies:
+      - rollup
+    dev: true
+
   /@vue/babel-helper-vue-transform-on@1.1.5:
     resolution: {integrity: sha512-SgUymFpMoAyWeYWLAY+MkCK3QEROsiUnfaw5zxOVD/M64KQs8D/4oK6Q5omVA2hnvEOE0SCkH2TZxs/jnnUj7w==}
     dev: true
@@ -1790,6 +1830,17 @@ packages:
 
   /assert-never@1.2.1:
     resolution: {integrity: sha512-TaTivMB6pYI1kXwrFlEhLeGfOqoDNdTxjCdwRfFFkEA30Eu+k48W34nlok2EYWJfFFzqaEmichdNM7th6M5HNw==}
+    dev: true
+
+  /ast-kit@0.10.0:
+    resolution: {integrity: sha512-8y01XClpURgvxTJmM4AY2oHa1B/6iysALB9yJM1j4ak3Z2ZsnU0ewjDZzqOHdbNdit6hC0DGZNrBqNuCrv51fQ==}
+    engines: {node: '>=16.14.0'}
+    dependencies:
+      '@babel/parser': 7.22.14
+      '@rollup/pluginutils': 5.0.4
+      pathe: 1.1.1
+    transitivePeerDependencies:
+      - rollup
     dev: true
 
   /astral-regex@2.0.0:
@@ -3460,6 +3511,13 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
+    dev: true
+
+  /magic-string-ast@0.3.0:
+    resolution: {integrity: sha512-0shqecEPgdFpnI3AP90epXyxZy9g6CRZ+SZ7BcqFwYmtFEnZ1jpevcV5HoyVnlDS9gCnc1UIg3Rsvp3Ci7r8OA==}
+    engines: {node: '>=16.14.0'}
+    dependencies:
+      magic-string: 0.30.3
     dev: true
 
   /magic-string@0.30.3:

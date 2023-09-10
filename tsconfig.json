@@ -31,7 +31,8 @@
     "strictNullChecks": true,
     "target": "esnext",
     "types": [
-      "vite/client"
+      "vite/client",
+      "@vue-macros/reactivity-transform/macros-global"
     ]
   },
   "exclude": [

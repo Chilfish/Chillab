@@ -1,9 +1,11 @@
 <script setup lang="ts">
-const props = defineProps<{
+// thanks to https://vue-macros.sxzz.moe/features/reactivity-transform.html#reactive-props-destructure
+// the props are now reactive
+const {
+  show = false,
+} = defineProps<{
   show: boolean
 }>()
-
-const { show } = toRefs(props)
 </script>
 
 <template>

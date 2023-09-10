@@ -34,6 +34,7 @@
     "@unocss/reset": "^0.55.4",
     "@unocss/transformer-directives": "^0.55.4",
     "@vitejs/plugin-vue": "^4.3.4",
+    "@vue-macros/reactivity-transform": "^0.3.22",
     "lint-staged": "^14.0.1",
     "rxjs": "^7.8.1",
     "sass": "^1.66.1",
