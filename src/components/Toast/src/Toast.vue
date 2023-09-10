@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useResizeObserver, useTimeoutFn } from '@vueuse/core'
-import { computed, onMounted, ref } from 'vue'
 import { getLastOffset, getOffsetOrSpace } from './instance'
 import { toastProps } from './props'
 

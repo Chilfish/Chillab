@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { shuffle as _shuffle } from 'lodash-es'
-import { ref } from 'vue'
 import { useSortable } from '@vueuse/integrations/useSortable'
 
 const getInitialItems = () => [1, 2, 3, 4, 5]

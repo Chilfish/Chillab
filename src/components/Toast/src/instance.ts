@@ -1,4 +1,3 @@
-import { shallowReactive } from 'vue'
 import type { ToastInstance } from './types'
 import { toastDefault } from './props'
 

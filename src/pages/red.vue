@@ -1,19 +1,16 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import { useScrollLock } from '@vueuse/core'
-import { useRoute, useRouter } from 'vue-router'
 import type { Post } from '~/types'
 
-const posts: Post[] = Array.from({ length: 6 }, (_, i) => [
+const posts: Post[] = Array.from({ length: 6 }, (_, i) => (
   {
     id: `${i}`,
     title: `Red Post ${i}`,
-    content: 'guys, who knows that...',
+    content: `guys, who know that... @momo_${(i + 1) % 6} is so cool`,
     owner: `momo_${i}`,
     likes: 10 * i,
     photos: ['/kurarin.webp'],
-  },
-]).flat()
+  }),
+)
 
 const showModal = ref(false)
 const showedPost = ref<Post | null>(null)
@@ -63,8 +60,6 @@ function closeDetail() {
 watch(() => route.query, (query) => {
   if (!query.id)
     closeDetail()
-  else
-    showDetail(query.id as string)
 })
 </script>
 

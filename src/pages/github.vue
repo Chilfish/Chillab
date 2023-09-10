@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
 import { useGithubRepoStore } from '~/store/useGithubRepo'
 
 const searchInput = ref<HTMLInputElement | null>(null)

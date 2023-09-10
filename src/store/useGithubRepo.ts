@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { computed, ref } from 'vue'
 import { debounceTime, distinctUntilChanged, fromEvent } from 'rxjs'
 import { filter, map, switchMap, tap } from 'rxjs/operators'
 import { GithubService } from '~/services/githubService'

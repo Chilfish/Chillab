@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import {
-  computed,
-  onActivated, onDeactivated, onMounted,
-  onUnmounted, ref,
-} from 'vue'
-
 const { imgs, autoPlay, duration } = withDefaults(defineProps<{
   imgs: string[]
   autoPlay?: boolean

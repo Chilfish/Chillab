@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 import UnoCSS from 'unocss/vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
+import AutoImport from 'unplugin-auto-import/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,6 +18,24 @@ export default defineConfig({
     // VueDevTools(),
     vue(),
     UnoCSS(),
-    Components(), // auto import components
+    Components({
+      dts: 'src/types/components.d.ts',
+    }),
+
+    // https://github.com/antfu/unplugin-auto-import
+    AutoImport({
+      imports: [
+        'vue',
+        '@vueuse/core',
+        'vue-router',
+      ],
+      dts: 'src/types/auto-imports.d.ts',
+      dirs: [
+        'src/components',
+        'src/composables',
+        'src/utils',
+      ],
+      vueTemplate: true,
+    }),
   ],
 })

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { createReusableTemplate } from '@vueuse/core'
 import { useSortable } from '@vueuse/integrations/useSortable'
 
 import type { todoItem } from '~/types'

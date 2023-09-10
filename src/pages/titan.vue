@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useMouse } from '@vueuse/core'
-import { ref, watchEffect } from 'vue'
-
 const { x, y } = useMouse()
 const eye = ref<HTMLElement>()
 const damping = 0.1

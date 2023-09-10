@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useImage } from '@vueuse/core'
-import { computed } from 'vue'
-import { fmtNum } from '~/utils'
 import type { GithubRepo } from '~/types'
 
 const repo = defineProps<{

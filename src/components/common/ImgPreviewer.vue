@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
 import { UseDraggable } from '@vueuse/components'
-import { emptyImg, imgPreviewUrl } from '~/composables/imgPreview'
-import { useCenterPos } from '~/composables/centerPos'
 
 const show = ref(false)
 const scaleRatio = ref(1)

@@ -1,6 +1,4 @@
-import { useWindowSize } from '@vueuse/core'
 import type { MaybeRefOrGetter } from 'vue'
-import { computed, toValue } from 'vue'
 
 /**
  * Returns the center position of the absolute element (top, left)

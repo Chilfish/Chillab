@@ -1,6 +1,4 @@
-import { useArrayFilter } from '@vueuse/core'
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
 import type { todoItem } from '~/types'
 
 export const useTodoStore = defineStore('todo', () => {

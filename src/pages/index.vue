@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { useRoute } from 'vue-router'
-
 const links = ['/github', '/titan', '/todo', '/test', '/red']
 
 const route = useRoute()

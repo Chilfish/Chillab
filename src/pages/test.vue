@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import { UseDraggable } from '@vueuse/components'
-import { useRoute, useRouter } from 'vue-router'
-import { computed, h } from 'vue'
+import { h } from 'vue'
 
 import Toast from '@cp/Toast'
 import SortArr from '@cp/SortArr.vue'
 import Swiper from '@cp/common/Swiper.vue'
-import { useScrollRatio } from '~/composables/useScrollRatio'
-import { imgPreviewUrl } from '~/composables/imgPreview'
 
 const { percentY, percentX } = useScrollRatio()
 

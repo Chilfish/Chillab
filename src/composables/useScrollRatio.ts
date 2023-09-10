@@ -1,6 +1,3 @@
-import { useWindowScroll, useWindowSize } from '@vueuse/core'
-import { computed } from 'vue'
-
 /**
  * Returns the reactive scroll ratio of the window.
  */
