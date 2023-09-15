@@ -1,33 +1,33 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 
-const routes: Array<RouteRecordRaw> = [
+/**
+ * auto register routes from files
+ */
+function files2Routes(exclude = ['auth']) {
+  const files = import.meta.glob('./pages/*.vue')
+
+  return Object.keys(files).map((path) => {
+    if (exclude.some(item => path.includes(item)))
+      return null
+
+    const name = path.replace(/(.*\/)*([^.]+).*/gi, '$2')
+    return {
+      path: `/${name}`,
+      name,
+      component: files[path],
+    }
+  })
+    .filter(Boolean) as RouteRecordRaw[]
+}
+
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
+    name: 'home',
     redirect: '/test',
     component: () => import('@pg/index.vue'),
-    children: [
-      {
-        path: 'test',
-        component: () => import('@pg/test.vue'),
-      },
-      {
-        path: 'todo',
-        component: () => import('@pg/todo.vue'),
-      },
-      {
-        path: 'github',
-        component: () => import('@pg/github.vue'),
-      },
-      {
-        path: 'red',
-        component: () => import('@pg/red.vue'),
-      },
-      {
-        path: 'titan',
-        component: () => import('@pg/titan.vue'),
-      },
-    ],
+    children: files2Routes(),
   },
 ]
 

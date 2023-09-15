@@ -14,6 +14,10 @@ const curOffset = computed(() => {
   }
   return 0
 })
+
+onBeforeRouteUpdate(() => {
+  useTitle('Chill Vue Lab')
+})
 </script>
 
 <template>
