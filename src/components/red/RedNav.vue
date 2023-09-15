@@ -17,7 +17,7 @@ defineProps<{
       bg="light dark:dark"
       @click="$emit('update:show')"
     >
-      <span class="icon i-tabler-arrow-left" />
+      <span class="i-tabler-arrow-left icon" />
     </button>
 
     <img
@@ -31,7 +31,7 @@ defineProps<{
       class="ml-auto h-8 w-8 rounded-full p-2"
       bg="light dark:dark"
     >
-      <span class="icon i-tabler-dots-vertical" />
+      <span class="i-tabler-dots-vertical icon" />
     </button>
   </nav>
 </template>

@@ -32,7 +32,7 @@
     "target": "esnext",
     "types": [
       "vite/client",
-      "@vue-macros/reactivity-transform/macros-global"
+      "vite-plugin-pages/client"
     ]
   },
   "exclude": [

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-useTitle('404')
+useTitle('404 Not Found')
 </script>
 
 <template>
@@ -7,12 +7,7 @@ useTitle('404')
     <h1>404 URL {{ $route.fullPath }}</h1>
     <p>Page not found</p>
 
-    <RouterLink
-      class="btn"
-      :to="{
-        name: 'home',
-      }"
-    >
+    <RouterLink class="btn" to="/">
       Go back
     </RouterLink>
   </div>

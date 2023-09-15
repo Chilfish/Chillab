@@ -6,13 +6,18 @@ const path = computed(() => route.path)
 
 const tabsRef = ref<HTMLElement[]>()
 const curOffset = computed(() => {
-  if (tabsRef.value) {
-    const curTab = tabsRef.value.at(links.indexOf(path.value))
-    const tabWidth = curTab?.clientWidth ?? 0
-    const tabLeft = curTab?.offsetLeft ?? 0
-    return tabLeft + tabWidth / 2 - 12
-  }
-  return 0
+  if (!tabsRef.value)
+    return 0
+
+  let idx = links.findIndex(link => link === path.value)
+  if (idx < 0)
+    idx = 0
+
+  const curTab = tabsRef.value[idx]
+
+  const tabWidth = curTab.clientWidth ?? 0
+  const tabLeft = curTab.offsetLeft ?? 0
+  return tabLeft + tabWidth / 2 - 12
 })
 
 onBeforeRouteUpdate(() => {
@@ -57,3 +62,7 @@ onBeforeRouteUpdate(() => {
     </router-view>
   </div>
 </template>
+
+<route lang="yaml">
+redirect: /test
+</route>

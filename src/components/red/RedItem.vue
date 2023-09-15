@@ -33,7 +33,7 @@ defineProps<{
         class="center gap-1"
         hover="text-red"
       >
-        <span class="icon i-tabler-heart" />
+        <span class="i-tabler-heart icon" />
         <span>{{ post.likes }}</span>
       </div>
     </div>
