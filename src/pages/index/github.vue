@@ -12,7 +12,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <main class="w-80% flex flex-col lg:w-60%">
+  <main class="w-full center-col md:w-60%">
     <h2>Search Github Repositories</h2>
 
     <label class="my-4 w-full">

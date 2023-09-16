@@ -1,5 +1,6 @@
 /**
  * Returns the reactive scroll ratio of the window.
+ * Client-side only.
  */
 export function useScrollRatio() {
   const { x, y } = useWindowScroll()

@@ -62,15 +62,17 @@ const curCp = computed<Cp>({
       </Transition>
     </KeepAlive>
 
-    <UseDraggable
-      v-slot="{ x, y }"
-      class="fixed z-999 hidden center cursor-move select-none rounded-2 p-4 sm:block blur-bg"
-      :initial-value="{ x: 50, y: 50 }"
-    >
-      <div>
-        Scroll Ratio: X: {{ percentX }}, Y: {{ percentY }}<br>
-        Pos: x: {{ x.toFixed(0) }}, y: {{ y.toFixed(0) }}
-      </div>
-    </UseDraggable>
+    <ClientOnly>
+      <UseDraggable
+        v-slot="{ x, y }"
+        class="fixed z-999 hidden center cursor-move select-none rounded-2 p-4 sm:block blur-bg"
+        :initial-value="{ x: 50, y: 50 }"
+      >
+        <div>
+          Scroll Ratio: X: {{ percentX }}, Y: {{ percentY }}<br>
+          Pos: x: {{ x.toFixed(0) }}, y: {{ y.toFixed(0) }}
+        </div>
+      </UseDraggable>
+    </ClientOnly>
   </main>
 </template>

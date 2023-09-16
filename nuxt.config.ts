@@ -58,6 +58,10 @@ export default defineNuxtConfig({
     },
   },
 
+  build: {
+    transpile: ['rxjs'],
+  },
+
   app: {
     head: {
       viewport: 'width=device-width,initial-scale=1',

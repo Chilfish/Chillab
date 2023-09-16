@@ -50,7 +50,7 @@ const curOffset = computed(() => {
     />
   </ul>
 
-  <div class="h-full w-full pb-4 flex justify-center">
+  <div class="h-full w-full p-4 flex justify-center">
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component" :key="route.path" />

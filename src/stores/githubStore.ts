@@ -47,7 +47,7 @@ export const useGithubRepoStore = defineStore('githubRepo', () => {
       .subscribe({
         next: (data) => {
           repoStatus.value = data.length === 0 ? 'notFound' : 'success'
-          repos.value = data
+          repos.value = data.sort((a, b) => b.stargazers_count - a.stargazers_count)
         },
         error: (error) => {
           console.error(error)
