@@ -13,3 +13,6 @@ Chill out and enjoy the ride :sunglasses:. I'm try to use effective and efficien
 - [x] Pinia for state management
 - [x] pnpm of course
 
+Note that, `/todo` & `/auth` require a backend server to work. Look at [todo-ender] for more. (Maybe They need to be rewritten by Nuxt.js)
+
+[todo-ender]: https://github.com/Chilfish/todo-ender

@@ -27,9 +27,10 @@ async function login() {
       return ctx
     },
     onFetchError(ctx) {
-      const err = ctx.data
+      const err = ctx.data || ctx.error
+
       Toast({
-        message: `${err.statusCode} ${err.message}`,
+        message: `${err?.statusCode} ${err?.message}`,
         type: 'error',
       })
       return ctx
