@@ -2,7 +2,7 @@
 import { UseDraggable } from '@vueuse/components'
 import { h } from 'vue'
 
-// import Toast from '@cp/Toast'
+import Toast from '@cp/Toast'
 import SortArr from '@cp/SortArr.vue'
 import Swiper from '@cp/common/Swiper.vue'
 
@@ -38,12 +38,12 @@ const curCp = computed<Cp>({
 <template>
   <main class="w-full flex flex-col items-center gap-4 p-4 pt-0">
     <div class="btns center gap-4">
-      <!-- <button
+      <button
         class="w-16"
         @click="Toast({ type: 'success', message: `Success Toast` })"
       >
         toast
-      </button> -->
+      </button>
 
       <select v-model="curCp" class="btn">
         <option

@@ -16,7 +16,7 @@ dependencies:
     version: 10.4.1(vue@3.3.4)
   '@vueuse/integrations':
     specifier: ^10.4.1
-    version: 10.4.1(sortablejs@1.15.0)(vue@3.3.4)
+    version: 10.4.1(sortablejs@1.15.0)(universal-cookie@6.1.1)(vue@3.3.4)
   lodash-es:
     specifier: ^4.17.21
     version: 4.17.21
@@ -29,6 +29,9 @@ dependencies:
   sortablejs:
     specifier: ^1.15.0
     version: 1.15.0
+  universal-cookie:
+    specifier: ^6.1.1
+    version: 6.1.1
   vue:
     specifier: ^3.3.4
     version: 3.3.4
@@ -1003,6 +1006,10 @@ packages:
       picomatch: 2.3.1
     dev: true
 
+  /@types/cookie@0.5.2:
+    resolution: {integrity: sha512-DBpRoJGKJZn7RY92dPrgoMew8xCWc2P71beqsjyhEI/Ds9mOyVmBwtekyfhpwFIVt1WrxTonFifiOZ62V8CnNA==}
+    dev: false
+
   /@types/debug@4.1.8:
     resolution: {integrity: sha512-/vPO1EPOs306Cvhwv7KfVfYvOJqA/S/AXjaHQiJboCZzcNDb+TIJFN9/2C9DZ//ijSKWioNyUxD792QmDJ+HKQ==}
     dependencies:
@@ -1665,7 +1672,7 @@ packages:
       - '@vue/composition-api'
       - vue
 
-  /@vueuse/integrations@10.4.1(sortablejs@1.15.0)(vue@3.3.4):
+  /@vueuse/integrations@10.4.1(sortablejs@1.15.0)(universal-cookie@6.1.1)(vue@3.3.4):
     resolution: {integrity: sha512-uRBPyG5Lxoh1A/J+boiioPT3ELEAPEo4t8W6Mr4yTKIQBeW/FcbsotZNPr4k9uz+3QEksMmflWloS9wCnypM7g==}
     peerDependencies:
       async-validator: '*'
@@ -1709,6 +1716,7 @@ packages:
       '@vueuse/core': 10.4.1(vue@3.3.4)
       '@vueuse/shared': 10.4.1(vue@3.3.4)
       sortablejs: 1.15.0
+      universal-cookie: 6.1.1
       vue-demi: 0.14.6(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -2136,6 +2144,11 @@ packages:
   /convert-source-map@1.9.0:
     resolution: {integrity: sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==}
     dev: true
+
+  /cookie@0.5.0:
+    resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
+    engines: {node: '>= 0.6'}
+    dev: false
 
   /cosmiconfig@8.3.6(typescript@5.2.2):
     resolution: {integrity: sha512-kcZ6+W5QzcJ3P1Mt+83OUv/oHFqZHIx8DuxG6eZ5RGMERoLqp4BuGjhHLYGK+Kf5XVkQvqBSmAy/nGWN3qDgEA==}
@@ -5115,6 +5128,13 @@ packages:
     dependencies:
       '@types/unist': 2.0.8
     dev: true
+
+  /universal-cookie@6.1.1:
+    resolution: {integrity: sha512-33S9x3CpdUnnjwTNs2Fgc41WGve2tdLtvaK2kPSbZRc5pGpz2vQFbRWMxlATsxNNe/Cy8SzmnmbuBM85jpZPtA==}
+    dependencies:
+      '@types/cookie': 0.5.2
+      cookie: 0.5.0
+    dev: false
 
   /universalify@2.0.0:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
