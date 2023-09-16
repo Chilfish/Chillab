@@ -2,6 +2,10 @@
 import { useSortable } from '@vueuse/integrations/useSortable'
 import type { Todo } from '~/types'
 
+definePageMeta({
+  middleware: ['auth'],
+})
+
 const todoStore = useTodoStore()
 
 const {

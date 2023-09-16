@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { useCookies } from '@vueuse/integrations/useCookies'
 import { useFetch } from '@vueuse/core'
 import Toast from '@cpa/Toast'
 import type { AuthReturn } from '~/types'
 
-const cookies = useCookies()
+const cookies = useCookie('token', {
+  expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+})
 const router = useRouter()
 const route = useRoute()
 const userStore = useUserStore()
 
 const apiSuffix = ref('login')
-const apiURL = computed(() => `/api/auth/${apiSuffix.value}`)
+const apiURL = computed(() => `/api2/auth/${apiSuffix.value}`)
 
 const { username, password } = toRefs(userStore.user)
 const disabled = computed(() => username.value === '' || password.value === '')
@@ -20,10 +21,10 @@ async function login() {
     afterFetch(ctx) {
       const data = ctx.data
 
-      cookies.set('token', data.token, {
-        expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 1 month
-      })
+      cookies.value = data.token
       userStore.user = data.data
+      userStore.user.token = data.token
+
       router.push(route.query.redirect as string || '/todo')
       return ctx
     },

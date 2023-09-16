@@ -50,9 +50,6 @@ devDependencies:
   '@unocss/transformer-directives':
     specifier: ^0.55.7
     version: 0.55.7
-  '@vitejs/plugin-vue':
-    specifier: ^4.3.4
-    version: 4.3.4(vite@4.4.9)(vue@3.3.4)
   '@vueuse/components':
     specifier: ^10.4.1
     version: 10.4.1(vue@3.3.4)
@@ -61,7 +58,7 @@ devDependencies:
     version: 10.4.1(vue@3.3.4)
   '@vueuse/integrations':
     specifier: ^10.4.1
-    version: 10.4.1(async-validator@4.2.5)(sortablejs@1.15.0)(universal-cookie@6.1.1)(vue@3.3.4)
+    version: 10.4.1(async-validator@4.2.5)(sortablejs@1.15.0)(vue@3.3.4)
   '@vueuse/nuxt':
     specifier: ^10.4.1
     version: 10.4.1(nuxt@3.7.3)(vue@3.3.4)
@@ -74,9 +71,6 @@ devDependencies:
   dotenv:
     specifier: ^16.3.1
     version: 16.3.1
-  jose:
-    specifier: ^4.14.6
-    version: 4.14.6
   lint-staged:
     specifier: ^14.0.1
     version: 14.0.1
@@ -107,9 +101,6 @@ devDependencies:
   typescript:
     specifier: ^5.2.2
     version: 5.2.2
-  universal-cookie:
-    specifier: ^6.1.1
-    version: 6.1.1
   unocss:
     specifier: ^0.55.7
     version: 0.55.7(@unocss/webpack@0.55.7)(postcss@8.4.29)(vite@4.4.9)
@@ -2049,10 +2040,6 @@ packages:
       minimatch: 9.0.3
     dev: true
 
-  /@types/cookie@0.5.2:
-    resolution: {integrity: sha512-DBpRoJGKJZn7RY92dPrgoMew8xCWc2P71beqsjyhEI/Ds9mOyVmBwtekyfhpwFIVt1WrxTonFifiOZ62V8CnNA==}
-    dev: true
-
   /@types/eslint-scope@3.7.4:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
@@ -2826,7 +2813,7 @@ packages:
       - vue
     dev: true
 
-  /@vueuse/integrations@10.4.1(async-validator@4.2.5)(sortablejs@1.15.0)(universal-cookie@6.1.1)(vue@3.3.4):
+  /@vueuse/integrations@10.4.1(async-validator@4.2.5)(sortablejs@1.15.0)(vue@3.3.4):
     resolution: {integrity: sha512-uRBPyG5Lxoh1A/J+boiioPT3ELEAPEo4t8W6Mr4yTKIQBeW/FcbsotZNPr4k9uz+3QEksMmflWloS9wCnypM7g==}
     peerDependencies:
       async-validator: '*'
@@ -2871,7 +2858,6 @@ packages:
       '@vueuse/shared': 10.4.1(vue@3.3.4)
       async-validator: 4.2.5
       sortablejs: 1.15.0
-      universal-cookie: 6.1.1
       vue-demi: 0.14.6(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -3893,11 +3879,6 @@ packages:
 
   /cookie-es@1.0.0:
     resolution: {integrity: sha512-mWYvfOLrfEc996hlKcdABeIiPHUPC6DM2QYZdGGOvhOTbA3tjm2eBwqlJpoFdjC89NI4Qt6h0Pu06Mp+1Pj5OQ==}
-    dev: true
-
-  /cookie@0.5.0:
-    resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
-    engines: {node: '>= 0.6'}
     dev: true
 
   /core-util-is@1.0.3:
@@ -6351,10 +6332,6 @@ packages:
       '@sideway/address': 4.1.4
       '@sideway/formula': 3.0.1
       '@sideway/pinpoint': 2.0.0
-    dev: true
-
-  /jose@4.14.6:
-    resolution: {integrity: sha512-EqJPEUlZD0/CSUMubKtMaYUOtWe91tZXTWMJZoKSbLk+KtdhNdcvppH8lA9XwVu2V4Ailvsj0GBZJ2ZwDjfesQ==}
     dev: true
 
   /js-tokens@4.0.0:
@@ -9703,13 +9680,6 @@ packages:
     resolution: {integrity: sha512-3faScn5I+hy9VleOq/qNbAd6pAx7iH5jYBMS9I1HgQVijz/4mv5Bvw5iw1sC/90CODiKo81G/ps8AJrISn687g==}
     dependencies:
       '@types/unist': 2.0.8
-    dev: true
-
-  /universal-cookie@6.1.1:
-    resolution: {integrity: sha512-33S9x3CpdUnnjwTNs2Fgc41WGve2tdLtvaK2kPSbZRc5pGpz2vQFbRWMxlATsxNNe/Cy8SzmnmbuBM85jpZPtA==}
-    dependencies:
-      '@types/cookie': 0.5.2
-      cookie: 0.5.0
     dev: true
 
   /universalify@2.0.0:
