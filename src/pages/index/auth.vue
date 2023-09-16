@@ -11,7 +11,7 @@ const route = useRoute()
 const userStore = useUserStore()
 
 const apiSuffix = ref('login')
-const apiURL = computed(() => `/api2/auth/${apiSuffix.value}`)
+const apiURL = computed(() => `/api/p/auth/${apiSuffix.value}`)
 
 const { username, password } = toRefs(userStore.user)
 const disabled = computed(() => username.value === '' || password.value === '')
