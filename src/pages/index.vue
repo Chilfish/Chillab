@@ -22,7 +22,7 @@ const curOffset = computed(() => {
 </script>
 
 <template>
-  <Common-Header />
+  <common-header />
 
   <ul class="relative mb-6 mt-16 flex select-none gap-1">
     <li
@@ -30,7 +30,7 @@ const curOffset = computed(() => {
       :key="link"
       ref="tabsRef"
     >
-      <Nuxt-Link
+      <nuxt-link
         :to="link"
         :class="{
           'dark:bg-dark-3 bg-light-5': path === link,
@@ -39,7 +39,7 @@ const curOffset = computed(() => {
         hover-bg="light-5 dark:dark-3"
       >
         {{ link }}
-      </Nuxt-Link>
+      </nuxt-link>
     </li>
 
     <span
@@ -50,7 +50,7 @@ const curOffset = computed(() => {
     />
   </ul>
 
-  <div class="h-full w-full flex justify-center">
+  <div class="h-full w-full pb-4 flex justify-center">
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component" :key="route.path" />

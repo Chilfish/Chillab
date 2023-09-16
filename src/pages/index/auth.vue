@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useCookies } from '@vueuse/integrations/useCookies'
+import { useFetch } from '@vueuse/core'
 import Toast from '@cpa/Toast'
 import type { AuthReturn } from '~/types'
 

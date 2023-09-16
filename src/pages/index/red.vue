@@ -94,16 +94,16 @@ watch(() => route.query, (query) => {
       </li>
     </ul>
 
-    <Common-Modal
+    <common-modal
       id="redDetail"
       v-model:show="showModal"
       @update:show="closeDetail"
     >
-      <RedDetail
+      <red-detail
         v-if="showedPost"
         :post="showedPost"
         @update:show="closeDetail"
       />
-    </Common-Modal>
+    </common-modal>
   </main>
 </template>

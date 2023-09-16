@@ -45,9 +45,8 @@ onMounted(async () => {
         v-for="repo in githubStore.repos"
         :key="repo.id"
       >
-        <GithubCard :item="repo" />
+        <github-card :item="repo" />
       </li>
     </TransitionGroup>
   </main>
 </template>
-~/stores/useGithubRepo

@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@vueuse/nuxt',
     '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
   ],
 
   imports: {
@@ -46,6 +47,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { redirect: '/test' },
+    '/todo': { ssr: false }, // persist pinia in localStorage
   },
 
   nitro: {
