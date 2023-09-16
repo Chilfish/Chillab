@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { todoItem } from '~/types'
+import type { Todo } from '~/types'
 
 const {
   item,
 } = defineProps<{
-  item: todoItem
+  item: Todo
 }>()
 
 defineEmits<{

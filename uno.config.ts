@@ -9,7 +9,7 @@ import transformerDirectives from '@unocss/transformer-directives'
 export default defineConfig({
   shortcuts: [
     {
-      btn: 'p-2 rounded inline-block bg-gray-6 hover:bg-gray-5 text-white cursor-pointer disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50',
+      btn: 'p-2 rounded inline-block bg-gray-6 hover:bg-gray-5 text-white cursor-pointer disabled:cursor-not-allowed disabled:bg-gray-600 disabled:opacity-50',
     },
     {
       'center': 'flex justify-center items-center',
@@ -21,6 +21,9 @@ export default defineConfig({
     },
     {
       'blur-bg': 'backdrop-blur-10 bg-[#00000010] dark:bg-[#ffffff10]',
+    },
+    {
+      input: 'rounded bg-light py-2 px-4 dark:bg-dark',
     },
   ],
   presets: [

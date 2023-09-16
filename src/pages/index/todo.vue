@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { useSortable } from '@vueuse/integrations/useSortable'
-import type { todoItem } from '~/types'
+import type { Todo } from '~/types'
 
 const todoStore = useTodoStore()
 
 const {
   define: TemplateTodoList,
   reuse: TodoList,
-} = createReusableTemplate<{ list: todoItem[] }>()
+} = createReusableTemplate<{ list: Todo[] }>()
 
 useSortable('#completed', todoStore.completedTodos, {
   animation: 150,

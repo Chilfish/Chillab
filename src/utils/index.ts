@@ -11,3 +11,5 @@ export function fmtNum(x: number | string) {
     return `${Math.floor(num / 1000)}k`
   return '100k+'
 }
+
+export const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))

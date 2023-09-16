@@ -1,7 +1,23 @@
-export interface todoItem {
+export interface Todo {
   id: string
   content: string
   done: boolean
+}
+
+export interface User {
+  id: number
+  username: string
+  level: string
+}
+
+export interface UserAuth extends User {
+  token: string
+  password: string
+}
+
+export interface AuthReturn {
+  token: string
+  data: UserAuth
 }
 
 export interface GithubRepo {
@@ -23,7 +39,7 @@ export interface GithubRepo {
 
 export type reqState = 'idle' | 'loading' | 'success' | 'error' | 'notFound'
 
-export interface User {
+export interface RedUser {
   id: string
   nickname: string
   name: string

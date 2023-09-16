@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
-import type { todoItem } from '~/types'
+import type { Todo } from '~/types'
 
 export const useTodoStore = defineStore('todo', () => {
   const newTodo = ref('')
-  const todoArr = ref<todoItem[]>([
+  const todoArr = ref<Todo[]>([
     { id: '1', content: 'Buy a car', done: false },
     { id: '2', content: 'Buy a house', done: false },
     { id: '3', content: 'Buy a boat', done: false },

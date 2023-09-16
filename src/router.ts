@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useCookies } from '@vueuse/integrations/useCookies'
 import routes from 'virtual:generated-pages'
+import Toast from '@cp/Toast'
 
 interface Meta {
   auth?: boolean
@@ -13,14 +14,23 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from) => {
   const { auth } = to.meta as Meta
   const cookies = useCookies()
 
-  if (auth && !cookies.get('token'))
-    return next({ path: '/auth' })
+  if (auth && !cookies.get('token')) {
+    Toast({
+      message: 'You need to login first',
+      type: 'error',
+    })
 
-  next()
+    return {
+      path: '/auth',
+      query: {
+        redirect: to.fullPath,
+      },
+    }
+  }
 })
 
 export default router

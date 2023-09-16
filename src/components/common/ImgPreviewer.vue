@@ -29,8 +29,6 @@ watch(imgPreviewUrl, (v) => {
   if (v !== emptyImg)
     return toggle()
 
-  console.log(v)
-
   if (imgRef.value) {
     const { x, y } = useCenterPos(imgRef.value)
     pos.value = { x: x.value, y: y.value }
