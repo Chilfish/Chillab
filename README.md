@@ -13,6 +13,6 @@ Chill out and enjoy the ride :sunglasses:. I'm try to use effective and efficien
 - [x] Pinia for state management
 - [x] pnpm of course
 
-Note that, `/todo` & `/auth` require a backend server to work. Look at [todo-ender] for more. (Maybe They need to be rewritten by Nuxt.js)
+Note that, `/todo` & `/auth` require a backend server to work. Look at [todo-ender] for more. (Maybe They need to be rewritten by Nuxt.js). And their api is proxyed by `/api2`, so that you need to set the `API_URL` in `.env` to your backend server.
 
 [todo-ender]: https://github.com/Chilfish/todo-ender
