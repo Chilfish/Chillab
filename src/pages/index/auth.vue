@@ -47,46 +47,44 @@ async function login() {
 </script>
 
 <template>
-  <div class="center-col">
-    <main
-      class="w-100 center-col gap-6 rounded-3 p-10 px-12"
-      bg="light-8 dark:dark-8"
-    >
-      <h2>Login to /Todo</h2>
+  <main
+    class="md:w-100 h-80 m-auto center-col gap-6 rounded-3 p-10 px-12"
+    bg="light-8 dark:dark-8"
+  >
+    <h2>Login to /Todo</h2>
 
-      <label>
-        <input
-          v-model="username"
-          type="text"
-          placeholder="Name"
-          class="input"
-        >
-      </label>
+    <label>
+      <input
+        v-model="username"
+        type="text"
+        placeholder="Name"
+        class="input"
+      >
+    </label>
 
-      <label>
-        <input
-          v-model="password"
-          type="password"
-          placeholder="Password"
-          class="input"
-        >
-      </label>
+    <label>
+      <input
+        v-model="password"
+        type="password"
+        placeholder="Password"
+        class="input"
+      >
+    </label>
 
-      <div class="btns center gap-4">
-        <button
-          :disabled="disabled"
-          @click="(apiSuffix = 'register', login())"
-        >
-          Register
-        </button>
+    <div class="btns center gap-4">
+      <button
+        :disabled="disabled"
+        @click="(apiSuffix = 'register', login())"
+      >
+        Register
+      </button>
 
-        <button
-          :disabled="disabled"
-          @click="(apiSuffix = 'login', login())"
-        >
-          Login
-        </button>
-      </div>
-    </main>
-  </div>
+      <button
+        :disabled="disabled"
+        @click="(apiSuffix = 'login', login())"
+      >
+        Login
+      </button>
+    </div>
+  </main>
 </template>

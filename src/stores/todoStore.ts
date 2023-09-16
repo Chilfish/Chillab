@@ -1,54 +1,118 @@
+import { createFetch } from '@vueuse/core'
 import { defineStore } from 'pinia'
-import type { Todo } from '~/types'
+import Toast from '@cpa/Toast'
+import type { Todo, TodoReturn } from '~/types'
 
 export const useTodoStore = defineStore('todo', () => {
   const newTodo = ref('')
-  const todoArr = ref<Todo[]>([
-    { id: '1', content: 'Buy a car', done: false },
-    { id: '2', content: 'Buy a house', done: false },
-    { id: '3', content: 'Buy a boat', done: false },
-  ])
+  const todoArr = ref([] as Todo[])
 
-  function addTodo() {
+  const token = useUserStore().user.token
+
+  const fetcher = createFetch({
+    baseUrl: '/api/p',
+    options: {
+      beforeFetch({ options }) {
+        options.headers = {
+          Authorization: `Bearer ${token}`,
+        }
+        return { options }
+      },
+
+      onFetchError(ctx) {
+        const err = ctx.data || ctx.error
+
+        Toast({
+          message: `${err?.statusCode} ${err?.message}`,
+          type: 'error',
+        })
+
+        if (err?.statusCode === 401)
+          navigateTo('/auth')
+
+        return ctx
+      },
+    },
+  })
+
+  async function fetchTodos() {
+    const { data, error } = await fetcher('/todo').json<TodoReturn>()
+    if (!error && data.value)
+      todoArr.value = data.value.data as Todo[]
+  }
+
+  async function addTodo() {
     const content = newTodo.value.trim()
     if (!content || content === '')
       return
 
-    const newTodoItem = {
-      id: Date.now().toString(),
-      content,
-      done: false,
+    const { data } = await fetcher('/todo/add')
+      .post({ text: content })
+      .json<TodoReturn>()
+
+    if (data.value?.status !== 'success') {
+      Toast({
+        message: 'add todo failed',
+        type: 'error',
+      })
+      return
     }
 
-    todoArr.value.push(newTodoItem)
+    todoArr.value.push(data.value?.data as Todo)
     newTodo.value = ''
   }
 
-  function deleteTodoItem(id: string) {
+  async function deleteTodoItem(id: number) {
+    const {
+      data: count,
+    } = await fetcher('/todo/rm')
+      .post({ id })
+      .json<{ data: number }>()
+
+    if (count.value!.data < 1) {
+      Toast({
+        message: 'delete todo failed',
+        type: 'error',
+      })
+      return
+    }
+
     todoArr.value = todoArr.value.filter(todo => todo.id !== id)
   }
 
-  function toggleTodoItem(id: string) {
-    todoArr.value = todoArr.value.map((todo) => {
-      if (todo.id === id) {
-        return {
-          ...todo,
-          done: !todo.done,
-        }
-      }
-      return todo
-    })
+  async function toggleTodoItem(todo: Todo) {
+    const { id, text, completed } = todo
+    const {
+      data: count,
+    } = await fetcher('/todo/up')
+      .post({ id, text, completed: !completed })
+      .json<{ data: number }>()
+
+    if (count.value!.data < 1) {
+      Toast({
+        message: 'update todo failed',
+        type: 'error',
+      })
+      return
+    }
+
+    const index = todoArr.value.findIndex(item => item.id === todo.id)
+    todo.completed = !todo.completed
+    todoArr.value[index] = todo
   }
 
-  const completedTodos = useArrayFilter(todoArr, todo => todo.done)
-  const uncompletedTodos = useArrayFilter(todoArr, todo => !todo.done)
+  const completedTodos = useArrayFilter(todoArr, todo => todo.completed)
+  const uncompletedTodos = useArrayFilter(todoArr, todo => !todo.completed)
 
   return {
     newTodo,
     todoArr,
     completedTodos,
     uncompletedTodos,
+
+    fetchTodos,
     addTodo,
+
     deleteTodoItem,
     toggleTodoItem,
   }

@@ -1,7 +1,17 @@
 export interface Todo {
-  id: string
-  content: string
-  done: boolean
+  id: number
+  text: string
+  completed: boolean
+  deleted: boolean
+  deleted_at: string
+  created_at: string
+  updated_at: string
+}
+
+export interface TodoReturn {
+  data: Todo | Todo[]
+  status: string
+  count: number
 }
 
 export interface User {

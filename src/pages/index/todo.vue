@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useSortable } from '@vueuse/integrations/useSortable'
 import type { Todo } from '~/types'
 
 definePageMeta({
@@ -13,12 +12,8 @@ const {
   reuse: TodoList,
 } = createReusableTemplate<{ list: Todo[] }>()
 
-useSortable('#completed', todoStore.completedTodos, {
-  animation: 150,
-})
-
-useSortable('#uncompleted', todoStore.uncompletedTodos, {
-  animation: 150,
+onMounted(async () => {
+  await todoStore.fetchTodos()
 })
 </script>
 
@@ -37,9 +32,9 @@ useSortable('#uncompleted', todoStore.uncompletedTodos, {
           :key="todo.id"
           class="w-full"
         >
-          <TodoItem
+          <todo-item
             :item="todo"
-            @toggle="todoStore.toggleTodoItem(todo.id)"
+            @toggle="todoStore.toggleTodoItem(todo)"
             @delete="todoStore.deleteTodoItem(todo.id)"
           />
         </li>
