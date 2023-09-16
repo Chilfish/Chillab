@@ -1,9 +1,9 @@
 <template>
-  <RouterView v-slot="{ Component }">
-    <transition name="fade" mode="out-in">
-      <component :is="Component" />
-    </transition>
-  </RouterView>
+  <div class="center-col h-full justify-start">
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
 
-  <ImgPreviewer />
+    <common-img-previewer />
+  </div>
 </template>

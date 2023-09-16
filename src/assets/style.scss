@@ -28,8 +28,8 @@ body {
   background: var(--bg);
 }
 
-#app {
-  --uno: w-screen flex flex-col items-center overflow-hidden relative;
+#__nuxt {
+  --uno: w-full overflow-hidden relative;
 }
 
 h1,

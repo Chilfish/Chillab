@@ -13,7 +13,7 @@ defineProps<{
     md="h-90% max-w-80% flex-row rounded-3"
     bg="light-5 dark:dark-5"
   >
-    <RedNav
+    <red-nav
       class="flex!"
       md="hidden!"
       :post="post"
@@ -36,7 +36,7 @@ defineProps<{
       class="h-full"
       md="w-180 "
     >
-      <RedNav
+      <red-nav
         class="hidden!"
         md="flex! rounded-tl-0"
         :post="post"

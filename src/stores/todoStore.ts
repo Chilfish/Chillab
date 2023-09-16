@@ -53,5 +53,7 @@ export const useTodoStore = defineStore('todo', () => {
     toggleTodoItem,
   }
 }, {
-  persist: true,
+  persist: {
+    storage: persistedState.localStorage,
+  },
 })

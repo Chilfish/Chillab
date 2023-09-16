@@ -2,6 +2,10 @@
 import { useSortable } from '@vueuse/integrations/useSortable'
 import type { Todo } from '~/types'
 
+definePageMeta({
+  middleware: ['auth'],
+})
+
 const todoStore = useTodoStore()
 
 const {
@@ -19,10 +23,10 @@ useSortable('#uncompleted', todoStore.uncompletedTodos, {
 </script>
 
 <template>
-  <main class="w-90% flex flex-col overflow-hidden sm:w-50%">
+  <main class="w-90% flex flex-col overflow-hidden md:w-60%">
     <!-- only one root element -->
     <TemplateTodoList v-slot="{ list }">
-      <TransitionGroup
+      <transition-group
         :id="list === todoStore.completedTodos ? 'completed' : 'uncompleted'"
         tag="ul"
         name="fade"
@@ -39,7 +43,7 @@ useSortable('#uncompleted', todoStore.uncompletedTodos, {
             @delete="todoStore.deleteTodoItem(todo.id)"
           />
         </li>
-      </TransitionGroup>
+      </transition-group>
     </TemplateTodoList>
 
     <h2> Chill Todo List </h2>
@@ -73,8 +77,3 @@ useSortable('#uncompleted', todoStore.uncompletedTodos, {
     </details>
   </main>
 </template>
-
-<route lang="yaml">
-meta:
-  auth: true
-</route>

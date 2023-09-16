@@ -1,16 +1,9 @@
 <script setup lang="ts">
 import type { GithubRepo } from '~/types'
 
-const repo = defineProps<{
+defineProps<{
   item: GithubRepo
 }>()
-
-const { isLoading } = useImage({ src: repo.item.owner.avatar_url })
-const avatarUrl = computed(() =>
-  isLoading.value
-    ? 'https://place-hold.it/100x100'
-    : repo.item.owner.avatar_url,
-)
 </script>
 
 <template>
@@ -30,7 +23,7 @@ const avatarUrl = computed(() =>
       class="display-ruby h-20 w-0 transition-width sm:w-20"
     >
       <img
-        :src="avatarUrl"
+        :src="item.owner.avatar_url"
         :alt="`${item.owner.login}'s avatar`"
         class="h-full w-full rounded-3"
       >

@@ -14,5 +14,10 @@ export const useUserStore = defineStore('user', () => {
     user,
   }
 }, {
-  persist: true,
+  persist: {
+    storage: persistedState.cookiesWithOptions({
+      sameSite: 'strict',
+      expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+    }),
+  },
 })

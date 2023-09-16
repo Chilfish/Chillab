@@ -27,7 +27,7 @@ watchEffect(() => {
 
 <template>
   <main
-    class="relative h-full w-full center overflow-hidden bg-[#534E48] p-xl"
+    class="relative h-full w-full center overflow-hidden bg-[#534E48]"
   >
     <div ref="eye" class="eye" />
     <div class="bg" />

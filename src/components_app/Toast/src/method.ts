@@ -21,6 +21,11 @@ function normalizeOptions(params?: ToastParams): ToastParamsNormalized {
     ...options,
   }
 
+  if (!isClient) {
+    normalized.appendTo = (undefined as never)
+    return normalized as ToastParamsNormalized
+  }
+
   if (!normalized.appendTo) {
     normalized.appendTo = document.body
   }
@@ -34,6 +39,7 @@ function normalizeOptions(params?: ToastParams): ToastParamsNormalized {
   return normalized as ToastParamsNormalized
 }
 
+// The toast function creates a new toast instance and returns its handler.
 export const toast: ToastFn & Partial<ToastFn> & { _context: AppContext | null } = (
   options = {},
   context,
@@ -41,6 +47,7 @@ export const toast: ToastFn & Partial<ToastFn> & { _context: AppContext | null }
   const norOptions = normalizeOptions(options)
   const instance = createToast(norOptions, context)
 
+  instances.push(instance)
   return instance.handler
 }
 
@@ -56,23 +63,21 @@ function createToast(
     id,
     onClose: () => {
       options.onClose?.()
-      rmInstance(id) // 会有一个专门的 instance.ts 来管理这些实例
+      rmInstance(id)
     },
     onDestroy: () => {
-      render(null, container) // 这样就能从 body 中移除这个标签了
+      render(null, container) // The container will be removed from the body
     },
   }
 
   const vnode = createVNode(ToastConstructor, props)
-  vnode.appContext = context || toast._context // 上文说的要指定它的 context
+  vnode.appContext = context || toast._context
 
-  render(vnode, container) // 渲染成 HTML
+  render(vnode, container) // Render as HTML
 
-  // 当 destroy 的时候，gc 会自动回收这个 div 的
+  // When destroyed, gc will automatically recycle this div
   appendTo.appendChild(container.firstElementChild!)
 
-  // Toast.vue 组件本身，目的是为了能够获取它的一些信息
-  // 如高度和 offset，这样才能让 Toast 们那位置排列好而不是叠在一起
   const vm = vnode.component!
 
   const handler: ToastHandler = {
@@ -84,11 +89,10 @@ function createToast(
   const instance: ToastInstance = {
     id,
     vm,
-    vnode,
     handler,
+    vnode,
     props: (vnode.component as any).props,
   }
-  instances.push(instance) // 先进先出，后来者在最下面
 
   return instance
 }
