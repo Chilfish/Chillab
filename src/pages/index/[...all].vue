@@ -1,5 +1,5 @@
 <script setup lang="ts">
-useTitle('404 Not Found')
+// useTitle('404 Not Found')
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCookies } from '@vueuse/integrations/useCookies'
-import Toast from '@cp/Toast'
+import Toast from '@cpa/Toast'
 import type { AuthReturn } from '~/types'
 
 const cookies = useCookies()

@@ -73,8 +73,3 @@ useSortable('#uncompleted', todoStore.uncompletedTodos, {
     </details>
   </main>
 </template>
-
-<route lang="yaml">
-meta:
-  auth: true
-</route>

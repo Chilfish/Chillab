@@ -2,7 +2,7 @@
 import { UseDraggable } from '@vueuse/components'
 import { h } from 'vue'
 
-import Toast from '@cp/Toast'
+import Toast from '@cpa/Toast'
 import SortArr from '@cp/SortArr.vue'
 import Swiper from '@cp/common/Swiper.vue'
 

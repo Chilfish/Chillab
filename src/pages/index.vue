@@ -19,14 +19,10 @@ const curOffset = computed(() => {
   const tabLeft = curTab.offsetLeft ?? 0
   return tabLeft + tabWidth / 2 - 12
 })
-
-onBeforeRouteUpdate(() => {
-  useTitle('Chill Vue Lab')
-})
 </script>
 
 <template>
-  <Header />
+  <Common-Header />
 
   <ul class="relative mb-6 mt-16 flex select-none gap-1">
     <li
@@ -34,7 +30,7 @@ onBeforeRouteUpdate(() => {
       :key="link"
       ref="tabsRef"
     >
-      <RouterLink
+      <Nuxt-Link
         :to="link"
         :class="{
           'dark:bg-dark-3 bg-light-5': path === link,
@@ -43,7 +39,7 @@ onBeforeRouteUpdate(() => {
         hover-bg="light-5 dark:dark-3"
       >
         {{ link }}
-      </RouterLink>
+      </Nuxt-Link>
     </li>
 
     <span
@@ -62,7 +58,3 @@ onBeforeRouteUpdate(() => {
     </router-view>
   </div>
 </template>
-
-<route lang="yaml">
-redirect: /test
-</route>

@@ -1,42 +1,7 @@
 {
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "allowJs": true,
-    "baseUrl": ".",
-    "checkJs": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "jsx": "preserve",
-    "lib": [
-      "DOM",
-      "ESNext"
-    ],
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "noUnusedLocals": true,
-    "paths": {
-      "@cp/*": [
-        "src/components/*"
-      ],
-      "@pg/*": [
-        "src/pages/*"
-      ],
-      "~/*": [
-        "src/*"
-      ]
-    },
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "target": "esnext",
-    "types": [
-      "vite/client",
-      "vite-plugin-pages/client"
-    ]
-  },
-  "exclude": [
-    "dist",
-    "node_modules"
-  ]
+    "allowSyntheticDefaultImports": true
+  }
 }
