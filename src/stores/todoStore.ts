@@ -37,7 +37,7 @@ export const useTodoStore = defineStore('todo', () => {
 
   async function fetchTodos() {
     const { data, error } = await fetcher('/todo').json<TodoReturn>()
-    if (!error && data.value)
+    if (!error.value && data.value)
       todoArr.value = data.value.data as Todo[]
   }
 
