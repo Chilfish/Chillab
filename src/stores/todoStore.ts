@@ -7,12 +7,11 @@ export const useTodoStore = defineStore('todo', () => {
   const newTodo = ref('')
   const todoArr = ref([] as Todo[])
 
-  const token = useUserStore().user.token
-
   const fetcher = createFetch({
-    baseUrl: '/api/p',
+    baseUrl: '/api/p/todo',
     options: {
       beforeFetch({ options }) {
+        const token = useUserStore().user.token
         options.headers = {
           Authorization: `Bearer ${token}`,
         }
@@ -36,7 +35,7 @@ export const useTodoStore = defineStore('todo', () => {
   })
 
   async function fetchTodos() {
-    const { data, error } = await fetcher('/todo').json<TodoReturn>()
+    const { data, error } = await fetcher('/').json<TodoReturn>()
     if (!error.value && data.value)
       todoArr.value = data.value.data as Todo[]
   }
@@ -46,7 +45,7 @@ export const useTodoStore = defineStore('todo', () => {
     if (!content || content === '')
       return
 
-    const { data } = await fetcher('/todo/add')
+    const { data } = await fetcher('/add')
       .post({ text: content })
       .json<TodoReturn>()
 
@@ -65,7 +64,7 @@ export const useTodoStore = defineStore('todo', () => {
   async function deleteTodoItem(id: number) {
     const {
       data: count,
-    } = await fetcher('/todo/rm')
+    } = await fetcher('/rm')
       .post({ id })
       .json<{ data: number }>()
 
@@ -84,7 +83,7 @@ export const useTodoStore = defineStore('todo', () => {
     const { id, text, completed } = todo
     const {
       data: count,
-    } = await fetcher('/todo/up')
+    } = await fetcher('/up')
       .post({ id, text, completed: !completed })
       .json<{ data: number }>()
 

@@ -14,7 +14,7 @@ const apiSuffix = ref('login')
 const apiURL = computed(() => `/api/p/auth/${apiSuffix.value}`)
 
 const { username, password } = toRefs(userStore.user)
-const disabled = computed(() => username.value === '' || password.value === '')
+const disabled = computed(() => username.value === '' || password?.value === '')
 
 async function login() {
   useFetch(apiURL, {
