@@ -17,8 +17,10 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     '@nuxt/image',
     '@vueuse/nuxt',
+    '@vue-macros/nuxt',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
+    '@element-plus/nuxt',
   ],
 
   imports: {
@@ -33,9 +35,9 @@ export default defineNuxtConfig({
     '@cp': fileURLToPath(new URL('./src/components', import.meta.url)),
   },
 
-  devtools: {
-    enabled: true,
-  },
+  // devtools: {
+  //   enabled: true,
+  // },
 
   css: [
     '@unocss/reset/tailwind.css',
@@ -52,6 +54,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { redirect: '/test' },
+    '/admin': { redirect: '/admin/dashboard' },
     '/todo': { ssr: false }, // persist pinia in localStorage
     '/api/p/**': { proxy: `${API_URL}/**` },
   },

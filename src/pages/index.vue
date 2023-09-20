@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const links = ['/github', '/titan', '/todo', '/auth', '/test', '/red']
+const links = ['/github', '/titan', '/todo', '/auth', '/admin', '/test', '/red']
 
 const route = useRoute()
 const path = computed(() => route.path)
@@ -18,6 +18,12 @@ const curOffset = computed(() => {
   const tabWidth = curTab.clientWidth ?? 0
   const tabLeft = curTab.offsetLeft ?? 0
   return tabLeft + tabWidth / 2 - 12
+})
+
+watchEffect(() => {
+  useHead({
+    title: `${path.value.slice(1)} | Chill Vue`,
+  })
 })
 </script>
 
