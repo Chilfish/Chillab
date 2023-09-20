@@ -13,7 +13,9 @@ useHead({
     <aside
       class="w-fit h-full"
     >
-      <admin-menu />
+      <client-only>
+        <admin-menu />
+      </client-only>
     </aside>
   </main>
 </template>

@@ -6,6 +6,11 @@ const {
   isCollapse,
 } = storeToRefs(useAdminStore())
 
+const color = reactive({
+  bg: useCssVar('--admin-menu-bg'),
+  text: useCssVar('--admin-menu-text'),
+})
+
 const items: MenuItem[] = [
   {
     title: 'Dashboard',
@@ -37,9 +42,9 @@ const items: MenuItem[] = [
 
 <template>
   <el-menu
-    class="admin-menu h-full !border-none transition-all ease-in-out duration-300"
-    background-color="bg-gray"
-    text-color="text-gray"
+    class="admin-menu h-full !border-none transition-all ease-in-out duration-200"
+    :background-color="color.bg"
+    :text-color="color.text"
     :collapse="isCollapse"
   >
     <admin-menu-item

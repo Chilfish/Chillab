@@ -6,9 +6,6 @@ const {
 } = storeToRefs(useAdminStore())
 
 const toggleCollapse = useToggle(isCollapse)
-
-const dark = useDark()
-const toggleDark = useToggle(dark)
 </script>
 
 <template>
