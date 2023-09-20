@@ -14,7 +14,7 @@ const {
       <div
         v-show="show"
         v-bind="$attrs"
-        class="fixed inset-0 z-999 h-full w-full center bg-black bg-opacity-50 backdrop-blur-4 transition-all duration-300"
+        class="fixed inset-0 z-9999 h-full w-full center bg-black bg-opacity-50 backdrop-blur-4 transition-all duration-300"
         @click.self="() => $emit('update:show', false)"
       >
         <slot />

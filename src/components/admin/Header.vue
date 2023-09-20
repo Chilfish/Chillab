@@ -3,17 +3,17 @@ import { storeToRefs } from 'pinia'
 
 const {
   isCollapse,
+  curTitle,
 } = storeToRefs(useAdminStore())
 
 const toggleCollapse = useToggle(isCollapse)
-
-const title = computed(() => (useRoute().params.all as string[]).join('/'))
 </script>
 
 <template>
   <header
     class="center justify-between p-4 gap-4 select-none"
     bg="light dark:dark-8"
+    text="black dark:white"
   >
     <div class="center gap-4">
       <button
@@ -23,13 +23,22 @@ const title = computed(() => (useRoute().params.all as string[]).join('/'))
         @click="toggleCollapse()"
       />
       <p class="font-bold">
-        {{ title }}
+        {{ curTitle }}
       </p>
     </div>
 
-    <button
-      :class="dark ? 'i-tabler-moon' : 'i-tabler-sun'"
-      @click="toggleDark()"
-    />
+    <div class="center gap-4">
+      <span class="icon i-tabler-bell" />
+
+      <button
+        :class="dark ? 'i-tabler-moon' : 'i-tabler-sun'"
+        @click="toggleDark()"
+      />
+
+      <admin-avatar
+        avatar="https://avatars.githubusercontent.com/u/29767886?v=4"
+        name="Chilfish"
+      />
+    </div>
   </header>
 </template>

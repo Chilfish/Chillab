@@ -4,7 +4,6 @@ import type { MenuItem } from '~/types'
 
 const {
   isCollapse,
-  curTitle,
 } = storeToRefs(useAdminStore())
 
 const color = reactive({
@@ -47,7 +46,6 @@ const items: MenuItem[] = [
     :background-color="color.bg"
     :text-color="color.text"
     :collapse="isCollapse"
-    @open="(e) => console.log(e)"
   >
     <admin-menu-item
       v-for="(item, index) in items"

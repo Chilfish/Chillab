@@ -1,13 +1,19 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
+
 definePageMeta({
   layout: 'admin',
 })
 
-const title = computed(() => (useRoute().params.all as string[]).join('/'))
+const {
+  curTitle,
+} = storeToRefs(useAdminStore())
 </script>
 
 <template>
   <div>
-    <h1>{{ title }}</h1>
+    <h1>
+      {{ curTitle }}
+    </h1>
   </div>
 </template>

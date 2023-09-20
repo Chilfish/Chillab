@@ -16,7 +16,7 @@ const showModal = ref(false)
 const showedPost = ref<Post | null>(null)
 const postsEl = ref<HTMLElement[] | null>(null)
 
-const isLocked = useScrollLock(window)
+// const isLocked = useScrollLock(window)
 const router = useRouter()
 const route = useRoute()
 
@@ -28,7 +28,7 @@ function showDetail(id: string) {
   }
 
   showModal.value = true
-  isLocked.value = true
+  // isLocked.value = true
   showedPost.value = post
   router.push({ query: { id: post.id } })
 
@@ -51,7 +51,7 @@ function showDetail(id: string) {
 
 function closeDetail() {
   showModal.value = false
-  isLocked.value = false
+  // isLocked.value = false
   if (route.query.id)
     router.push({ path: '/red' })
 }

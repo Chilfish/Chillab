@@ -20,14 +20,19 @@ const asideWidth = computed(() => {
   >
     <aside
       :style="{ width: asideWidth }"
-      class=" h-full fixed top-0 left-0 z-10"
+      class=" h-full fixed top-0 left-0 z-10 select-none"
       bg="light dark:dark-5"
     >
-      <div class="p-3 center gap-4">
+      <div class="p-3 center gap-2">
         <img class="w-10 h-10 rounded-12" src="/favicon.ico">
-        <h2 v-show="!isCollapse" class="text-5">
+
+        <nuxt-link
+          v-show="!isCollapse"
+          class="text-5 font-bold"
+          to="/admin/dashboard"
+        >
           Chill Admin
-        </h2>
+        </nuxt-link>
       </div>
 
       <client-only>
