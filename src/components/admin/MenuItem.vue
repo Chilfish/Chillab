@@ -11,18 +11,23 @@ const {
 </script>
 
 <template>
-  <el-menu-item
+  <nuxt-link
     v-if="!item.children"
-    :index="index"
+    class="w-full"
+    :to="item.link ? item.link : '#'"
   >
-    <el-icon v-if="item.icon">
-      <span :class="`icon ${item.icon}`" />
-    </el-icon>
+    <el-menu-item
+      :index="index"
+    >
+      <el-icon v-if="item.icon">
+        <span :class="`icon ${item.icon}`" />
+      </el-icon>
 
-    <template #title>
-      {{ item.title }}
-    </template>
-  </el-menu-item>
+      <template #title>
+        {{ item.title }}
+      </template>
+    </el-menu-item>
+  </nuxt-link>
 
   <el-sub-menu
     v-else

@@ -4,6 +4,7 @@ import type { MenuItem } from '~/types'
 
 const {
   isCollapse,
+  curTitle,
 } = storeToRefs(useAdminStore())
 
 const color = reactive({
@@ -42,10 +43,11 @@ const items: MenuItem[] = [
 
 <template>
   <el-menu
-    class="admin-menu h-full !border-none transition-all ease-in-out duration-200"
+    class="w-full h-full !border-none"
     :background-color="color.bg"
     :text-color="color.text"
     :collapse="isCollapse"
+    @open="(e) => console.log(e)"
   >
     <admin-menu-item
       v-for="(item, index) in items"
@@ -55,9 +57,3 @@ const items: MenuItem[] = [
     />
   </el-menu>
 </template>
-
-<style>
-.admin-menu:not(.el-menu--collapse) {
-  width: 200px;
-}
-</style>
