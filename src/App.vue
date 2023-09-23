@@ -1,13 +1,18 @@
 <script setup lang="ts">
+const title = 'Chill Vue Lab'
+const img = 'https://chilfish.top/avatar.png'
+
 useSeoMeta({
   ogUrl: useRoute().fullPath,
-  twitterTitle: 'Chill Vue Lab',
-  twitterDescription: 'Chill Vue Lab',
-  twitterImage: '/favicon.ico',
-  twitterCard: 'summary',
-  ogImage: '/favicon.ico',
-  ogDescription: 'Chill Vue Lab',
-  ogTitle: 'Chill Vue Lab',
+  twitterTitle: title,
+  twitterDescription: title,
+  twitterImage: img,
+  twitterCard: 'summary_large_image',
+  ogImage: img,
+  ogDescription: title,
+  ogTitle: title,
+  title,
+  description: title,
 })
 
 useHead({

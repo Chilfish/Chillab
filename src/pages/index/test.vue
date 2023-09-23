@@ -30,7 +30,10 @@ type Cp = keyof typeof cp
 
 const router = useRouter()
 const hash = computed(() => {
-  const _hash = useRoute().hash.slice(1) as Cp
+  let _hash = useRoute().hash.slice(1) as Cp
+
+  if (!_hash)
+    _hash = 'SortArr'
 
   useHead({
     title: `${_hash} | Chill Vue`,
@@ -40,7 +43,7 @@ const hash = computed(() => {
 })
 
 const curCp = computed<Cp>({
-  get() { return hash.value || 'SortArr' },
+  get() { return hash.value },
   set(v) { router.replace({ hash: `#${v}` }) },
 })
 </script>

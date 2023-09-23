@@ -1,18 +1,17 @@
 <script setup lang="ts">
 import type { Bookmark } from '~/types'
 
-useHead({
-  title: 'Chilfish\'s Bookmark',
-  meta: [
-    {
-      name: 'description',
-      content: 'Chilfish\'s online Bookmark',
-    },
-    {
-      name: 'keywords',
-      content: 'bookmark, chilfish, vue',
-    },
-  ],
+const title = 'Chilfish\'s Bookmarks'
+const description = 'Chilfish\'s online bookmarks, you can find some useful websites here and parse your bookmarks at /test#Bookmarks.'
+
+useSeoMeta({
+  ogUrl: '/bookmark',
+  twitterTitle: title,
+  twitterDescription: description,
+  ogTitle: title,
+  ogDescription: description,
+  title,
+  description,
 })
 
 const {
