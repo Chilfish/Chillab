@@ -84,6 +84,10 @@ onUnmounted(stop)
         @click="curImg = i"
       />
     </div>
+
+    <ClientOnly>
+      <common-img-previewer />
+    </ClientOnly>
   </main>
 </template>
 

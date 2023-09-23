@@ -9,17 +9,17 @@ import Bookmarks from '@cp/bookmark/Select.vue'
 
 const { percentY, percentX } = useScrollRatio()
 
-const imgs = [
-  '/ender-girls.jpg',
-  '/kurarin.webp',
-  '/ender-bocchi.webp',
-]
-
 const cp = {
   SortArr,
   Swiper: h(Swiper, {
-    imgs,
+    imgs: [
+      '/ender-girls.jpg',
+      '/kurarin.webp',
+      '/ender-bocchi.webp',
+    ],
     onClick(src: string) {
+      if (typeof src !== 'string')
+        return
       imgPreviewUrl.value = src
     },
   }),
@@ -29,7 +29,15 @@ const cp = {
 type Cp = keyof typeof cp
 
 const router = useRouter()
-const hash = computed(() => useRoute().hash.slice(1) as Cp)
+const hash = computed(() => {
+  const _hash = useRoute().hash.slice(1) as Cp
+
+  useHead({
+    title: `${_hash} | Chill Vue`,
+  })
+
+  return _hash
+})
 
 const curCp = computed<Cp>({
   get() { return hash.value || 'SortArr' },

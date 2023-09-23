@@ -19,6 +19,7 @@ function toggleAll() {
 <template>
   <div class="center-col w-full items-start gap-4 relative">
     <button
+      v-show="bookmarks.length > 0"
       class="btn fixed bottom-4 right-4 z-10"
       @click="toggleAll"
     >

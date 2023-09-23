@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+  redirect: '/test',
+})
+
 const links = ['/github', '/bookmark', '/titan', '/todo', '/auth', '/admin', '/test', '/red']
 
 const route = useRoute()
@@ -17,7 +21,14 @@ const curOffset = computed(() => {
 
   const tabWidth = curTab.clientWidth ?? 0
   const tabLeft = curTab.offsetLeft ?? 0
-  return tabLeft + tabWidth / 2 - 12
+  const x = `${tabLeft + tabWidth / 2 - 12}px`
+
+  const tabHeight = curTab.clientHeight ?? 0
+  const tabTop = curTab.offsetTop ?? 0
+
+  const y = `${tabTop + tabHeight + 8}px`
+
+  return [x, y]
 })
 
 watchEffect(() => {
@@ -30,7 +41,7 @@ watchEffect(() => {
 <template>
   <common-header />
 
-  <ul class="relative mb-6 mt-16 flex select-none gap-1">
+  <ul class="relative mt-10 p-4 flex flex-wrap select-none gap-2">
     <li
       v-for="link in links"
       :key="link"
@@ -49,9 +60,9 @@ watchEffect(() => {
     </li>
 
     <span
-      class="absolute bottom--2 left-0 h-[1px] w-6 rounded bg-blue transition-transform duration-300 ease-in-out"
+      class="absolute top-0 left-0 h-[1px] w-6 rounded bg-blue transition-transform duration-300 ease-in-out"
       :style="{
-        transform: `translateX(${curOffset}px)`,
+        transform: `translate3D(${curOffset},0)`,
       }"
     />
   </ul>

@@ -35,9 +35,9 @@ export default defineNuxtConfig({
     '@cp': fileURLToPath(new URL('./src/components', import.meta.url)),
   },
 
-  // devtools: {
-  //   enabled: true,
-  // },
+  devtools: {
+    enabled: true,
+  },
 
   css: [
     '@unocss/reset/tailwind.css',
