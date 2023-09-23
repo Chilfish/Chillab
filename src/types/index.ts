@@ -70,3 +70,12 @@ export interface Post {
   likes: number
   photos: string[]
 }
+
+export interface Bookmark {
+  folderName: string
+  bookmarks: {
+    title: string
+    url: string
+    icon?: string
+  }[]
+}

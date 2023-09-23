@@ -5,7 +5,7 @@ import { h } from 'vue'
 import Toast from '@cpa/Toast'
 import SortArr from '@cp/SortArr.vue'
 import Swiper from '@cp/common/Swiper.vue'
-import Bookmarks from '@cp/Bookmarks.vue'
+import Bookmarks from '@cp/bookmark/Select.vue'
 
 const { percentY, percentX } = useScrollRatio()
 
