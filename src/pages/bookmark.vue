@@ -14,13 +14,13 @@ useSeoMeta({
   description,
 })
 
-const {
-  data,
-} = useFetch<string>('/bookmarks.xml', {
-  server: false,
-})
+const { data } = useFetch<string>('https://chilf.vercel.app/bookmarks.html')
 
-const bookmark = computed<Bookmark[]>(() => data.value ? parseBookmark(data.value) : [])
+const bookmark = ref<Bookmark[]>([])
+
+onNuxtReady(() => {
+  bookmark.value = data.value ? parseBookmark(data.value) : []
+})
 </script>
 
 <template>
