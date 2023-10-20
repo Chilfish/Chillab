@@ -78,7 +78,7 @@ export function parseBookmark(content: string): Bookmark[] {
 
       if (name) {
         lastFolder = folder
-        lastName = name.innerText
+        lastName = name.textContent || ''
 
         // it's a folder
         parser(folder.querySelectorAll('dt'))
@@ -86,7 +86,7 @@ export function parseBookmark(content: string): Bookmark[] {
         // During recursive backtracking
         // if it's root bookmark, then insert it
         if (isRoot) {
-          insert(`${name.innerText || 'default'} - root`, rootEl(rootBook))
+          insert(`${name.textContent || 'default'} - root`, rootEl(rootBook))
           isRoot = false
         }
       }

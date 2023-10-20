@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import type { Post } from '~/types'
 
-const posts: Post[] = Array.from({ length: 6 }, (_, i) => (
-  {
-    id: `${i}`,
-    title: `Red Post ${i}`,
-    content: `guys, who know that... @momo_${(i + 1) % 6} is so cool`,
-    owner: `momo_${i}`,
-    likes: 10 * i,
-    photos: ['/kurarin.webp'],
-  }),
-)
+const posts: Post[] = Array.from({ length: 6 }, (_, i) => ({
+  id: `${i}`,
+  title: `Red Post ${i}`,
+  content: `guys, who know that... @momo_${(i + 1) % 6} is so cool`,
+  owner: `momo_${i}`,
+  likes: 10 * i,
+  photos: ['/kurarin.webp'],
+}))
 
 const showModal = ref(false)
 const showedPost = ref<Post | null>(null)
