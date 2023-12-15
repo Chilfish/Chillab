@@ -30,7 +30,8 @@ useHead({
 </script>
 
 <template>
-  <div class="center-col h-full justify-start">
+  <VitePwaManifest />
+  <div class="h-full center-col justify-start">
     <NuxtLayout>
       <!-- <ClientOnly> -->
       <NuxtPage />

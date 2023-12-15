@@ -26,9 +26,11 @@ onNuxtReady(() => {
 <template>
   <main class="w-full">
     <common-header />
-    <bookmark-item
-      class="p-8 mt-8"
-      :bookmarks="bookmark"
-    />
+    <client-only>
+      <bookmark-item
+        class="mt-8 p-8"
+        :bookmarks="bookmark"
+      />
+    </client-only>
   </main>
 </template>

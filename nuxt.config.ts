@@ -1,6 +1,9 @@
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
 
+import { pwa } from './src/config/pwa'
+import { appDescription } from './src/constants/index'
+
 const {
   API_URL = 'http://localhost:3003',
 } = process.env
@@ -8,7 +11,6 @@ const {
 export default defineNuxtConfig({
   srcDir: 'src/',
   serverDir: './server',
-
   dir: {
     public: '../public',
   },
@@ -21,6 +23,8 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     '@element-plus/nuxt',
+    '@nuxtjs/color-mode',
+    '@vite-pwa/nuxt',
   ],
 
   imports: {
@@ -35,6 +39,15 @@ export default defineNuxtConfig({
     '@cp': fileURLToPath(new URL('./src/components', import.meta.url)),
   },
 
+  experimental: {
+    // when using generate, payload js assets included in sw precache manifest
+    // but missing on offline, disabling extraction it until fixed
+    payloadExtraction: false,
+    inlineSSRStyles: false,
+    renderJsonPayloads: true,
+    typedPages: true,
+  },
+
   devtools: {
     enabled: true,
   },
@@ -43,6 +56,10 @@ export default defineNuxtConfig({
     '@unocss/reset/tailwind.css',
     '~/assets/style.scss',
   ],
+
+  colorMode: {
+    classSuffix: '',
+  },
 
   typescript: {
     strict: true,
@@ -65,6 +82,11 @@ export default defineNuxtConfig({
         target: 'esnext',
       },
     },
+    prerender: {
+      crawlLinks: false,
+      // routes: ['/'],
+      // ignore: ['/hi'],
+    },
   },
 
   build: {
@@ -79,8 +101,11 @@ export default defineNuxtConfig({
       ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'description', content: appDescription },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       ],
     },
   },
+
+  pwa,
 })
