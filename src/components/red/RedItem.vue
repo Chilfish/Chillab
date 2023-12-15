@@ -4,6 +4,10 @@ import type { Post } from '~/types'
 defineProps<{
   post: Post
 }>()
+
+const emits = defineEmits<{
+  'showDetail': []
+}>()
 </script>
 
 <template>
@@ -15,7 +19,7 @@ defineProps<{
       hover="scale-102 brightness-80"
       loading="lazy"
       :src="post.photos[0]"
-      @click="$emit('showDetail')"
+      @click="emits('showDetail')"
     >
 
     <p>{{ post.title }}</p>

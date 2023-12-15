@@ -4,6 +4,10 @@ import type { Post } from '~/types'
 defineProps<{
   post: Post
 }>()
+
+const emits = defineEmits<{
+  'update:show': [show: boolean]
+}>()
 </script>
 
 <template>
@@ -15,7 +19,7 @@ defineProps<{
     <button
       class="h-8 w-8 rounded-full p-2"
       bg="light dark:dark"
-      @click="$emit('update:show')"
+      @click="emits('update:show', false)"
     >
       <span class="i-tabler-arrow-left icon" />
     </button>

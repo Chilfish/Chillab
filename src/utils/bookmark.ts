@@ -95,8 +95,8 @@ export function parseBookmark(content: string): Bookmark[] {
       // its previous element is a folder that has name
       // also, it's not the root bookmark that has been inserted
       if (!name
-         && rootBook !== folder
-         && folder.previousElementSibling?.querySelector('h3')
+        && rootBook !== folder
+        && folder.previousElementSibling?.querySelector('h3')
       ) {
         isRoot = true
         rootBook = folder

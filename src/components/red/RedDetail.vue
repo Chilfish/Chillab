@@ -4,6 +4,10 @@ import type { Post } from '~/types'
 defineProps<{
   post: Post
 }>()
+
+const emits = defineEmits<{
+  'update:show': [show: boolean]
+}>()
 </script>
 
 <template>
@@ -17,7 +21,7 @@ defineProps<{
       class="flex!"
       md="hidden!"
       :post="post"
-      @update:show="$emit('update:show')"
+      @update:show="emits('update:show', false)"
     />
 
     <div
@@ -40,7 +44,7 @@ defineProps<{
         class="hidden!"
         md="flex! rounded-tl-0"
         :post="post"
-        @update:show="$emit('update:show', false)"
+        @update:show="emits('update:show', false)"
       />
 
       <div class="h-full flex flex-col gap-3 overflow-y-auto p-4">

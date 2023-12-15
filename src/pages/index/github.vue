@@ -25,11 +25,9 @@ onMounted(async () => {
       >
     </label>
 
-    <Transition
-      v-show="githubStore.repoStatus !== 'success'"
-      name="fade"
-    >
+    <Transition name="fade">
       <p
+        v-show="githubStore.repoStatus !== 'success'"
         class="select-none font-bold"
         text="center 2xl gray-5"
       >

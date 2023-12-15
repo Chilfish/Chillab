@@ -4,7 +4,7 @@ This is a simple project where plays my random whims about Vue and the Web, and 
 
 Preview at https://vue.chilfish.vercel.app
 
-Chill out and enjoy the ride :sunglasses:. I'm try to use effective and efficient tools to improve the DX & UX. If you have any suggestions, please let me know. :pray: 
+Chill out and enjoy the ride :sunglasses:. I'm try to use effective and efficient tools to improve the DX & UX. If you have any suggestions, please let me know. :pray:
 
 - [x] Typescript + Vue3 + Vite4 + eslint
 - [x] UnoCSS and its icons
