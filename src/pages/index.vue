@@ -3,7 +3,7 @@ definePageMeta({
   redirect: '/test',
 })
 
-const links = ['/github', '/bookmark', '/titan', '/todo', '/auth', '/admin', '/test', '/red']
+const links = ['/github', '/bookmark', '/titan', '/todo', '/auth', '/test', '/red']
 
 const route = useRoute()
 const path = computed(() => route.path)
@@ -41,7 +41,7 @@ watchEffect(() => {
 <template>
   <common-header />
 
-  <ul class="relative mt-10 p-4 flex flex-wrap select-none gap-2">
+  <ul class="relative mt-10 flex flex-wrap select-none gap-2 p-4">
     <li
       v-for="link in links"
       :key="link"
@@ -60,14 +60,14 @@ watchEffect(() => {
     </li>
 
     <span
-      class="absolute top-0 left-0 h-[1px] w-6 rounded bg-blue transition-transform duration-300 ease-in-out"
+      class="absolute left-0 top-0 h-[1px] w-6 rounded bg-blue transition-transform duration-300 ease-in-out"
       :style="{
         transform: `translate3D(${curOffset},0)`,
       }"
     />
   </ul>
 
-  <div class="h-full w-full p-4 flex justify-center">
+  <div class="h-full w-full flex justify-center p-4">
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component" :key="route.path" />

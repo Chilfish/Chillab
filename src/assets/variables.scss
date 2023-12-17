@@ -14,9 +14,6 @@ $themes: (
     warning-1: #fdf6ec,
     error: #f56c6c,
     error-1: #fef0f0,
-
-    admin-menu-bg: #f0f2f5,
-    admin-menu-text: #606266,
   ),
 
   dark: (
@@ -34,10 +31,7 @@ $themes: (
     warning-1: #292218,
     error: #f56c6c,
     error-1: #2b1d1d,
-
-    admin-menu-bg: #1f1f1f,
-    admin-menu-text: #b3b3b3,
-  )
+  ),
 );
 
 @mixin themed() {

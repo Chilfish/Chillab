@@ -22,7 +22,6 @@ export default defineNuxtConfig({
     '@vue-macros/nuxt',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    '@element-plus/nuxt',
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
   ],
@@ -71,7 +70,6 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { redirect: '/test' },
-    '/admin': { redirect: '/admin/dashboard' },
     '/todo': { ssr: false }, // persist pinia in localStorage
     '/api/p/**': { proxy: `${API_URL}/**` },
   },
@@ -81,11 +79,6 @@ export default defineNuxtConfig({
       options: {
         target: 'esnext',
       },
-    },
-    prerender: {
-      crawlLinks: false,
-      // routes: ['/'],
-      // ignore: ['/hi'],
     },
   },
 
