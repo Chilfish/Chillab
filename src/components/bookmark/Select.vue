@@ -19,15 +19,16 @@ useDropZone(dropZoneRef, onDrop)
 </script>
 
 <template>
-  <main class="center-col w-full gap-4 px-4">
+  <main class="w-full center-col gap-4 px-4">
     <div
       ref="dropZoneRef"
-      class="center-col border border-dashed gap-2 p-4 font-bold rounded-md text-gray-400 cursor-pointer  transition-colors duration-300 ease-in-out select-none text-5"
+      class="m-4 h-42 w-100 center-col cursor-pointer select-none gap-2 border-2 rounded-md border-dashed p-4 font-bold trans-all"
+      text="6 gray-400"
       hover="text-gray-600 border-gray-400 shadow-lg"
       @click="inputRef?.click()"
     >
-      <p>  Drop your bookmarks.html here </p>
-      <p>  or </p>
+      <p> Drop your Image here </p>
+      <p> or </p>
       <p> Click to select </p>
 
       <input

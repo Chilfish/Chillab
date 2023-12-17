@@ -6,6 +6,7 @@ import Toast from '@cpa/Toast'
 import SortArr from '@cp/SortArr.vue'
 import Swiper from '@cp/common/Swiper.vue'
 import Bookmarks from '@cp/bookmark/Select.vue'
+import ImgContrast from '@cp/ImgContrast.vue'
 
 const { percentY, percentX } = useScrollRatio()
 
@@ -24,6 +25,10 @@ const cp = {
     },
   }),
   Bookmarks,
+  ImgContrast: h(ImgContrast, {
+    before: '/ender-girls.jpg',
+    after: '/ender-bocchi.webp',
+  }),
 }
 
 type Cp = keyof typeof cp

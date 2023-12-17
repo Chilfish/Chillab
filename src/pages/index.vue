@@ -60,7 +60,7 @@ watchEffect(() => {
     </li>
 
     <span
-      class="absolute left-0 top-0 h-[1px] w-6 rounded bg-blue transition-transform duration-300 ease-in-out"
+      class="absolute left-0 top-0 h-[1px] w-6 rounded bg-blue trans-all"
       :style="{
         transform: `translate3D(${curOffset},0)`,
       }"

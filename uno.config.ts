@@ -4,7 +4,6 @@ import {
   presetIcons,
   presetTypography,
   presetUno,
-  presetWebFonts,
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
@@ -28,6 +27,9 @@ export default defineConfig({
     {
       input: 'rounded bg-light py-2 px-4 dark:bg-dark',
     },
+    {
+      'trans-all': 'transition-all duration-300 ease-in-out',
+    },
   ],
   presets: [
     presetUno(),
@@ -36,13 +38,6 @@ export default defineConfig({
       scale: 1.2,
     }),
     presetTypography(),
-    presetWebFonts({
-      fonts: {
-        sans: 'DM Sans',
-        serif: 'DM Serif Display',
-        mono: 'DM Mono',
-      },
-    }),
   ],
   transformers: [
     transformerDirectives(),
