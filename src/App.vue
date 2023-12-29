@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const title = 'Chill Vue Lab'
-const img = 'https://chilfish.top/avatar.png'
+const img = '/avatar.png'
 
 useSeoMeta({
   ogUrl: useRoute().fullPath,
@@ -23,7 +23,7 @@ useHead({
     {
       rel: 'icon',
       type: 'image/png',
-      href: '/favicon.png',
+      href: '/favicon.ico',
     },
   ],
 })

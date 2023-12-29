@@ -42,7 +42,7 @@ export default defineNuxtConfig({
     // when using generate, payload js assets included in sw precache manifest
     // but missing on offline, disabling extraction it until fixed
     payloadExtraction: false,
-    inlineSSRStyles: false,
+    // inlineSSRStyles: false,
     renderJsonPayloads: true,
     typedPages: true,
   },
@@ -101,4 +101,10 @@ export default defineNuxtConfig({
   },
 
   pwa,
+
+  // fix: unocss + nuxt3.9 error
+  // @see at https://github.com/unocss/unocss/issues/3468#issuecomment-1871049463
+  features: {
+    inlineStyles: false,
+  },
 })
