@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+import { appName } from '~/constants'
 </script>
 
 <template>
@@ -13,7 +13,7 @@
       to="purple-500 dark:purple-600"
     >
       <router-link to="/">
-        Chill Vue Labs
+        {{ appName }}
       </router-link>
     </h2>
 

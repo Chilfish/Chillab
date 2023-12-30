@@ -1,18 +1,19 @@
 <script setup lang="ts">
-const title = 'Chill Vue Lab'
+import { appDescription, appName } from '~/constants'
+
 const img = '/avatar.png'
 
 useSeoMeta({
   ogUrl: useRoute().fullPath,
-  twitterTitle: title,
-  twitterDescription: title,
+  twitterTitle: appName,
+  twitterDescription: appDescription,
   twitterImage: img,
   twitterCard: 'summary_large_image',
   ogImage: img,
-  ogDescription: title,
-  ogTitle: title,
-  title,
-  description: title,
+  ogDescription: appDescription,
+  ogTitle: appName,
+  title: appName,
+  description: appName,
 })
 
 useHead({

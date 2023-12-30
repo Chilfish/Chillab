@@ -2,6 +2,7 @@
 import { UseDraggable } from '@vueuse/components'
 import { h } from 'vue'
 import { Bookmark, ImgContrast, SortArr, Swiper } from '#components'
+import { appName } from '~/constants'
 
 const { percentY, percentX } = useScrollRatio()
 
@@ -41,7 +42,7 @@ const hash = computed(() => {
     _hash = 'SortArr'
 
   useHead({
-    title: `${_hash} | Chill Vue`,
+    title: `${_hash} | ${appName}`,
   })
 
   return _hash
