@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { UseDraggable } from '@vueuse/components'
 import { h } from 'vue'
-
-import { Toast } from '@cp'
 import { Bookmark, ImgContrast, SortArr, Swiper } from '#components'
 
 const { percentY, percentX } = useScrollRatio()
@@ -26,9 +24,14 @@ const cp = {
     before: '/ender-girls.jpg',
     after: '/ender-bocchi.webp',
   }),
-}
+} as const
 
 type Cp = keyof typeof cp
+
+const tabLinks = Object.keys(cp).map(name => ({
+  name,
+  path: `#${name}`,
+}))
 
 const router = useRouter()
 const hash = computed(() => {
@@ -52,24 +55,7 @@ const curCp = computed<Cp>({
 
 <template>
   <main class="w-full flex flex-col items-center gap-4 p-4 pt-0">
-    <div class="btns center gap-4">
-      <button
-        class="w-16"
-        @click="Toast({ type: 'success', message: `Success Toast` })"
-      >
-        toast
-      </button>
-
-      <select v-model="curCp" class="btn">
-        <option
-          v-for="key in Object.keys(cp)"
-          :key="key"
-          :value="key"
-        >
-          {{ key }}
-        </option>
-      </select>
-    </div>
+    <Tabs :links="tabLinks" type="hash" />
 
     <KeepAlive>
       <Transition name="fade">
