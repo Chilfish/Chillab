@@ -3,7 +3,7 @@ import { UseDraggable } from '@vueuse/components'
 import { h } from 'vue'
 
 import { Toast } from '@cp'
-import { Select as Bookmarks, ImgContrast, SortArr, Swiper } from '#components'
+import { Bookmark, ImgContrast, SortArr, Swiper } from '#components'
 
 const { percentY, percentX } = useScrollRatio()
 
@@ -21,7 +21,7 @@ const cp = {
       imgPreviewUrl.value = src
     },
   }),
-  Bookmarks,
+  Bookmark,
   ImgContrast: h(ImgContrast, {
     before: '/ender-girls.jpg',
     after: '/ender-bocchi.webp',

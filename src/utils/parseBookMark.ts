@@ -1,4 +1,5 @@
 import type { Bookmark } from '~/types'
+import { Toast } from '~/components'
 
 /**
  * Parse bookmark content to json
@@ -6,6 +7,16 @@ import type { Bookmark } from '~/types'
  * @returns the json array bookmarks
  */
 export function parseBookmark(content: string): Bookmark[] {
+  try {
+    return _parseBookmark(content)
+  }
+  catch (e) {
+    Toast({ message: 'Parse bookmark failed', type: 'error' })
+    return []
+  }
+}
+
+function _parseBookmark(content: string): Bookmark[] {
   if (!content.trim() || !document)
     return []
 
