@@ -28,7 +28,7 @@ const emits = defineEmits<{
 </template>
 
 <style>
-.modal-enter-from ,
+.modal-enter-from,
 .modal-leave-to {
   opacity: 0;
 }

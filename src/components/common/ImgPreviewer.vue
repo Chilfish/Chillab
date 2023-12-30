@@ -37,7 +37,7 @@ watch(imgPreviewUrl, (v) => {
 </script>
 
 <template>
-  <common-modal
+  <modal
     v-if="show"
     id="imgPreviewer"
     :show="show"
@@ -107,5 +107,5 @@ watch(imgPreviewUrl, (v) => {
         :style="`transform: scale(${scaleRatio});`"
       >
     </UseDraggable>
-  </common-modal>
+  </modal>
 </template>

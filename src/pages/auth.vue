@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useFetch } from '@vueuse/core'
-import Toast from '@cpa/Toast'
+import { Toast } from '@cp'
 import type { AuthReturn } from '~/types'
 
 const cookies = useCookie('token', {
@@ -48,7 +48,7 @@ async function login() {
 
 <template>
   <main
-    class="md:w-100 h-80 m-auto center-col gap-6 rounded-3 p-10 px-12"
+    class="m-auto h-80 center-col gap-6 rounded-3 p-10 px-12 md:w-100"
     bg="light-8 dark:dark-8"
   >
     <h2>Login to /Todo</h2>

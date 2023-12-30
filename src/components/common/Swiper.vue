@@ -86,7 +86,7 @@ onUnmounted(stop)
     </div>
 
     <ClientOnly>
-      <common-img-previewer />
+      <img-previewer />
     </ClientOnly>
   </main>
 </template>

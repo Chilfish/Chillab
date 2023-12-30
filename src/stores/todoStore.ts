@@ -1,6 +1,6 @@
 import { createFetch } from '@vueuse/core'
 import { defineStore } from 'pinia'
-import Toast from '@cpa/Toast'
+import { Toast } from '@cp'
 import type { Todo, TodoReturn } from '~/types'
 
 export const useTodoStore = defineStore('todo', () => {

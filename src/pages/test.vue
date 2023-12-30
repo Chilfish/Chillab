@@ -2,11 +2,8 @@
 import { UseDraggable } from '@vueuse/components'
 import { h } from 'vue'
 
-import Toast from '@cpa/Toast'
-import SortArr from '@cp/SortArr.vue'
-import Swiper from '@cp/common/Swiper.vue'
-import Bookmarks from '@cp/bookmark/Select.vue'
-import ImgContrast from '@cp/ImgContrast.vue'
+import { Toast } from '@cp'
+import { Select as Bookmarks, ImgContrast, SortArr, Swiper } from '#components'
 
 const { percentY, percentX } = useScrollRatio()
 

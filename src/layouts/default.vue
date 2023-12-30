@@ -1,8 +1,4 @@
 <script setup lang="ts">
-definePageMeta({
-  redirect: '/test',
-})
-
 const links = ['/github', '/bookmark', '/titan', '/todo', '/auth', '/test', '/red']
 
 const route = useRoute()
@@ -39,7 +35,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <common-header />
+  <Main-Header />
 
   <ul class="relative mt-10 flex flex-wrap select-none gap-2 p-4">
     <li

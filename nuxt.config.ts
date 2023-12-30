@@ -33,8 +33,15 @@ export default defineNuxtConfig({
     ],
   },
 
+  components: [
+    {
+      path: '~/components',
+      ignore: ['Plugins/**/*'],
+      pathPrefix: false,
+    },
+  ],
+
   alias: {
-    '@cpa': fileURLToPath(new URL('./src/components_app', import.meta.url)),
     '@cp': fileURLToPath(new URL('./src/components', import.meta.url)),
   },
 

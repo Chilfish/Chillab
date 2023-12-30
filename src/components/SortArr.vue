@@ -2,6 +2,10 @@
 import { shuffle as _shuffle } from 'lodash-es'
 import { useSortable } from '@vueuse/integrations/useSortable'
 
+defineOptions({
+  name: 'SortArr',
+})
+
 const getInitialItems = () => [1, 2, 3, 4, 5]
 const items = ref(getInitialItems())
 const id = ref(items.value.length + 1)

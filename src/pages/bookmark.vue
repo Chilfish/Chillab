@@ -18,19 +18,16 @@ const { data } = useFetch<string>('https://chilf.vercel.app/bookmarks.html')
 
 const bookmark = ref<Bookmark[]>([])
 
-onNuxtReady(() => {
+onMounted(() => {
   bookmark.value = data.value ? parseBookmark(data.value) : []
 })
 </script>
 
 <template>
   <main class="w-full">
-    <common-header />
-    <client-only>
-      <bookmark-item
-        class="mt-8 p-8"
-        :bookmarks="bookmark"
-      />
-    </client-only>
+    <bookmark-item
+      class="p-8"
+      :bookmarks="bookmark"
+    />
   </main>
 </template>

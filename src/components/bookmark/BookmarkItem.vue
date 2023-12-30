@@ -17,10 +17,10 @@ function toggleAll() {
 </script>
 
 <template>
-  <div class="center-col w-full items-start gap-4 relative">
+  <div class="relative w-full center-col items-start gap-4">
     <button
       v-show="bookmarks.length > 0"
-      class="btn fixed bottom-4 right-4 z-10"
+      class="fixed bottom-4 right-4 z-10 btn"
       @click="toggleAll"
     >
       {{ isOpen ? 'Open' : 'Close' }} All
@@ -50,7 +50,7 @@ function toggleAll() {
             rel="noopener noreferrer"
           >
             <img
-              class="w-5 h-5 rounded"
+              class="h-5 w-5 rounded"
               :src="bookmark.icon || '/placeholder.png'"
             >
             {{ bookmark.title }}
