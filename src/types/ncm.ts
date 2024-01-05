@@ -25,8 +25,7 @@ export interface Song {
   dt: number
 }
 
-export interface SongRecord {
+export interface SongRecord extends Song {
   playCount: number
   score: number
-  song: Song
 }

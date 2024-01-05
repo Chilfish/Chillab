@@ -1,4 +1,4 @@
-import type { SongRecord } from '~/types'
+import type { Song } from '~/types'
 
 const {
   NCM_API = '',
@@ -7,7 +7,11 @@ const {
 } = process.env
 
 interface NCMResponse {
-  weekData: SongRecord[]
+  weekData: {
+    playCount: number
+    score: number
+    song: Song
+  }[]
   code: number
 }
 
@@ -18,6 +22,9 @@ export default defineEventHandler(async (_event) => {
       cookie: NCM_COOKIE,
     },
   }).catch(err => console.error(err))
+
+  if (!data)
+    return []
 
   return (data as NCMResponse)?.weekData?.map(({ song, playCount, score }) => ({
     id: song.id,
@@ -31,5 +38,5 @@ export default defineEventHandler(async (_event) => {
     dt: song.dt,
     playCount,
     score,
-  }))
+  }))?.slice(0, 20)
 })
