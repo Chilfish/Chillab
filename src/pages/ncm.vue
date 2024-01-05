@@ -4,15 +4,15 @@ import type { SongRecord } from '~/types'
 const { weekRecords, allRecords } = storeToRefs(otherStore())
 
 onNuxtReady(async () => {
-  if (weekRecords.value)
-    return
+  // make sure the data is fetched by once
 
   const [weekData, allData] = await Promise.all([
-    useFetch<SongRecord[]>('/api/ncm', { query: { type: 'weekData' } }),
-    useFetch<SongRecord[]>('/api/ncm', { query: { type: 'allData' } }),
+    !weekRecords.value && useFetch<SongRecord[]>('/api/ncm', { query: { type: 'weekData' } }),
+    !allRecords.value && useFetch<SongRecord[]>('/api/ncm', { query: { type: 'allData' } }),
   ])
-  weekRecords.value = weekData.data.value
-  allRecords.value = allData.data.value
+
+  weekData && (weekRecords.value = weekData.data.value)
+  allData && (allRecords.value = allData.data.value)
 })
 </script>
 
