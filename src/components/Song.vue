@@ -21,8 +21,7 @@ const index = computed(() => {
 
 <template>
   <nuxt-link
-    class="h-16 w-90vw flex items-center justify-between rounded-md px-4 py-2"
-    text="sm gray-500 dark:light-4"
+    class="gray-5 dark:light-4 h-18 w-90vw flex items-center justify-between rounded-md px-4 py-2 text-sm"
     sm="w-40rem"
     :bg="`${idx % 2 === 0 ? '#f7f9fc dark:dark-6' : '#f7f5f7 dark:dark-7'}`"
     :to="`https://music.163.com/song?id=${record.id}`"
@@ -48,7 +47,7 @@ const index = computed(() => {
           {{ record.name }}
         </div>
 
-        <div class="truncate">
+        <div class="mt-2 truncate">
           {{ record.ar.map((a) => a.name).join(', ') }}
           -
           {{ record.al.name }}

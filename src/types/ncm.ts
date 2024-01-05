@@ -29,3 +29,5 @@ export interface SongRecord extends Song {
   playCount: number
   score: number
 }
+
+export type NCMType = 'weekData' | 'allData'

@@ -32,6 +32,7 @@ useHead({
 
 <template>
   <VitePwaManifest />
+  <NuxtLoadingIndicator />
   <div class="h-full center-col justify-start">
     <NuxtLayout>
       <NuxtPage />

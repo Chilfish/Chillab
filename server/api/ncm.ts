@@ -1,4 +1,4 @@
-import type { Song } from '~/types'
+import type { NCMType, Song } from '~/types'
 
 const {
   NCM_API = '',
@@ -6,27 +6,20 @@ const {
   NCM_UID = 1,
 } = process.env
 
+interface Data {
+  playCount: number
+  score: number
+  song: Song
+}
+
 interface NCMResponse {
-  weekData: {
-    playCount: number
-    score: number
-    song: Song
-  }[]
+  weekData: Data[]
+  allData: Data[]
   code: number
 }
 
-export default defineEventHandler(async (_event) => {
-  const data = await $fetch(`${NCM_API}/user/record?uid=${NCM_UID}&type=1`, {
-    method: 'POST',
-    body: {
-      cookie: NCM_COOKIE,
-    },
-  }).catch(err => console.error(err))
-
-  if (!data)
-    return []
-
-  return (data as NCMResponse)?.weekData?.map(({ song, playCount, score }) => ({
+function parser(data: NCMResponse, type: NCMType) {
+  return data[type].map(({ song, playCount, score }) => ({
     id: song.id,
     name: song.name,
     ar: song.ar.map(({ id, name }) => ({ id, name })),
@@ -38,5 +31,22 @@ export default defineEventHandler(async (_event) => {
     dt: song.dt,
     playCount,
     score,
-  }))?.slice(0, 20)
+  })).slice(0, 20)
+}
+
+export default defineEventHandler(async (event) => {
+  const { type } = getQuery(event) as { type: NCMType }
+  const url = `${NCM_API}/user/record?uid=${NCM_UID}&type=${type === 'weekData' ? 1 : 0}`
+
+  const data = await $fetch<NCMResponse>(url, {
+    method: 'POST',
+    body: {
+      cookie: NCM_COOKIE,
+    },
+  }).catch(err => console.error(err))
+
+  if (!data)
+    return []
+
+  return parser(data, type)
 })
