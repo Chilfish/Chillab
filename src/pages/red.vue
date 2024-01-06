@@ -15,20 +15,19 @@ const showedPost = ref<Post | null>(null)
 const postsEl = ref<HTMLElement[] | null>(null)
 
 // const isLocked = useScrollLock(window)
-const router = useRouter()
 const route = useRoute()
 
 function showDetail(id: string) {
   const post = posts.find(e => e.id === id)
   if (!post) {
-    router.push({ path: '/red' })
+    navigateTo({ path: '/red' })
     return
   }
 
   showModal.value = true
   // isLocked.value = true
   showedPost.value = post
-  router.push({ query: { id: post.id } })
+  navigateTo({ query: { id: post.id } })
 
   const clickedPost = postsEl.value!.find(
     el => el.dataset.id === post.id,
@@ -51,7 +50,7 @@ function closeDetail() {
   showModal.value = false
   // isLocked.value = false
   if (route.query.id)
-    router.push({ path: '/red' })
+    navigateTo({ path: '/red' })
 }
 
 // handle back action on mobile

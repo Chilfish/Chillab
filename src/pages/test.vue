@@ -34,7 +34,6 @@ const tabLinks = Object.keys(cp).map(name => ({
   path: `#${name}`,
 }))
 
-const router = useRouter()
 const hash = computed(() => {
   let _hash = useRoute().hash.slice(1) as Cp
 
@@ -50,7 +49,7 @@ const hash = computed(() => {
 
 const curCp = computed<Cp>({
   get() { return hash.value },
-  set(v) { router.replace({ hash: `#${v}` }) },
+  set(v) { navigateTo({ hash: `#${v}` }) },
 })
 </script>
 

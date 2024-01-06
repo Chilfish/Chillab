@@ -78,7 +78,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { redirect: '/test' },
     '/todo': { ssr: false }, // persist pinia in localStorage
-    '/api/p/**': { proxy: `${API_URL}/**` },
+    '/proxy/**': { proxy: `${API_URL}/**` },
   },
 
   nitro: {

@@ -3,12 +3,13 @@ import { defineStore } from 'pinia'
 import { Toast } from '@cp'
 import type { Todo, TodoReturn } from '~/types'
 
+// maybe bad
 export const useTodoStore = defineStore('todo', () => {
   const newTodo = ref('')
   const todoArr = ref([] as Todo[])
 
   const fetcher = createFetch({
-    baseUrl: '/api/p/todo',
+    baseUrl: '/proxy/todo',
     options: {
       beforeFetch({ options }) {
         const token = useUserStore().user.token
@@ -20,6 +21,8 @@ export const useTodoStore = defineStore('todo', () => {
 
       onFetchError(ctx) {
         const err = ctx.data || ctx.error
+
+        console.error(err)
 
         Toast({
           message: `${err?.statusCode} ${err?.message}`,
@@ -35,6 +38,9 @@ export const useTodoStore = defineStore('todo', () => {
   })
 
   async function fetchTodos() {
+    if (todoArr.value.length > 0)
+      return
+
     const { data, error } = await fetcher('/').json<TodoReturn>()
     if (!error.value && data.value)
       todoArr.value = data.value.data as Todo[]

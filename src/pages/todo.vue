@@ -5,7 +5,8 @@ definePageMeta({
   middleware: ['auth'],
 })
 
-const todoStore = useTodoStore()
+const { completedTodos, newTodo, uncompletedTodos } = storeToRefs(useTodoStore())
+const { fetchTodos, toggleTodoItem, deleteTodoItem, addTodo } = useTodoStore()
 
 const {
   define: TemplateTodoList,
@@ -13,7 +14,7 @@ const {
 } = createReusableTemplate<{ list: Todo[] }>()
 
 onMounted(async () => {
-  await todoStore.fetchTodos()
+  await fetchTodos()
 })
 </script>
 
@@ -22,7 +23,7 @@ onMounted(async () => {
     <!-- only one root element -->
     <TemplateTodoList v-slot="{ list }">
       <transition-group
-        :id="list === todoStore.completedTodos ? 'completed' : 'uncompleted'"
+        :id="list === completedTodos ? 'completed' : 'uncompleted'"
         tag="ul"
         name="fade"
         class="relative w-full center flex-col gap-2"
@@ -34,8 +35,8 @@ onMounted(async () => {
         >
           <todo-item
             :item="todo"
-            @toggle="todoStore.toggleTodoItem(todo)"
-            @delete="todoStore.deleteTodoItem(todo.id)"
+            @toggle="toggleTodoItem(todo)"
+            @delete="deleteTodoItem(todo.id)"
           />
         </li>
       </transition-group>
@@ -44,31 +45,31 @@ onMounted(async () => {
     <h2> Chill Todo List </h2>
     <label class="my-6 w-full flex">
       <input
-        v-model="todoStore.newTodo"
+        v-model="newTodo"
         type="text"
         placeholder="Add a new todo"
         class="mr-3 h-14 w-full rounded-3 bg-[--gray] p-3"
-        @keyup.enter="todoStore.addTodo"
+        @keyup.enter="addTodo"
       >
       <button
         class="h-14 w-18 rounded-3 btn"
-        @click="todoStore.addTodo"
+        @click="addTodo"
       >
         Add
       </button>
     </label>
 
-    <TodoList :list="todoStore.uncompletedTodos" />
+    <TodoList :list="uncompletedTodos" />
 
     <details
-      v-show="todoStore.completedTodos.length"
+      v-show="completedTodos.length"
       open
     >
       <summary class="mb-2 mt-4 cursor-pointer">
-        Completed {{ todoStore.completedTodos.length }}
+        Completed {{ completedTodos.length }}
       </summary>
 
-      <TodoList :list="todoStore.completedTodos" />
+      <TodoList :list="completedTodos" />
     </details>
   </main>
 </template>

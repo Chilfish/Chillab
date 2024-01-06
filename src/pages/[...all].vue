@@ -16,7 +16,7 @@ useHead({
 
       <button
         class="btn"
-        @click="$router.go(0)"
+        @click="navigateTo({ path: $route.fullPath })"
       >
         Refresh
       </button>

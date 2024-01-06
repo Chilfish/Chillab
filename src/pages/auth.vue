@@ -6,12 +6,12 @@ import type { AuthReturn } from '~/types'
 const cookies = useCookie('token', {
   expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
 })
-const router = useRouter()
+
 const route = useRoute()
 const userStore = useUserStore()
 
 const apiSuffix = ref('login')
-const apiURL = computed(() => `/api/p/auth/${apiSuffix.value}`)
+const apiURL = computed(() => `/proxy/auth/${apiSuffix.value}`)
 
 const { username, password } = toRefs(userStore.user)
 const disabled = computed(() => username.value === '' || password?.value === '')
@@ -25,7 +25,7 @@ async function login() {
       userStore.user = data.data
       userStore.user.token = data.token
 
-      router.push(route.query.redirect as string || '/todo')
+      navigateTo(route.query.redirect as string || '/todo')
       return ctx
     },
     onFetchError(ctx) {
