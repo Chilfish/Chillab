@@ -6,21 +6,32 @@ import { Toast } from '~/components'
  * @param content the raw bookmark content
  * @returns the json array bookmarks
  */
-export function parseBookmark(content: string): Bookmark[] {
-  try {
-    return _parseBookmark(content)
-  }
-  catch (e) {
-    Toast({ message: 'Parse bookmark failed', type: 'error' })
-    return []
-  }
+export function parseBookmark(content: string) {
+  return new Promise<Bookmark[]>((resolve) => {
+    try {
+      resolve(_parseBookmark(content))
+    }
+    catch (e) {
+      Toast({ message: 'Parse bookmark failed', type: 'error' })
+      resolve([])
+    }
+  })
 }
 
-function _parseBookmark(content: string): Bookmark[] {
-  if (!content.trim() || !document)
+async function _parseBookmark(content: string) {
+  if (!content.trim())
     return []
 
-  const div = document.createElement('div')
+  let doc = document
+
+  // 如果不在浏览器中
+  if (typeof doc === 'undefined') {
+    const { JSDOM } = await import('jsdom')
+    const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>')
+    doc = dom.window.document
+  }
+
+  const div = doc.createElement('div')
   div.innerHTML = content
 
   const root = div.querySelector('dl')!.childNodes as NodeListOf<HTMLElement>
@@ -69,7 +80,7 @@ function _parseBookmark(content: string): Bookmark[] {
 
   // get root bookmark element, then wrapped by div
   function rootEl(el: HTMLElement) {
-    const div = document.createElement('div')
+    const div = doc.createElement('div')
     const children = [...el.parentElement!.children]
 
     const idx = children.findIndex(e => e === el)

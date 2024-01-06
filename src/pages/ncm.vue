@@ -6,7 +6,7 @@ useSeoMeta({
   description: '我的网易云音乐数据，包括每周听歌排行榜、听歌总排行榜、听歌总时长、听歌总数等',
 })
 
-const { weekRecords, allRecords } = storeToRefs(otherStore())
+const { weekRecords, allRecords } = storeToRefs(useOtherStore())
 
 await callOnce(async () => {
   const [weekData, allData] = await Promise.all([

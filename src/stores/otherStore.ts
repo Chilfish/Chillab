@@ -1,11 +1,14 @@
-import type { SongRecord } from '~/types'
+import type { Bookmark, SongRecord } from '~/types'
 
-export const otherStore = defineStore('other', () => {
+export const useOtherStore = defineStore('other', () => {
   const weekRecords = ref<SongRecord[] | null>(null)
   const allRecords = ref<SongRecord[] | null>(null)
+
+  const bookmarks = ref<Bookmark[] | null>(null)
 
   return {
     weekRecords,
     allRecords,
+    bookmarks,
   }
 })

@@ -4,10 +4,10 @@ import type { Bookmark } from '~/types'
 const Selector = ref<any>(null)
 const bookmarks = ref([] as Bookmark[])
 
-watchEffect(() => {
+watchEffect(async () => {
   if (Selector.value === null)
     return
-  bookmarks.value = parseBookmark(Selector.value.fileText)
+  bookmarks.value = await parseBookmark(Selector.value.fileText)
 })
 </script>
 

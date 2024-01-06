@@ -87,14 +87,23 @@ export default defineNuxtConfig({
         target: 'esnext',
       },
     },
-    prerender: {
-      routes: ['/ncm'],
-      crawlLinks: false,
-    },
+    // prerender: {
+    //   routes: ['/ncm'],
+    //   crawlLinks: false,
+    // },
   },
 
   build: {
     transpile: ['rxjs'],
+  },
+
+  // 排除 jsdom 的依赖
+  vite: {
+    build: {
+      rollupOptions: {
+        external: ['jsdom'],
+      },
+    },
   },
 
   app: {

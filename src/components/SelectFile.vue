@@ -26,7 +26,7 @@ defineExpose({
 <template>
   <div
     ref="dropZoneRef"
-    class="m-4 w-100 w-50% center-col cursor-pointer select-none gap-2 border-2 rounded-md border-dashed p-4 font-bold trans-all sm:h-sm"
+    class="m-4 w-100 w-70% center-col cursor-pointer select-none gap-2 border-2 rounded-md border-dashed p-4 font-bold trans-all sm:h-sm"
     text="6 gray-400"
     hover="text-gray-600 border-gray-400 shadow-lg"
     @click="inputRef?.click()"

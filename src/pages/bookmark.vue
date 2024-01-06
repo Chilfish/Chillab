@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { Bookmark } from '~/types'
-
 const title = 'Chilfish\'s Bookmarks'
 const description = 'Chilfish\'s online bookmarks, you can find some useful websites here and parse your bookmarks at /test#Bookmarks.'
 
@@ -14,20 +12,29 @@ useSeoMeta({
   description,
 })
 
-const { data } = useFetch<string>('https://chilf.vercel.app/bookmarks.html')
+const { bookmarks } = storeToRefs(useOtherStore())
 
-const bookmark = ref<Bookmark[]>([])
-
-onMounted(() => {
-  bookmark.value = data.value ? parseBookmark(data.value) : []
+await callOnce(async () => {
+  if (!bookmarks.value) {
+    const { data } = await useFetch<string>('https://chilf.vercel.app/bookmarks.html')
+    bookmarks.value = data.value ? await parseBookmark(data.value) : null
+  }
 })
 </script>
 
 <template>
   <main class="w-full">
+    <div
+      v-if="!bookmarks"
+      class="text-center text-5 font-bold"
+    >
+      Loading
+    </div>
+
     <bookmark-item
+      v-else
       class="p-8"
-      :bookmarks="bookmark"
+      :bookmarks="bookmarks"
     />
   </main>
 </template>
