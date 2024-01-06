@@ -1,4 +1,5 @@
 export * from './ncm'
+export * from './util'
 
 export interface Todo {
   id: number

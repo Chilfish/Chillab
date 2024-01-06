@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import type { SongRecord } from '~/types'
 
+useSeoMeta({
+  title: '我的网易云音乐数据',
+  description: '我的网易云音乐数据，包括每周听歌排行榜、听歌总排行榜、听歌总时长、听歌总数等',
+})
+
 const { weekRecords, allRecords } = storeToRefs(otherStore())
 
-onNuxtReady(async () => {
-  // make sure the data is fetched by once
-
+await callOnce(async () => {
   const [weekData, allData] = await Promise.all([
     !weekRecords.value && useFetch<SongRecord[]>('/api/ncm', { query: { type: 'weekData' } }),
     !allRecords.value && useFetch<SongRecord[]>('/api/ncm', { query: { type: 'allData' } }),

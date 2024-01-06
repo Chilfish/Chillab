@@ -1,3 +1,5 @@
+import type { Immutable, Mutable } from '~/types'
+
 export const isClient = process.client
 export const isDev = process.env.NODE_ENV === 'development'
 
@@ -16,3 +18,11 @@ export function fmtNum(x: number | string) {
 }
 
 export const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+
+export function toMutable<T>(obj: T) {
+  return obj as Mutable<T>
+}
+
+export function toImmutable<T>(obj: T) {
+  return obj as Immutable<T>
+}

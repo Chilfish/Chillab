@@ -87,6 +87,10 @@ export default defineNuxtConfig({
         target: 'esnext',
       },
     },
+    prerender: {
+      routes: ['/ncm'],
+      crawlLinks: false,
+    },
   },
 
   build: {

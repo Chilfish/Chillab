@@ -1,3 +1,4 @@
+import { consola } from 'consola'
 import type { NCMType, Song } from '~/types'
 
 const {
@@ -39,11 +40,11 @@ export default defineEventHandler(async (event) => {
   const url = `${NCM_API}/user/record?uid=${NCM_UID}&type=${type === 'weekData' ? 1 : 0}`
 
   const data = await $fetch<NCMResponse>(url, {
-    method: 'POST',
-    body: {
-      cookie: NCM_COOKIE,
+    headers: {
+      Cookie: NCM_COOKIE,
     },
-  }).catch(err => console.error(err))
+  })
+    .catch(err => consola.error(err))
 
   if (!data)
     return []

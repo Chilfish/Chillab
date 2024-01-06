@@ -14,7 +14,7 @@ const pic = computed(() => {
 </script>
 
 <template>
-  <main class="center-col">
+  <section class="center-col">
     <header class="my-6 center gap-4">
       <div class="relative h-24 w-24 flex-shrink-0">
         <img
@@ -46,5 +46,5 @@ const pic = computed(() => {
       v-else
       class="i-tabler-loader"
     />
-  </main>
+  </section>
 </template>
