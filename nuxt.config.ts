@@ -104,6 +104,11 @@ export default defineNuxtConfig({
         external: ['jsdom'],
       },
     },
+    server: {
+      hmr: {
+        overlay: false,
+      },
+    },
   },
 
   app: {

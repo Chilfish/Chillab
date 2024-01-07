@@ -7,7 +7,7 @@ import type { GithubRepo, reqState } from '~/types'
 export const useGithubRepoStore = defineStore('githubRepo', () => {
   const inputValue = ref('')
 
-  const repos = ref([] as GithubRepo[])
+  const repos = shallowRef([] as GithubRepo[])
   const repoStatus = ref<reqState>('idle')
   const errorText = ref('')
 

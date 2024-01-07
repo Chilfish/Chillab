@@ -43,18 +43,20 @@ function toggleAll() {
           v-for="bookmark in folder.bookmarks"
           :key="bookmark.url"
         >
-          <a
-            :href="bookmark.url"
+          <NuxtLink
+            :to="bookmark.url"
+            :no-rel="true"
             class="center justify-start gap-4"
             target="_blank"
-            rel="noopener noreferrer"
           >
-            <img
+            <NuxtImg
+              placeholder="/placeholder.png"
+              loading="lazy"
               class="h-5 w-5 rounded"
               :src="bookmark.icon || '/placeholder.png'"
-            >
-            {{ bookmark.title }}
-          </a>
+            />
+            <span> {{ bookmark.title }} </span>
+          </NuxtLink>
         </li>
       </ul>
     </details>

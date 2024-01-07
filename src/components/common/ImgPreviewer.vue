@@ -96,7 +96,7 @@ watch(imgPreviewUrl, (v) => {
       class="absolute w-80%"
       :initial-value="{ x: pos.x, y: pos.y }"
     >
-      <img
+      <NuxtImg
         ref="imgRef"
         class="h-auto w-full rounded-2"
         bg="center cover"
@@ -105,7 +105,7 @@ watch(imgPreviewUrl, (v) => {
         :src="imgPreviewUrl"
         :alt="imgPreviewUrl"
         :style="`transform: scale(${scaleRatio});`"
-      >
+      />
     </UseDraggable>
   </modal>
 </template>

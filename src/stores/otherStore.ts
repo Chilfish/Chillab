@@ -1,10 +1,10 @@
 import type { Bookmark, SongRecord } from '~/types'
 
 export const useOtherStore = defineStore('other', () => {
-  const weekRecords = ref<SongRecord[] | null>(null)
-  const allRecords = ref<SongRecord[] | null>(null)
+  const weekRecords = shallowRef<SongRecord[] | null>(null)
+  const allRecords = shallowRef<SongRecord[] | null>(null)
 
-  const bookmarks = ref<Bookmark[] | null>(null)
+  const bookmarks = shallowRef<Bookmark[] | null>(null)
 
   return {
     weekRecords,

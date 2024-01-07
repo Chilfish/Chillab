@@ -24,10 +24,12 @@ const emits = defineEmits<{
       <span class="i-tabler-arrow-left icon" />
     </button>
 
-    <img
+    <NuxtImg
+      loading="lazy"
+      placeholder="/placeholder.png"
       class="h-10 w-10 rounded-full"
       src="/favicon.ico"
-    >
+    />
 
     <span>{{ post.owner }}</span>
 

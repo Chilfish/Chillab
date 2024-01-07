@@ -1,28 +1,28 @@
 <script setup lang="ts">
 import type { Todo } from '~/types'
 
-const {
-  item,
-} = defineProps<{
-  item: Todo
-}>()
-
 defineEmits<{
   toggle: [id: number]
   delete: [id: number]
 }>()
 
+const {
+  item,
+} = definePropsRefs<{
+  item: Todo
+}>()
+
 const isExpanded = ref(false)
 
 const contentStyle = computed(_ => ({
-  'decoration-line-through': item.completed,
+  'decoration-line-through': item.value.completed,
   'truncate': !isExpanded.value,
 }))
 </script>
 
 <template>
   <div
-    class="h-14 center gap-2 cursor-pointer rounded-3 px-4 py-2"
+    class="h-14 center cursor-pointer gap-2 rounded-3 px-4 py-2"
     bg="light-4 dark:dark-3"
     :class="{ 'h-auto': isExpanded }"
   >

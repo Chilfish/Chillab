@@ -1,20 +1,26 @@
 <script setup lang="ts">
-const {
-  imgs = [],
-  autoPlay = true,
-  duration = 5000,
-} = defineProps<{
-  imgs: string[]
-  autoPlay?: boolean
-  duration?: number
-}>()
+import { withDefaults } from 'unplugin-vue-macros/macros' assert { type: 'macro' }
 
 defineEmits<{
   click?: [src: string]
 }>()
 
+const {
+  imgs,
+  autoPlay,
+  duration,
+} = withDefaults(definePropsRefs<{
+  imgs: string[]
+  autoPlay?: boolean
+  duration?: number
+}>(), {
+  autoPlay: true,
+  duration: 3000,
+})
+
 const curImg = ref(0)
 const offsetX = computed(() => `translateX(-${curImg.value * 100}%)`)
+const len = computed(() => imgs.value.length)
 
 let timer: NodeJS.Timeout
 
@@ -25,18 +31,18 @@ function stop() {
 function start() {
   stop()
   timer = setInterval(() => {
-    if (autoPlay)
-      curImg.value = (curImg.value + 1) % imgs.length
-  }, duration)
+    if (autoPlay.value)
+      curImg.value = (curImg.value + 1) % len.value
+  }, duration.value)
 }
 
 function next() {
-  curImg.value = (curImg.value + 1) % imgs.length
+  curImg.value = (curImg.value + 1) % len.value
   start()
 }
 
 function prev() {
-  curImg.value = (curImg.value - 1 + imgs.length) % imgs.length
+  curImg.value = (curImg.value - 1 + len.value) % len.value
   start()
 }
 

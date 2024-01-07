@@ -32,10 +32,12 @@ const index = computed(() => {
       <div> {{ index }} </div>
 
       <div class="h-12 w-12 flex-shrink-0">
-        <img
-          :src="record.al.picUrl"
+        <NuxtImg
+          loading="lazy"
+          placeholder="/placeholder.png"
           class="h-12 w-12 rounded-md"
-        >
+          :src="record.al.picUrl"
+        />
       </div>
 
       <div

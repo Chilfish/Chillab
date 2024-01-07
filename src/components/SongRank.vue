@@ -17,10 +17,12 @@ const pic = computed(() => {
   <section class="center-col">
     <header class="my-6 center gap-4">
       <div class="relative h-24 w-24 flex-shrink-0">
-        <img
+        <NuxtImg
+          loading="lazy"
+          placeholder="/placeholder.png"
           :src="pic"
           class="h-24 w-24 rounded-md"
-        >
+        />
         <div class="absolute top-0 h-full w-full rounded-md bg-[#24242480]">
           <div class="i-tabler-heart h-full w-full text-light" />
         </div>

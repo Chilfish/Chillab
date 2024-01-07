@@ -2,7 +2,7 @@
 import type { Bookmark } from '~/types'
 
 const Selector = ref<any>(null)
-const bookmarks = ref([] as Bookmark[])
+const bookmarks = shallowRef([] as Bookmark[])
 
 watchEffect(async () => {
   if (Selector.value === null)

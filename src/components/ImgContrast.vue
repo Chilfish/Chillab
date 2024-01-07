@@ -14,15 +14,19 @@ const postion = computed(() => `${contrast.value * 100}%`)
     class="relative grid w-70% flex-1 place-content-center overflow-hidden"
   >
     <div class="relative h-sm rounded-xl bg-dark-7">
-      <img
-        :src="before"
+      <NuxtImg
+        loading="lazy"
+        placeholder="/placeholder.png"
         class="relative z-100 h-full rounded-xl object-cover object-left"
+        :src="before"
         :style="{ width: postion }"
-      >
-      <img
+      />
+      <NuxtImg
+        loading="lazy"
+        placeholder="/placeholder.png"
         :src="after"
         class="absolute inset-0 z-10 h-full w-full rounded-xl object-cover object-left"
-      >
+      />
 
       <div id="slider">
         <div

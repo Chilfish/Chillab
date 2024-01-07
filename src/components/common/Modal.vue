@@ -1,9 +1,5 @@
 <script setup lang="ts">
-// thanks to https://vue-macros.sxzz.moe/features/reactivity-transform.html#reactive-props-destructure
-// the props are now reactive
-const {
-  show = false,
-} = defineProps<{
+defineProps<{
   show: boolean
 }>()
 
