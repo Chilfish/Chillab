@@ -27,7 +27,7 @@ function parser(data: NCMResponse, type: NCMType) {
     al: {
       id: song.al.id,
       name: song.al.name,
-      picUrl: song.al.picUrl,
+      picUrl: `${song.al.picUrl.replace('http://', 'https://')}?param=128y128`,
     },
     dt: song.dt,
     playCount,

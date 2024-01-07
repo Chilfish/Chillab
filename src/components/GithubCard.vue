@@ -19,7 +19,8 @@ defineProps<{
       :href="item.owner.html_url"
       :no-rel="true"
       target="_blank"
-      class="display-ruby h-20 w-0 transition-width sm:w-20"
+      sm="w-20 h-20"
+      class="block h-0 w-0 flex-shrink-0 transition-width"
     >
       <NuxtImg
         loading="lazy"
