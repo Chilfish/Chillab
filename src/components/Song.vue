@@ -21,45 +21,57 @@ const index = computed(() => {
 
 <template>
   <nuxt-link
-    class="gray-5 dark:light-4 h-18 w-90vw flex items-center justify-between rounded-md px-4 py-2 text-sm"
-    sm="w-40rem"
-    :bg="`${idx % 2 === 0 ? '#f7f9fc dark:dark-6' : '#f7f5f7 dark:dark-7'}`"
+    class="song"
+    :bg="`${idx % 2 === 0 ? '$white-1 dark:dark-6' : '$white-2 dark:dark-7'}`"
+    :hover-bg="`${idx % 2 !== 0 ? '$white-2 dark:dark-7' : '$white-1 dark:dark-6'}`"
     :to="`https://music.163.com/song?id=${record.id}`"
+    :no-prefetch="true"
+    :no-rel="true"
     target="_blank"
     referrerpolicy="no-referrer"
   >
-    <div class="flex items-center space-x-3">
-      <div> {{ index }} </div>
+    <div> {{ index }} </div>
 
-      <div class="h-12 w-12 flex-shrink-0">
-        <NuxtImg
-          loading="lazy"
-          placeholder="/placeholder.png"
-          class="h-12 w-12 rounded-md"
-          :src="record.al.picUrl"
-        />
+    <div class="h-12 w-12 flex-shrink-0">
+      <NuxtImg
+        loading="lazy"
+        placeholder="/placeholder.png"
+        class="h-12 w-12 rounded-md"
+        :alt="record.name"
+        :src="record.al.picUrl"
+      />
+    </div>
+
+    <div
+      sm="max-w-24rem"
+      md="max-w-26rem"
+      class="max-w-45% flex flex-col gap-1"
+    >
+      <div text="4 gray-9 dark:light-7 truncate">
+        {{ record.name }}
       </div>
 
-      <div
-        sm="max-w-24rem"
-        md="max-w-26rem"
-        class="max-w-8rem flex flex-col gap-1"
-      >
-        <div text="4 gray-9 dark:light-7 truncate">
-          {{ record.name }}
-        </div>
-
-        <div class="mt-2 truncate">
-          {{ record.ar.map((a) => a.name).join(', ') }}
-          -
-          {{ record.al.name }}
-        </div>
+      <div class="mt-2 truncate">
+        {{ record.ar.map((a) => a.name).join(', ') }}
+        -
+        {{ record.al.name }}
       </div>
     </div>
 
-    <div class="flex items-center">
-      <div> {{ durantion }} • </div>
-      <div> {{ record.playCount }} 次 </div>
+    <div class="ml-auto min-w-20 flex items-center justify-end">
+      <div> {{ durantion }}  </div>
+      <div v-if="record.playCount">
+        •{{ record.playCount }} 次
+      </div>
     </div>
   </nuxt-link>
 </template>
+
+<style scoped>
+.song {
+  --white-1: #f7f9fc;
+  --white-2: #f7f5f7;
+
+  --uno: text-gray-5 dark:text-light-4 h-18 w-90vw flex items-center justify-between gap-3 rounded-md px-3 py-2 text-3 sm:w-40rem sm:text-3.5;
+}
+</style>

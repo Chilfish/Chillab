@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { UseDraggable } from '@vueuse/components'
 import { h } from 'vue'
-import { Bookmark, ImgContrast, SortArr, Swiper } from '#components'
+import { Bookmark, ImgContrast, ImgTheme, SortArr, Swiper } from '#components'
 import { appName } from '~/constants'
 
 const { percentY, percentX } = useScrollRatio()
@@ -24,6 +24,9 @@ const cp = {
   ImgContrast: h(ImgContrast, {
     before: '/ender-girls.jpg',
     after: '/ender-bocchi.webp',
+  }),
+  ImgTheme: h(ImgTheme, {
+    src: '/ender-girls.jpg',
   }),
 } as const
 

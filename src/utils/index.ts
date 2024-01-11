@@ -1,3 +1,5 @@
+import { FastAverageColor } from 'fast-average-color'
+import { consola } from 'consola'
 import type { Immutable, Mutable } from '~/types'
 
 export const isClient = process.client
@@ -25,4 +27,31 @@ export function toMutable<T>(obj: T) {
 
 export function toImmutable<T>(obj: T) {
   return obj as Immutable<T>
+}
+
+const fac = new FastAverageColor()
+export async function imgTheme(src: string) {
+  try {
+    const { hex, isLight, value } = await fac.getColorAsync(src, {
+      algorithm: 'dominant',
+      ignoredColor: [
+        [255, 255, 255, 255, 5], // white
+        [0, 0, 0, 255, 5], // black
+      ],
+    })
+
+    return {
+      hex,
+      rgb: value.slice(0, 3),
+      text: isLight ? '#000' : '#fff',
+    }
+  }
+  catch (e) {
+    consola.log('imgTheme error', e)
+    return {
+      hex: '#fff',
+      rgb: [255, 255, 255],
+      text: '#000',
+    }
+  }
 }

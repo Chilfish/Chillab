@@ -10,6 +10,7 @@ export default antfu(
       'no-console': 'off',
       'vue/no-multiple-template-root': 'off',
       'node/prefer-global/process': 'off',
+      'format/prettier': 'off',
     },
   },
   {
