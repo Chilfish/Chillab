@@ -1,4 +1,4 @@
-import { FastAverageColor } from 'fast-average-color'
+import { FastAverageColor, type FastAverageColorIgnoredColor } from 'fast-average-color'
 import { consola } from 'consola'
 import type { Immutable, Mutable } from '~/types'
 
@@ -30,14 +30,17 @@ export function toImmutable<T>(obj: T) {
 }
 
 const fac = new FastAverageColor()
-export async function imgTheme(src: string) {
+export async function imgTheme(src: string, ignore?: FastAverageColorIgnoredColor) {
   try {
+    const ignoredColor = [
+      [255, 255, 255, 255, 5], // white
+      [0, 0, 0, 255, 5], // black
+      ...(ignore || []),
+    ] as FastAverageColorIgnoredColor
+
     const { hex, isLight, value } = await fac.getColorAsync(src, {
-      algorithm: 'dominant',
-      ignoredColor: [
-        [255, 255, 255, 255, 5], // white
-        [0, 0, 0, 255, 5], // black
-      ],
+      algorithm: 'sqrt',
+      ignoredColor,
     })
 
     return {
