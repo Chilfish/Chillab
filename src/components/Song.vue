@@ -22,8 +22,8 @@ const index = computed(() => {
 <template>
   <nuxt-link
     class="song"
-    :bg="`${idx % 2 === 0 ? '$white-1 dark:dark-6' : '$white-2 dark:dark-7'}`"
-    :hover-bg="`${idx % 2 !== 0 ? '$white-2 dark:dark-7' : '$white-1 dark:dark-6'}`"
+    :bg="`${idx % 2 === 0 ? '#f7f9fc dark:dark-6' : '#f7f5f7 dark:dark-7'}`"
+    :hover-bg="`${idx % 2 !== 0 ? '#f7f5f7 dark:dark-7' : '#f7f9fc dark:dark-6'}`"
     :to="`https://music.163.com/song?id=${record.id}`"
     :no-prefetch="true"
     :no-rel="true"
@@ -42,11 +42,7 @@ const index = computed(() => {
       />
     </div>
 
-    <div
-      sm="max-w-24rem"
-      md="max-w-26rem"
-      class="max-w-45% flex flex-col gap-1"
-    >
+    <div class="flex flex-col gap-1">
       <div text="4 gray-9 dark:light-7 truncate">
         {{ record.name }}
       </div>
@@ -58,7 +54,7 @@ const index = computed(() => {
       </div>
     </div>
 
-    <div class="ml-auto min-w-20 flex items-center justify-end">
+    <div class="ml-auto min-w-fit flex items-center justify-end">
       <div> {{ durantion }}  </div>
       <div v-if="record.playCount">
         •{{ record.playCount }} 次

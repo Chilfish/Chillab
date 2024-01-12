@@ -1,6 +1,10 @@
 @use "./variables" as *;
 @use "./transitions";
 
+* {
+  min-width: 0; // CSS haker
+}
+
 html,
 div,
 span,
