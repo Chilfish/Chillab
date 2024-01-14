@@ -59,10 +59,17 @@ async function _parseBookmark(content: string) {
     const _bookmarks = dts.querySelectorAll<HTMLAnchorElement>('A')
 
     return [..._bookmarks].map((bookmark) => {
+      const url = bookmark.href
+      let icon = bookmark.attributes.getNamedItem('ICON')?.value
+        ?? bookmark.attributes.getNamedItem('ICON_URI')?.value ?? ''
+
+      if (url.includes('zhihu.com'))
+        icon = 'https://www.zhihu.com/favicon.ico'
+
       return {
         title: bookmark.textContent || '',
         url: bookmark.href,
-        icon: bookmark.attributes.getNamedItem('ICON')?.value,
+        icon,
       }
     })
   }

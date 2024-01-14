@@ -2,8 +2,10 @@
 const title = 'Chilfish\'s Bookmarks'
 const description = 'Chilfish\'s online bookmarks, you can find some useful websites here and parse your bookmarks at /test#Bookmarks.'
 
+const host = useRequestURL().origin
+
 useSeoMeta({
-  ogUrl: '/bookmark',
+  ogUrl: `${host}/bookmark`,
   twitterTitle: title,
   twitterDescription: description,
   ogTitle: title,

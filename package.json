@@ -25,6 +25,8 @@
     "@ngify/http": "^1.6.0",
     "@nuxt/image": "^1.1.0",
     "@nuxtjs/color-mode": "^3.3.2",
+    "@nuxtjs/robots": "^3.0.0",
+    "@nuxtjs/sitemap": "^5.0.2",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
     "@pinia/nuxt": "^0.5.1",
     "@types/jsdom": "^21.1.6",

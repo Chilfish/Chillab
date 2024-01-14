@@ -16,13 +16,15 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    '@unocss/nuxt',
     '@nuxt/image',
-    '@vueuse/nuxt',
-    '@vue-macros/nuxt',
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/color-mode',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    '@nuxtjs/color-mode',
+    '@unocss/nuxt',
+    '@vueuse/nuxt',
+    '@vue-macros/nuxt',
     '@vite-pwa/nuxt',
   ],
 
