@@ -89,10 +89,10 @@ export default defineNuxtConfig({
         target: 'esnext',
       },
     },
-    // prerender: {
-    //   routes: ['/ncm'],
-    //   crawlLinks: false,
-    // },
+    prerender: {
+      routes: ['/bookmark'],
+      crawlLinks: false,
+    },
   },
 
   build: {

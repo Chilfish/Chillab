@@ -14,29 +14,16 @@ useSeoMeta({
   description,
 })
 
-const { bookmarks } = storeToRefs(useOtherStore())
+const otherStore = useOtherStore()
 
-await callOnce(async () => {
-  if (!bookmarks.value) {
-    const { data } = await useFetch<string>('https://chilf.vercel.app/bookmarks.html')
-    bookmarks.value = data.value ? await parseBookmark(data.value) : null
-  }
-})
+await callOnce(otherStore.fetchBookmarks)
 </script>
 
 <template>
   <main class="w-full">
-    <div
-      v-if="!bookmarks"
-      class="text-center text-5 font-bold"
-    >
-      Loading
-    </div>
-
     <bookmark-item
-      v-else
       class="p-8"
-      :bookmarks="bookmarks"
+      :bookmarks="otherStore.bookmarks"
     />
   </main>
 </template>

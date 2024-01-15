@@ -50,7 +50,7 @@ export default defineEventHandler(async (event) => {
     return parser(data as unknown as NCMResponse, type)
   }
   catch (error) {
-    console.error(error)
+    console.error(`/api/ncm: ${error}`)
     return []
   }
 })

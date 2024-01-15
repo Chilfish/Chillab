@@ -2,7 +2,7 @@
 import type { NCMType, SongRecord } from '~/types'
 
 const { records: recordsRef } = definePropsRefs<{
-  records: SongRecord[] | null
+  records: SongRecord[]
   type: NCMType
 }>()
 
@@ -33,7 +33,6 @@ const pic = computed(() => {
     </header>
 
     <div
-      v-if="records"
       class="flex flex-col gap-2"
     >
       <Song
@@ -43,10 +42,5 @@ const pic = computed(() => {
         :idx="idx"
       />
     </div>
-
-    <div
-      v-else
-      class="i-tabler-loader"
-    />
   </section>
 </template>
