@@ -1,7 +1,6 @@
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
 
-import { pwa } from './src/config/pwa'
 import { appDescription } from './src/constants/index'
 
 const {
@@ -65,9 +64,9 @@ export default defineNuxtConfig({
     '~/assets/style.scss',
   ],
 
-  colorMode: {
-    classSuffix: '',
-  },
+  // colorMode: {
+  //   classSuffix: '',
+  // },
 
   typescript: {
     strict: true,
@@ -127,7 +126,7 @@ export default defineNuxtConfig({
     },
   },
 
-  pwa,
+  // pwa,
 
   // fix: unocss + nuxt3.9 error
   // @see at https://github.com/unocss/unocss/issues/3468#issuecomment-1871049463

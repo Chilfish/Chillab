@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { UseDraggable } from '@vueuse/components'
 import { h } from 'vue'
-import { Bookmark, ImgContrast, ImgTheme, SortArr, Swiper } from '#components'
+import { Bookmark, ImgContrast, ImgTheme, Swiper } from '#components'
 import { appName } from '~/constants'
 
 const { percentY, percentX } = useScrollRatio()
 
 const cp = {
-  SortArr,
   Swiper: h(Swiper, {
     imgs: [
       '/ender-girls.jpg',
@@ -41,7 +40,7 @@ const hash = computed(() => {
   let _hash = useRoute().hash.slice(1) as Cp
 
   if (!_hash)
-    _hash = 'SortArr'
+    _hash = 'Swiper'
 
   useHead({
     title: `${_hash} | ${appName}`,
