@@ -29,15 +29,24 @@ useHead({
     },
   ],
 })
+
+const route = useRoute()
+
+const { client } = route.meta as {
+  client: boolean
+}
 </script>
 
 <template>
-  <VitePwaManifest />
-
   <div class="h-full center-col justify-start">
     <NuxtLayout>
       <NuxtLoadingIndicator />
-      <NuxtPage />
+
+      <ClientOnly v-if="client">
+        <NuxtPage />
+      </ClientOnly>
+
+      <NuxtPage v-else />
     </NuxtLayout>
   </div>
 </template>

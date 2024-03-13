@@ -1,11 +1,8 @@
 <script setup lang="ts">
-defineProps<{
-  show: boolean
-}>()
-
-const emits = defineEmits<{
-  'update:show': [show: boolean]
-}>()
+const show = defineModel({
+  type: Boolean,
+  default: false,
+})
 </script>
 
 <template>
@@ -15,7 +12,7 @@ const emits = defineEmits<{
         v-show="show"
         v-bind="$attrs"
         class="fixed inset-0 z-9999 h-full w-full center bg-black bg-opacity-50 backdrop-blur-4 transition-all duration-300"
-        @click.self="() => emits('update:show', false)"
+        @click.self="() => (show = false)"
       >
         <slot />
       </div>

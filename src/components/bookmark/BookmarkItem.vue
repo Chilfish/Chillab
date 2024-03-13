@@ -52,7 +52,8 @@ function toggleAll() {
             <NuxtImg
               placeholder="/placeholder.png"
               loading="lazy"
-              class="h-5 w-5 rounded"
+              class="h-5 min-w-5 w-5 rounded"
+              referrerpolicy="no-referrer"
               :src="bookmark.icon || '/placeholder.png'"
             />
             <span> {{ bookmark.title }} </span>

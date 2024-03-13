@@ -16,6 +16,7 @@ watchEffect(async () => {
     <SelectFile
       ref="Selector"
       hint="bookmarks.html"
+      accept=".html"
     />
 
     <h1 v-show="bookmarks.length">

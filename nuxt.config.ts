@@ -16,7 +16,7 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxt/image',
-    '@nuxtjs/robots',
+    '@nuxtjs/seo',
     '@nuxtjs/sitemap',
     '@nuxtjs/color-mode',
     '@pinia/nuxt',
@@ -24,7 +24,6 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     '@vueuse/nuxt',
     '@vue-macros/nuxt',
-    '@vite-pwa/nuxt',
   ],
 
   imports: {
@@ -126,7 +125,10 @@ export default defineNuxtConfig({
     },
   },
 
-  // pwa,
+  site: {
+    url: 'https://lab.chilfish.top',
+    defaultLocale: 'zh-cn',
+  },
 
   // fix: unocss + nuxt3.9 error
   // @see at https://github.com/unocss/unocss/issues/3468#issuecomment-1871049463

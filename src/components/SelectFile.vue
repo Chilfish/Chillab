@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   hint: string
+  accept?: string
 }>()
 
 const dropZoneRef = ref<HTMLDivElement>()
@@ -26,8 +27,8 @@ defineExpose({
 <template>
   <div
     ref="dropZoneRef"
-    class="m-4 w-100 w-70% center-col cursor-pointer select-none gap-2 border-2 rounded-md border-dashed p-4 font-bold trans-all sm:h-sm"
-    text="6 gray-400"
+    class="m-4 center-col cursor-pointer select-none gap-2 border-2 rounded-md border-dashed p-4 font-bold trans-all sm:h-sm"
+    text="6 gray-400 center"
     hover="text-gray-600 border-gray-400 shadow-lg"
     @click="inputRef?.click()"
   >
@@ -39,7 +40,7 @@ defineExpose({
       ref="inputRef"
       type="file"
       class="hidden"
-      accept="text/*"
+      :accept="accept || 'text/*'"
       @change="(e) => onDrop((e.target as HTMLInputElement).files)"
     >
   </div>
