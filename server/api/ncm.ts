@@ -1,4 +1,4 @@
-import { consola } from 'consola'
+import { ofetch } from 'ofetch'
 import type { NCMType, Song } from '~/types'
 
 const {
@@ -38,13 +38,14 @@ function parser(data: NCMResponse, type: NCMType) {
 async function fetchMusic(type: NCMType) {
   const url = `${NCM_API}/user/record?uid=${NCM_UID}&type=${type === 'weekData' ? 1 : 0}`
 
-  const data = await fetch(url, {
+  const { data } = await ofetch<{ data: NCMResponse }>(url, {
     headers: {
-      Cookie: NCM_COOKIE,
+      'Cookie': NCM_COOKIE,
+      'Cache-Control': 's-max-age=86400, stale-while-revalidate=30', // 缓存一天
+      'CDN-Cache-Control': 'max-age=86400',
+      'Vercel-CDN-Cache-Control': 'max-age=86400',
     },
   })
-    .then(res => res.json())
-    .catch(err => consola.error(err))
 
   if (!data)
     return []

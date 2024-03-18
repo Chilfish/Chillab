@@ -1,11 +1,5 @@
-import process from 'node:process'
 import { fileURLToPath } from 'node:url'
-
 import { appDescription } from './src/constants/index'
-
-const {
-  API_URL = 'http://localhost:3003',
-} = process.env
 
 export default defineNuxtConfig({
   srcDir: 'src/',
@@ -29,7 +23,6 @@ export default defineNuxtConfig({
   imports: {
     dirs: [
       'stores',
-      'server/utils',
     ],
   },
 
@@ -77,8 +70,6 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { redirect: '/test' },
-    '/todo': { ssr: false }, // persist pinia in localStorage
-    '/proxy/**': { proxy: `${API_URL}/**` },
   },
 
   nitro: {
