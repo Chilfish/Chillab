@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const links = ['/bookmark', '/titan', '/test', '/red', '/ncm']
+const links = ['/bookmark', '/test', '/red', '/ncm']
 
 const route = useRoute()
 const path = computed(() => route.path)

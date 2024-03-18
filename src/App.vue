@@ -2,7 +2,7 @@
 import { appDescription, appName } from '~/constants'
 
 const host = useRequestURL().origin
-const img = `${host}/avatar.png`
+const img = `${host}/favicon.ico`
 
 useSeoMeta({
   ogUrl: host,

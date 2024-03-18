@@ -8,7 +8,7 @@ const { records: recordsRef } = definePropsRefs<{
 
 const pic = computed(() => {
   if (!recordsRef.value)
-    return '/avatar.png'
+    return '/placeholder.png'
   return recordsRef.value[0]?.al.picUrl
 })
 </script>

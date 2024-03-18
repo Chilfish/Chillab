@@ -14,7 +14,6 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@nuxtjs/color-mode',
     '@pinia/nuxt',
-    '@pinia-plugin-persistedstate/nuxt',
     '@unocss/nuxt',
     '@vueuse/nuxt',
     '@vue-macros/nuxt',
@@ -100,6 +99,10 @@ export default defineNuxtConfig({
         overlay: false,
       },
     },
+  },
+
+  webpack: {
+    analyze: false,
   },
 
   app: {
