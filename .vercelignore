@@ -1,0 +1,17 @@
+.github
+.husky
+.vscode
+dist
+node_modules
+scripts
+CHANGELOG.md
+README.md
+
+*.log
+.output
+.nuxt
+.idea
+.vercel
+eslint.config.ts
+LICENSE
+.editorconfig

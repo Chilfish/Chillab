@@ -1,5 +1,5 @@
 {
-  "name": "vite-vue",
+  "name": "chillab",
   "type": "module",
   "version": "0.1.0",
   "private": true,
@@ -20,33 +20,35 @@
     "postinstall": "nuxi prepare",
     "prepare": "husky install"
   },
-  "devDependencies": {
-    "@antfu/eslint-config": "2.6.1",
-    "@iconify-json/tabler": "^1.1.108",
+  "dependencies": {
+    "@iconify-json/tabler": "^1.1.109",
     "@nuxt/image": "^1.4.0",
-    "@nuxtjs/color-mode": "^3.3.2",
-    "@nuxtjs/seo": "2.0.0-rc.9",
+    "@nuxtjs/color-mode": "^3.3.3",
+    "@nuxtjs/seo": "2.0.0-rc.10",
     "@nuxtjs/sitemap": "^5.1.2",
     "@pinia/nuxt": "^0.5.1",
-    "@types/jsdom": "^21.1.6",
-    "@types/node": "^20.11.28",
-    "@unocss/eslint-config": "^0.58.6",
     "@unocss/nuxt": "^0.58.6",
-    "@vue-macros/nuxt": "^1.9.21",
+    "@vue-macros/nuxt": "^1.9.26",
     "@vueuse/components": "^10.9.0",
     "@vueuse/core": "^10.9.0",
     "@vueuse/nuxt": "^10.9.0",
-    "eslint": "npm:eslint-ts-patch@8.56.0-0",
-    "eslint-plugin-format": "^0.1.0",
-    "eslint-ts-patch": "8.56.0-0",
     "fast-average-color": "^9.4.0",
-    "husky": "^9.0.11",
     "jsdom": "^24.0.0",
-    "lint-staged": "^15.2.2",
-    "nuxt": "3.10.3",
+    "nuxt": "^3.11.1",
     "pinia": "^2.1.7",
-    "sass": "^1.72.0",
-    "typescript": "^5.4.2"
+    "sass": "^1.72.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "2.9.0",
+    "@types/jsdom": "^21.1.6",
+    "@types/node": "^20.11.30",
+    "@unocss/eslint-config": "^0.58.6",
+    "eslint": "npm:eslint-ts-patch@8.57.0-0",
+    "eslint-plugin-format": "^0.1.0",
+    "eslint-ts-patch": "8.57.0-0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "typescript": "^5.4.3"
   },
   "lint-staged": {
     "*": "eslint --fix"
