@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@8.15.5",
+  "packageManager": "pnpm@9.0.2",
   "author": {
     "name": "Chilfish",
     "email": "chill4fish@gmail.com"
@@ -17,38 +17,41 @@
     "start:generate": "npx serve .output/public",
     "lint": "eslint .",
     "typecheck": "nuxi typecheck",
-    "postinstall": "nuxi prepare",
-    "prepare": "husky install"
+    "prepare": "nuxi prepare",
+    "postinstall": "simple-git-hooks"
   },
   "dependencies": {
-    "@iconify-json/tabler": "^1.1.109",
-    "@nuxt/image": "^1.4.0",
-    "@nuxtjs/color-mode": "^3.3.3",
+    "@iconify-json/tabler": "^1.1.110",
+    "@nuxt/image": "^1.5.0",
+    "@nuxtjs/color-mode": "^3.4.0",
     "@nuxtjs/seo": "2.0.0-rc.10",
-    "@nuxtjs/sitemap": "^5.1.2",
+    "@nuxtjs/sitemap": "^5.1.4",
     "@pinia/nuxt": "^0.5.1",
-    "@unocss/nuxt": "^0.58.6",
-    "@vue-macros/nuxt": "^1.9.26",
+    "@unocss/nuxt": "^0.59.3",
+    "@vue-macros/nuxt": "^1.9.30",
     "@vueuse/components": "^10.9.0",
     "@vueuse/core": "^10.9.0",
     "@vueuse/nuxt": "^10.9.0",
     "fast-average-color": "^9.4.0",
     "jsdom": "^24.0.0",
-    "nuxt": "^3.11.1",
+    "nuxt": "^3.11.2",
     "pinia": "^2.1.7",
-    "sass": "^1.72.0"
+    "sass": "^1.75.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "2.9.0",
     "@types/jsdom": "^21.1.6",
-    "@types/node": "^20.11.30",
-    "@unocss/eslint-config": "^0.58.6",
+    "@types/node": "^20.12.7",
+    "@unocss/eslint-config": "^0.59.3",
     "eslint": "npm:eslint-ts-patch@8.57.0-0",
-    "eslint-plugin-format": "^0.1.0",
+    "eslint-plugin-format": "^0.1.1",
     "eslint-ts-patch": "8.57.0-0",
-    "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
-    "typescript": "^5.4.3"
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.4.5"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
     "*": "eslint --fix"
