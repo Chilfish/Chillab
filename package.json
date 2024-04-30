@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@9.0.2",
+  "packageManager": "pnpm@9.0.6+sha256.0624e30eff866cdeb363b15061bdb7fd9425b17bc1bb42c22f5f4efdea21f6b3",
   "author": {
     "name": "Chilfish",
     "email": "chill4fish@gmail.com"
@@ -22,12 +22,12 @@
   },
   "dependencies": {
     "@iconify-json/tabler": "^1.1.110",
-    "@nuxt/image": "^1.5.0",
-    "@nuxtjs/color-mode": "^3.4.0",
+    "@nuxt/image": "^1.6.0",
+    "@nuxtjs/color-mode": "^3.4.1",
     "@nuxtjs/seo": "2.0.0-rc.10",
     "@nuxtjs/sitemap": "^5.1.4",
     "@pinia/nuxt": "^0.5.1",
-    "@unocss/nuxt": "^0.59.3",
+    "@unocss/nuxt": "^0.59.4",
     "@vue-macros/nuxt": "^1.9.30",
     "@vueuse/components": "^10.9.0",
     "@vueuse/core": "^10.9.0",
@@ -42,11 +42,12 @@
     "@antfu/eslint-config": "2.9.0",
     "@types/jsdom": "^21.1.6",
     "@types/node": "^20.12.7",
-    "@unocss/eslint-config": "^0.59.3",
+    "@unocss/eslint-config": "^0.59.4",
     "eslint": "npm:eslint-ts-patch@8.57.0-0",
     "eslint-plugin-format": "^0.1.1",
     "eslint-ts-patch": "8.57.0-0",
     "lint-staged": "^15.2.2",
+    "pnpm": "^9.0.6",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.4.5"
   },
