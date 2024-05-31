@@ -1,11 +1,6 @@
 import { fileURLToPath } from 'node:url'
 import { appDescription } from './src/constants/index'
 
-const {
-  NCM_API = '',
-  NCM_UID = '1',
-} = process.env
-
 export default defineNuxtConfig({
   srcDir: 'src/',
   serverDir: './server',
@@ -55,11 +50,6 @@ export default defineNuxtConfig({
     enabled: true,
   },
 
-  appConfig: {
-    NCM_API,
-    NCM_UID,
-  },
-
   css: [
     '@unocss/reset/tailwind.css',
     '~/assets/style.scss',
@@ -77,6 +67,9 @@ export default defineNuxtConfig({
       options: {
         target: 'esnext',
       },
+    },
+    prerender: {
+      crawlLinks: false,
     },
   },
 

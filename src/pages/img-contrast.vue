@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const before = '/ender-girls.jpg'
-const after = '/ender-bocchi.jpg'
+const after = '/ender-bocchi.webp'
 
 const contrast = ref(0.5)
 

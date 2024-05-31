@@ -40,7 +40,6 @@
     "@types/node": "^20.12.13",
     "@unocss/eslint-config": "^0.60.3",
     "eslint-plugin-format": "^0.1.1",
-    "eslint-ts-patch": "^9.2.0-6",
     "lint-staged": "^15.2.5",
     "pnpm": "^9.1.4",
     "simple-git-hooks": "^2.11.1",

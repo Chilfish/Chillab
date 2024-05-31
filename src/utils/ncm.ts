@@ -1,10 +1,5 @@
 import type { NCMType, Song, SongRecord } from '~/types'
 
-const {
-  NCM_API = '',
-  NCM_UID = '1',
-} = useAppConfig()
-
 interface Data {
   playCount: number
   score: number
@@ -35,9 +30,9 @@ function parser(data: NCMResponse, type: NCMType): SongRecord[] {
 }
 
 export async function fetchMusic(type: NCMType) {
-  const url = `${NCM_API}/user/record?uid=${NCM_UID}&type=${type === 'weekData' ? 1 : 0}`
+  const url = `https://ncmm.chilfish.top/user/record?uid=1533509979&type=${type === 'weekData' ? 1 : 0}`
 
-  const { data } = await useFetch<{ data: NCMResponse }>(url, {
+  const { data } = await $fetch<{ data: NCMResponse }>(url, {
     headers: {
       'Cache-Control': 's-max-age=86400, stale-while-revalidate=30', // 缓存一天
       'CDN-Cache-Control': 'max-age=86400',
@@ -45,8 +40,8 @@ export async function fetchMusic(type: NCMType) {
     },
   })
 
-  if (!data.value)
+  if (!data)
     return []
 
-  return parser(data.value.data, type)
+  return parser(data, type)
 }
