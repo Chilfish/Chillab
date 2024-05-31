@@ -1,4 +1,5 @@
 import type { Bookmark, SongRecord } from '~/types'
+import { fetchMusic } from '~/utils/ncm'
 
 export const useOtherStore = defineStore('other', () => {
   const weekRecords = shallowRef<SongRecord[]>([])
@@ -8,8 +9,8 @@ export const useOtherStore = defineStore('other', () => {
 
   async function fetchRecords() {
     const [weekData, allData] = await Promise.all([
-      $fetch<SongRecord[]>('/api/ncm', { query: { type: 'weekData' } }),
-      $fetch<SongRecord[]>('/api/ncm', { query: { type: 'allData' } }),
+      fetchMusic('weekData'),
+      fetchMusic('allData'),
     ]).catch((err) => {
       console.error(`fetchRecords: ${err}`)
       return [[], []]

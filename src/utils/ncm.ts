@@ -1,11 +1,9 @@
-import { ofetch } from 'ofetch'
-import type { NCMType, Song } from '~/types'
+import type { NCMType, Song, SongRecord } from '~/types'
 
 const {
   NCM_API = '',
-  NCM_COOKIE = '',
-  NCM_UID = 1,
-} = import.meta.env
+  NCM_UID = '1',
+} = useAppConfig()
 
 interface Data {
   playCount: number
@@ -19,7 +17,7 @@ interface NCMResponse {
   code: number
 }
 
-function parser(data: NCMResponse, type: NCMType) {
+function parser(data: NCMResponse, type: NCMType): SongRecord[] {
   return data[type].map(({ song, playCount, score }) => ({
     id: song.id,
     name: song.name,
@@ -32,28 +30,23 @@ function parser(data: NCMResponse, type: NCMType) {
     dt: song.dt,
     playCount,
     score,
-  })).slice(0, 20)
+  }))
+    .slice(0, 20)
 }
 
-async function fetchMusic(type: NCMType) {
+export async function fetchMusic(type: NCMType) {
   const url = `${NCM_API}/user/record?uid=${NCM_UID}&type=${type === 'weekData' ? 1 : 0}`
 
-  const { data } = await ofetch<{ data: NCMResponse }>(url, {
+  const { data } = await useFetch<{ data: NCMResponse }>(url, {
     headers: {
-      'Cookie': NCM_COOKIE,
       'Cache-Control': 's-max-age=86400, stale-while-revalidate=30', // 缓存一天
       'CDN-Cache-Control': 'max-age=86400',
       'Vercel-CDN-Cache-Control': 'max-age=86400',
     },
   })
 
-  if (!data)
+  if (!data.value)
     return []
 
-  return parser(data, type)
+  return parser(data.value.data, type)
 }
-
-export default defineEventHandler(async (event) => {
-  const { type } = getQuery(event) as { type: NCMType }
-  return await fetchMusic(type)
-})

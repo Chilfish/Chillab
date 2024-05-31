@@ -1,5 +1,5 @@
-@use "./variables" as *;
-@use "./transitions";
+@use './variables' as *;
+@use './transitions';
 
 * {
   min-width: 0; // CSS haker

@@ -6,7 +6,7 @@ defineProps<{
 }>()
 
 const emits = defineEmits<{
-  'showDetail': []
+  showDetail: []
 }>()
 </script>
 
@@ -29,9 +29,8 @@ const emits = defineEmits<{
       <div class="flex items-center gap-2">
         <NuxtImg
           loading="lazy"
-          placeholder="/placeholder.png"
+          src="/placeholder.png"
           class="h-8 w-8 rounded-full object-cover"
-          src="/favicon.ico"
         />
         <span>{{ post.owner }}</span>
       </div>
