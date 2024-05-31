@@ -34,22 +34,22 @@ body {
 }
 
 #__nuxt {
-  --uno: w-full overflow-hidden relative;
+  @apply: w-full overflow-hidden relative;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  --uno: text-center text-2xl font-bold;
+  @apply: text-center text-2xl font-bold;
 }
 
 h1 {
-  --uno: text-3xl;
+  @apply: text-3xl;
 }
 
 h2 {
-  --uno: text-2xl;
+  @apply: text-2xl;
 }
 
 input:focus-visible,
@@ -59,11 +59,11 @@ textarea:focus-visible {
 
 p,
 div {
-  --uno: whitespace-pre-wrap;
+  @apply: whitespace-pre-wrap;
 }
 
 .btns button {
-  --uno: btn;
+  @apply: btn;
 }
 
 .loading {

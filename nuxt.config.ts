@@ -55,18 +55,9 @@ export default defineNuxtConfig({
     '~/assets/style.scss',
   ],
 
-  // colorMode: {
-  //   classSuffix: '',
-  // },
-
   typescript: {
     strict: true,
   },
-
-  runtimeConfig: {
-
-  },
-
   routeRules: {
     '/': { redirect: '/test' },
   },
@@ -77,14 +68,6 @@ export default defineNuxtConfig({
         target: 'esnext',
       },
     },
-    prerender: {
-      routes: ['/bookmark'],
-      crawlLinks: false,
-    },
-  },
-
-  build: {
-    transpile: ['rxjs'],
   },
 
   // 排除 jsdom 的依赖

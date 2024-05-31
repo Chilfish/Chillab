@@ -68,6 +68,6 @@ const index = computed(() => {
   --white-1: #f7f9fc;
   --white-2: #f7f5f7;
 
-  --uno: text-gray-5 dark:text-light-4 h-18 w-90vw flex items-center justify-between gap-3 rounded-md px-3 py-2 text-3 sm:w-40rem sm:text-3.5;
+  @apply: text-gray-5 dark:text-light-4 h-18 w-90vw flex items-center justify-between gap-3 rounded-md px-3 py-2 text-3 sm:w-40rem sm:text-3.5;
 }
 </style>

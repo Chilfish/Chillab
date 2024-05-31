@@ -99,6 +99,6 @@ onUnmounted(stop)
 
 <style scoped lang="scss">
 button {
-  --uno: blur-bg icon-btn absolute top-50% z-10 text-white translate-y--1/2;
+  @apply: blur-bg icon-btn absolute top-50% z-10 text-white translate-y--1/2;
 }
 </style>
