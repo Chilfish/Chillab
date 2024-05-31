@@ -1,8 +1,6 @@
 <script setup lang="ts">
-defineProps<{
-  before: string
-  after: string
-}>()
+const before = '/ender-girls.jpg'
+const after = '/ender-bocchi.jpg'
 
 const contrast = ref(0.5)
 

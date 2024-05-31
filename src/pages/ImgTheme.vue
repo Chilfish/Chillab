@@ -1,15 +1,11 @@
 <script setup lang="ts">
-const props = defineProps<{
-  src: string
-}>()
-
 const color = ref({
   hex: '#000000',
   text: '#ffffff',
   rgb: [0, 0, 0],
 })
 
-const src = ref(props.src)
+const src = ref('/ender-girls.jpg')
 const fileInput = ref<HTMLInputElement | null>(null)
 
 function onSelectFile(file: File) {
