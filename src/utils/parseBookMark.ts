@@ -63,9 +63,9 @@ async function _parseBookmark(content: string) {
       const { host } = new URL(url)
 
       let icon = bookmark.attributes.getNamedItem('ICON')?.value
-        ?? bookmark.attributes.getNamedItem('ICON_URI')?.value
-        ?? `https://icons.duckduckgo.com/ip3/${host}.ico`
-        ?? '/placeholder.webp'
+        || bookmark.attributes.getNamedItem('ICON_URI')?.value
+        || `https://icons.duckduckgo.com/ip3/${host}.ico`
+        || '/placeholder.webp'
 
       if (url.includes('zhihu.com'))
         icon = 'https://www.zhihu.com/favicon.ico'
