@@ -1,16 +1,31 @@
 <script setup lang="ts">
 import { UseDraggable } from '@vueuse/components'
 
+const props = defineProps<{
+  src: string
+}>()
+
+const emits = defineEmits<{
+  close: []
+}>()
+
 const show = ref(false)
 const scaleRatio = ref(1)
 const imgRef = ref<HTMLImageElement>()
 const pos = ref({ x: 0, y: 0 })
 
+const emptyImg = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+const imgPreviewUrl = ref(props.src)
+
 function toggle() {
   show.value = !show.value
   scaleRatio.value = 1
-  if (!show.value)
-    imgPreviewUrl.value = emptyImg
+  if (!show.value) {
+    emits('close')
+  }
+  else {
+    imgPreviewUrl.value = props.src
+  }
 }
 
 function download() {
@@ -25,24 +40,28 @@ function openInNewTab() {
   window.open(imgPreviewUrl.value, '_blank')
 }
 
-watch(imgPreviewUrl, (v) => {
-  if (v !== emptyImg)
-    return toggle()
+function changeImg(src: string) {
+  if (src && src !== emptyImg)
+    toggle()
 
   if (imgRef.value) {
     const { x, y } = useCenterPos(imgRef.value)
     pos.value = { x: x.value, y: y.value }
   }
-})
+}
+
+watch(() => props.src, changeImg)
 </script>
 
 <template>
   <modal
-    v-if="show"
     id="imgPreviewer"
-    :show="show"
+    v-model="show"
     class="group"
-    @update:show="toggle"
+    @update:model-value="(v) => {
+      show = v
+      if (!v) $emit('close')
+    }"
   >
     <div class="absolute top-0 z-20 w-full flex select-none justify-between p-4 text-white">
       <button
